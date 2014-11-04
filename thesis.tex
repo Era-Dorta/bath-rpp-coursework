@@ -21,25 +21,16 @@ In this research proposal we present a method for automatic depiction of how it 
 \chapter{Introduction}
 \label{ch:intro}
 
-\textit{How things work} visualizations have been used as an efficient method to explain
-how a wide range of systems work. This technique usually involves displaying where each
-part is in relation to the system, showing how force is transmitted from one piece
-to the next and animating motion. In order to achieve this, a range of visual
-transformations are used, such as viewing the system from different angles, zoom degrees, 
-transparency levels, as well as displaying only a subset of the parts.
+\textit{How things work} visualizations have been used as an efficient method to explain how a wide range of systems work. 
+This technique usually involves displaying where each part is in relation to the system, showing how force is transmitted from one piece to the next and animating motion. 
+In order to achieve this, a range of visual transformations are used, such as viewing the system from different angles, zoom degrees,  transparency levels, as well as displaying only a subset of the parts.
 
 In the field of hydraulics, simulations can be used to illustrate how hydraulic machinery works.
-A common hydraulic equipment has 
-some type of liquid fluid that becomes pressurised when a force is applied to it and then
-that force is transmitted to the other end of the fluid. Understanding how the pressured is
-directed and how it interacts with other parts in the machinery is essential in order
-to grasp how the whole system works. Therefore in order to illustrate the general 
-process the user needs to know the spatial configuration of all the parts in the
-system and the chain of motions that takes place within the gears and the liquid fluids
-as well.
+A common hydraulic equipment has  some type of liquid fluid that becomes pressurised when a force is applied to it and then that force is transmitted to the other end of the fluid. 
+Understanding how the pressured is directed and how it interacts with other parts in the machinery is essential in order to grasp how the whole system works. 
+Therefore in order to illustrate the general process the user needs to know the spatial configuration of all the parts in the system and the chain of motions that takes place within the gears and the liquid fluids as well.
 
-This research proposal aims to introduce an automatic method for generating
-\textit{How things work} illustrations for hydraulic machinery. 
+This research proposal aims to introduce an automatic method for generating \textit{How things work} illustrations for hydraulic machinery. 
 
 In summary, the main contributions would be:
 \begin{itemize}
@@ -54,8 +45,8 @@ In summary, the main contributions would be:
 \section{The Problem}
 \label{sec:problem}
 
-Given a 3D CAD model of some hydraulic machinery we want to generate 
-how things work visualizations. Namely, adding arrows depicting the fluid movement.
+Given a 3D CAD model of some hydraulic machinery we want to generate how things work visualizations.
+Namely, adding arrows depicting the fluid movement.
 
 The problem can be subdivided into:
 \begin{enumerate}
@@ -70,29 +61,24 @@ This proposal is based on the following three main areas of previous work.
 
 \subsection{Explanatory illustration}
 
-Explanatory illustration has been effectively used to show complex and/or
-copious amounts of  scientific and technical data. Researchers have
-have look into generate automatic illustrations for mechanical assemblies \cite{Mitra2010}.
+Explanatory illustration has been effectively used to show complex and/or copious amounts of  scientific and technical data.
+Researchers have have look into generate automatic illustrations for mechanical assemblies \cite{Mitra2010}.
 %TODO Improve and extend this, but it is difficult to find literature on this topic
 
 
 \subsection{Fluid simulation}
 
-Fluid simulation is a well known research area. One of the firsts papers in this area
-introduced a Grid method \cite{Foster1996} to solve the Navier-Stokes
-equations by applying forward Euler time integration. Stam \cite{Stam1999} extended 
-the method in order to overcome stability issues. More recent simulations introduced the Smooth
-Particle Hydrodynamics (SPH) technique \cite{DesbrunMathieuandGascuel1996}. 
-This simulations did not include including solid-fluid coupling, that was later
-proposed in Grids by Carlson \cite{Carlson2004}. On the other hand, Muller \cite{Muller2004} did the
-same for SPH simulations, that Akinci \cite{Akinci2012} further improveded with the 
-inclusion of friction and dragging.
+Fluid simulation is a well known research area. 
+One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve the Navier-Stokes equations by applying forward Euler time integration. 
+Stam \cite{Stam1999} extended the method in order to overcome stability issues. 
+More recent simulations introduced the Smooth Particle Hydrodynamics (SPH) technique \cite{DesbrunMathieuandGascuel1996}. 
+This simulations did not include including solid-fluid coupling, that was later proposed in Grids by Carlson \cite{Carlson2004}. 
+On the other hand, Muller \cite{Muller2004} did the same for SPH simulations, that Akinci \cite{Akinci2012} further improveded with the inclusion of friction and dragging.
 
 \subsection{Flow visualization}
 
 Streamlines are the standard approach to produce flow visualization. 
-Seeding techniques for curves on 3D surfaces were explored by
-Wicke \cite{Wicke2009} and Spencer \cite{Spencer2009}.
+Seeding techniques for curves on 3D surfaces were explored by Wicke \cite{Wicke2009} and Spencer \cite{Spencer2009}.
 
 \chapter{Data Structures Used in this research}
 \section{The 4D-Stack - A Revolutionary Data Structure}
