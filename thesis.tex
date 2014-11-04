@@ -54,7 +54,7 @@ In summary, the main contributions would be:
 \section{The Problem}
 \label{sec:problem}
 
-Given a 3D CAD model of some hydraulic machinery we want to semi-automatically generate 
+Given a 3D CAD model of some hydraulic machinery we want to generate 
 how things work visualizations. Namely, adding arrows depicting the fluid movement.
 
 The problem can be subdivided into:
@@ -70,10 +70,22 @@ This proposal is based on the following three main areas of previous work.
 
 \subsection{Explanatory illustration}
 
-This method effectively conveys the explanatory information to the user. Researchers
-have have developed several automatic techniques for a range of problems. \cite{Mitra2010}
+Explanatory illustration has been effectively used to show complex and/or
+copious amounts of  scientific and technical data. Researchers have
+have look into generate automatic illustrations for mechanical assemblies \cite{Mitra2010}.
+%TODO Improve and extend this, but it is difficult to find literature on this topic
+
 
 \subsection{Fluid simulation}
+
+Fluid simulation is a well known research area. Among the first works on this area
+we have the Grid method by \cite{Foster1996} that solves the Navier-Stokes
+equations by applying forward Euler time integration. This was further extended
+by \cite{Stam1999}. More recent simulations introduced the Smooth
+Particle Hydrodynamics (SPH) technique \cite{DesbrunMathieuandGascuel1996}. However solid-fluid
+coupling in Grids was proposed by \cite{Carlson2004},  and for SPH by
+
+
 
 \subsection{Flow visualization}
 
