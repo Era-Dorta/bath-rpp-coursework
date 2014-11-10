@@ -2,7 +2,6 @@
 *.log
 *.blg
 baththesis.pdf
-thesis.pdf
 *.synctex.gz
 *.bbl
 *~
