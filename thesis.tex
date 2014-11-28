@@ -129,17 +129,24 @@ However the previous techniques assumed the fluid to have no interplay with any 
 Carlson \cite{Carlson2004} proposed solid-fluid coupling algorithm for grids models using distributed Lagrange multipliers.
 On the other hand, Muller \cite{Muller2004} presented his own method for SPH simulations, which Akinci \cite{Akinci2012} further improveded with the inclusion of friction and dragging. 
 Shao \cite{Shao2014} also solved stability issues in the previous SPH solid-fluid coupling techniques.
+For more information on real time fluid simulations see Vines survey ~\cite{Vines2012}.
+While for survey specific to SPH fluid simulation see Ihmsen~\cite{Ihmsen2014}.
 
 \subsection{Flow visualization}
 
 %Explain what stream lines are, why thy are used and some applications on flow visualization
-Streamlines are the standard approach to produce flow visualization.
-Extensive work has been done in this area as visualizing fluid movement has a broad range of applications. \\
+Extensive work has been done in this area as visualizing fluid movement has a broad range of applications. 
+Streamlines are a common tool to visualize flow.
+A streamline is defined as curve that is everywhere tangent to flow field.
+Therefore, they provide an intuitive show the direction the fluid will travel.
+%Define this better, explain more nice properties of the stream lines
+Furthermore, their curvature is related to the pressure gradient.\\
 
 On the 2D image domain, an image-guided algorithm for visualizing 2D flow in images was proposed by Turk \cite{Turk1996} and which Li improved to use the fewest number of streamlines \cite{Li2008}. \\
 
 Seeding techniques for curves on 3D surfaces were explored by Wicke \cite{Wicke2009}, who developed a technique to combine model reduction with with grid based methods.
 And Spencer \cite{Spencer2009} whose method generates streamlines only for visible parts of the surface, thus providing a significant gain in efficiency.
+For more information on flow visualization see McLoughlin survey on the topic~\cite{McLoughlin2010}.
 
 %Sould this section go before the previous work or where it is now????
 \section{Related Work}
