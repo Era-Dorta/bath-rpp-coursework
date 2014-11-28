@@ -134,13 +134,16 @@ While for survey specific to SPH fluid simulation see Ihmsen~\cite{Ihmsen2014}.
 
 \subsection{Flow visualization}
 
-%Explain what stream lines are, why thy are used and some applications on flow visualization
-Extensive work has been done in this area as visualizing fluid movement has a broad range of applications. 
-Streamlines are a common tool to visualize flow.
-A streamline is defined as curve that is everywhere tangent to flow field.
-Therefore, they provide an intuitive show the direction the fluid will travel.
-%Define this better, explain more nice properties of the stream lines
-Furthermore, their curvature is related to the pressure gradient.\\
+Extensive work has been done in this area as visualizing fluid movement has a broad range of applications.
+Given the constrains of our problem we will exclusively visualize steady flow.\\
+
+Streamlines are convenient tools to describe and visualize flow.
+A streamline is defined as curve that is everywhere tangent to flow field, i.e. it is parallel to the local velocity vector.
+Therefore, they provide an intuitive mechanism to show the fluid travel direction.
+Furthermore, they have properties such as: streamlines will not cross each other (flow will not go across them), or a particle in the fluid starting on one streamline will not leave it.
+Once the streamlines has been calculated, instead of displaying them as such, they are arrows are replaced by arrows arranged using some criteria.
+For instance, on the path of each streamline or after clustering some streamlines together.\\
+%Could be useful to talk about streamtubes.
 
 On the 2D image domain, an image-guided algorithm for visualizing 2D flow in images was proposed by Turk \cite{Turk1996} and which Li improved to use the fewest number of streamlines \cite{Li2008}. \\
 
