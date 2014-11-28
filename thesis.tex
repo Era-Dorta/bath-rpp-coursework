@@ -111,15 +111,18 @@ This proposal is based on the following three main areas of previous work.
 
 \subsection{Explanatory illustration}
 
-Explanatory illustration has been effectively used to show either complex and/or copious amounts of  scientific, as well as simple dynamics as the ones found in comics books.
+Explanatory illustration has to adequately transmit motion on a still image, consequently transforming from the temporal space to the image domain.
+This is usually found in comics books or in instructions sets.\\
+
 Nienhaus proposed a technique to depict motion in 3D animations~\cite{Nienhaus2005}.
 Scene and behaviour descriptions from specialized scene graphs were analysed in order to create the motion cues.  
 Researchers have have look into generate automatic illustrations for mechanical assemblies \cite{Mitra2010}.
 Furthermore, Lowe showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken as users can fail at extract the necessary information due tu the nature of the animation~\cite{Lowe2014}.
-%TODO Improve and extend this, but it is difficult to find literature on this topic
+%TODO Extend even more????
 
 
 \subsection{Fluid simulation}
+\label{prevWorkFluidSim}
 
 Fluid simulation is a well known research area. 
 One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations by applying forward Euler time integration. 
@@ -135,6 +138,7 @@ While for survey specific to SPH fluid simulation see Ihmsen~\cite{Ihmsen2014}.
 \subsection{Flow visualization}
 
 Extensive work has been done in this area as visualizing fluid movement has a broad range of applications.
+However this is a challenging area as it has to effectively display either complex and copious amounts of data, as fluid simulation is usually solved using highly divided grids or with large number of particles, as explained in section~\ref{prevWorkFluidSim}.
 Given the constrains of our problem we will exclusively visualize steady flow.\\
 
 Streamlines are convenient tools to describe and visualize flow.
