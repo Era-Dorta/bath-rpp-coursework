@@ -29,16 +29,24 @@ Such as viewing the system from different angles, zoom degrees,  transparency le
 Generating material of this sort typically involves manual methods, usually in the form of an expert drawing each illustration by hand or composing a fixed animation using specific software.\\
 
 \begin{figure}
-\centering
-\includegraphics[scale=0.2]{images/h_pump}
-\includegraphics[scale=0.3]{images/cylinder_animation}
-\caption{On the left a typical hydraulic cylinder cut in half, while on the right manually generated animation of a hydraulic pump.}
-\label{fig:cylinder}
+	\centering
+	\begin{minipage}[t]{.45\textwidth}
+		\centering
+		\includegraphics[width=.8\textwidth,height=4cm]{images/h_pump}
+		\caption{Cross section of a typical hydraulic cylinder.}
+		\label{fig:h_pump}
+	\end{minipage}\hfill
+	\begin{minipage}[t]{.45\textwidth}
+		\centering
+		\includegraphics[width=.8\textwidth,height=4cm]{images/cylinder_animation}
+		\caption{Frame of manually generated animation of a hydraulic pump.}
+		\label{fig:cylinder_animation}
+	\end{minipage}
 \end{figure}
 
 %2. Introduction to hydraulics mechanisms
 Hydraulic machinery is commonly used in our everyday lives.
-Such as lifting cars with jacks, rams on excavators or gerotors to control fuel intake, as shown in Figure~\ref{fig:cylinder} left.
+Such as lifting cars with jacks, rams on excavators or gerotors to control fuel intake, as shown in Figure~\ref{fig:h_pump}.
 Their popularity is based on their faculty to transmit a force or torque multiplication independently of the distance between input and output.  
 A typical hydraulic equipment has a contained liquid fluid that becomes pressurised when a force is applied to it.
 Then that force is transmitted to the other end of the fluid. 
@@ -47,7 +55,7 @@ Therefore, to illustrate the general process, the spatial configuration of each 
 As well as the chain of motions that takes place within the gears and the liquid fluids.\\
 
 %3. What are the visualization/illustration techniques for hydraulics mechanisms, refer to SIG10 gear paper.
-There are some common visualisation and illustration techniques used for hydraulic machinery, as shown in Figure~\ref{fig:cylinder} right.
+There are some common visualisation and illustration techniques used for hydraulic machinery, as shown in Figure~\ref{fig:cylinder_animation}.
 \textbf{Motion arrows} can point out how the solid parts move and they also indicate fluid flow movement.
 \textbf{Frame sequences} display complex motions key frames and they can highlight temporal interactions between the parts.
 \textbf{Animations} are an useful tool in highly dynamic systems, for example when an excessive number of frame sequences are needed in a particularly complex motion.\\
