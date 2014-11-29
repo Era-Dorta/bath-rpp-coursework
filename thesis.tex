@@ -107,7 +107,7 @@ A simple approach would be to place arrows indicating the overall fluid movement
 
 \section{Previous Work}
 
-This proposal is based on the following three main areas of previous work.
+This proposal is based on the following three areas of previous work.
 
 \subsection{Explanatory illustration}
 
@@ -141,12 +141,28 @@ Extensive work has been done in this area as visualizing fluid movement has a br
 However this is a challenging area as it has to effectively display either complex and copious amounts of data, as fluid simulation is usually solved using highly divided grids or with large number of particles, as explained in section~\ref{prevWorkFluidSim}.
 Given the constrains of our problem we will exclusively visualize steady flow.\\
 
-Streamlines are convenient tools to describe and visualize flow.
+\begin{figure}
+	\centering
+	\begin{minipage}[t]{.45\textwidth}
+		\centering
+		\includegraphics[width=.8\textwidth,height=4cm]{images/streamLinesSpencer}
+		\caption{Streamlines on a 3D surface~\cite{Spencer2009}.}
+		\label{fig:streamLines}
+	\end{minipage}\hfill
+	\begin{minipage}[t]{.45\textwidth}
+		\centering
+		\includegraphics[width=.8\textwidth,height=4cm]{images/streamArrows}
+		\caption{Arrows placed on streamlines paths in on a 3D surface~\cite{loffelmann1998}.}
+		\label{fig:streamArrows}
+	\end{minipage}
+\end{figure}
+
+Streamlines are convenient tools to describe and visualize flow, as shown in figure~\ref{fig:streamLines}.
 A streamline is defined as curve that is everywhere tangent to flow field, i.e. it is parallel to the local velocity vector.
 Therefore, they provide an intuitive mechanism to show the fluid travel direction.
 Furthermore, they have properties such as: streamlines will not cross each other (flow will not go across them), or a particle in the fluid starting on one streamline will not leave it.
 Once the streamlines has been calculated, instead of displaying them as such, they are arrows are replaced by arrows arranged using some criteria.
-For instance, on the path of each streamline or after clustering some streamlines together.\\
+For instance, on the path of each streamline or after clustering some streamlines together, as shown in figure~\ref{fig:streamArrows}.\\
 %Could be useful to talk about streamtubes.
 
 On the 2D image domain, an image-guided algorithm for visualizing 2D flow in images was proposed by Turk \cite{Turk1996} and which Li improved to use the fewest number of streamlines \cite{Li2008}. \\
