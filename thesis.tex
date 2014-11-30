@@ -5,6 +5,8 @@
 \usepackage{amssymb} %for Blackboard bold etc \usepackage{graphicx} %for including eps graphics % front matter
 \usepackage[pdftex]{graphicx}
 \usepackage{url}
+\usepackage{amsmath}
+\usepackage{txfonts}
 
 \title{ Illustrating how hydraulic machinery works } \author{Garoe Dorta-Perez}
 %\degree{Doctor of Philosophy}
@@ -133,7 +135,7 @@ Furthermore, Lowe showed that even though animations have become a generalized t
 \label{prevWorkFluidSim}
 
 Fluid simulation is a well known research area. 
-One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations by applying forward Euler time integration. 
+One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2} by applying forward Euler time integration. 
 Stam \cite{Stam1999} extended this method in order to overcome stability issues.
 More recent simulations introduced the Smooth Particle Hydrodynamics (SPH) technique \cite{DesbrunMathieuandGascuel1996}.
 However the previous techniques assumed the fluid to have no interplay with any rigid body (solid-coupling).
@@ -142,6 +144,16 @@ On the other hand, Muller \cite{Muller2004} presented his own method for SPH sim
 Shao \cite{Shao2014} also solved stability issues in the previous SPH solid-fluid coupling techniques.
 For more information on real time fluid simulations see Vines survey ~\cite{Vines2012}.
 While for survey specific to SPH fluid simulation see Ihmsen~\cite{Ihmsen2014}.
+
+\begin{gather}
+\label{eq:navierStokes1}
+\nabla \cdot \mathbf{u} = 0\\
+\label{eq:navierStokes2}
+\mathbf{u}_t = -(\mathbf{u} \cdot \nabla)\mathbf{u} + \nabla \cdot ( v \nabla \mathbf{u} - \frac{1}{\rho} \nabla p + \mathbf{f} )
+\end{gather}
+
+These two equations represent the conservation of mass and momentum, respectively.
+Where $\mathbf{u}_t$ is the time derivative vector field of the fluid velocity, $p$  is the scalar pressure field, $\rho$ is the density of the fluid, $v$ is the kinematic viscosity and $\mathbf{f}$ represents the body force per unit mass, usually gravity.
 
 \subsection{Flow visualization}
 
@@ -185,33 +197,7 @@ For more information on flow visualization see McLoughlin survey on the topic~\c
 %Talk here about Illustrating how mechanical assemblies work
 %sketch based dynamic illustration of fluid systems
 
-\chapter{Data Structures Used in this research}
-\section{The 4D-Stack - A Revolutionary Data Structure}
-The 4D-Stack turned out to be a complete disaster as traversal time approached $O(n^9).$
-It is best illustrated by the following equation: $F(x) = \prod_{0\leq i<k}d_i(x)$
-but the following may not be true:
-
-\[
--f(x) = - \log \prod_{0\leq i<k}d_i(x) = - \sum_{0\leq i<k} \log d_i(x)
-\]
-
-
-\section{More Irrelevant Stuff}
-If you want to put numbers on equations use this form:
-\begin{equation}
-\label{integralrep}
-f(x)=\int_0^L h( \langle x-p(t),n(t) \rangle ) dt\,.
-\end{equation}
-
-
-
-\chapter{Results}
-
-Due to a time quake during the research, the results were catapulted into the future.  They will appear in about 20 years.
-In the meantime to demonstrate the use of tables, please see table~\ref{stud-table} for a list of students who took more than 30 years to graduate.
-
-\chapter{Conclusions and Future Work}
-No conclusions can be drawn until the results appear and no future work is recommended.
+\chapter{Conclusions}
 
 \bibliographystyle{eg-alpha-doi}
 
