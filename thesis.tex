@@ -25,7 +25,7 @@ In this research proposal we present a method for automatic depiction of how it 
 
 %1. Introduction to how things work visualization
 \textit{How things work} visualizations have been used as an efficient method to explain how a wide range of systems work.
-This technique usually involves displaying where each part is in relation to the system, showing how force is transmitted from one piece to the next and animating motion. 
+This technique usually involves displaying where each part is in relation to the system, showing how force is transmitted from one piece to the next or animating motion. 
 In order to perform this task a range of visual transformations are used.
 Such as viewing the system from different angles, zoom degrees,  transparency levels, as well as displaying only a subset of the parts.
 Generating material of this sort typically involves manual methods, usually in the form of an expert drawing each illustration by hand or composing a fixed animation using specific software.\\
@@ -52,38 +52,39 @@ Such as lifting cars with jacks, rams on excavators or gerotors to control fuel 
 Their popularity is based on their faculty to transmit a force or torque multiplication independently of the distance between input and output.  
 A typical hydraulic equipment has a contained liquid fluid that becomes pressurised when a force is applied to it.
 Then that force is transmitted to the other end of the fluid. 
-Understanding how the pressure is directed and how it interacts with other parts in the machinery is essential in order to grasp how the whole system works. 
+In order to grasp how the whole system works, it is essential to understand how the pressure is directed and how it interacts with other parts in the machinery. 
 Therefore, to illustrate the general process, the spatial configuration of each part in the system must be unveiled.
 As well as the chain of motions that takes place within the gears and the liquid fluids.\\
 
 %3. What are the visualization/illustration techniques for hydraulics mechanisms, refer to SIG10 gear paper.
 There are some common visualisation and illustration techniques used for hydraulic machinery, as shown in Figure~\ref{fig:cylinder_animation}.
 \textbf{Motion arrows} can point out how the solid parts move and they also indicate fluid flow movement.
-\textbf{Frame sequences} display complex motions key frames and they can highlight temporal interactions between the parts.
-\textbf{Animations} are an useful tool in highly dynamic systems, for example when an excessive number of frame sequences are needed in a particularly complex motion.\\
+\textbf{Frame sequences} display key frames in complex motions and they can highlight temporal interactions between the parts.
+\textbf{Animations} are an useful tool in highly dynamic systems, for example when an excessive number of frame sequences are needed in a particularly complicated motion.\\
 
 %4. Why this is difficult (designer need to understand force, flow movement, cannot change viewpoint, etc.)
 Generating visualisations and illustrations for hydraulic machinery is challenging for designers.
-They must understand in detail what forces are generated when the parts interact with each other and what kind of flow movements are entailed.
-Furthermore, with 2D illustrations it is impossible to change the viewpoint to explore the object from different angle.
-Moreover, hydraulic visualizations are usually costly animated by hand, which in addition leads to infrequent updates.\\
+They must understand in detail what forces are generated as parts interact among each other and what kind of flow movements are entailed.
+Furthermore, when 2D illustrations are used, they main disadvantage is the impossibility to change the viewpoint to explore the object from different angle.
+Moreover, when animations for hydraulic visualizations are generated, they are infrequently updated. 
+Since manual animation is a costly and time consuming task.\\
 
 %5. Current status in the research field (mechanical assemblies SIG10, flow systems SIG ASIA 11, maybe some others? No need reference, just some general  discussion, since we have related work part also. And these work cannot handle hydraulics system)
 There has been some work done on automatically generating illustrations and visualizations on mechanical assemblies.
 Nevertheless, it has been restricted to gear to gear interaction only.
 Whereas work on fluid simulation and visualization has not been applied to hydraulic equipment.
-As they are usually designed to, either generate complex visualizations for engineering purposes, or at producing visually plausible but not physically accurate results in animation and games.\\
+As simulations is this field are usually designed to, either generate complex visualizations for engineering purposes, or to produce visually plausible but not physically accurate results for animation or games.\\
 
 %6. Our aim (analysis + visualization, with some description, refer to SIG10 gear paper)
-Simulations can be used to illustrate how hydraulic machinery works.
 This research proposal aims to introduce a method for generating \textit{How things work} illustrations for hydraulic machinery.
+Simulations would be used to generate explanatory illustrations for hydraulic machinery.
 This illustrations would help users understanding how this kind of equipment works.\\
 
 %7. Summarize our contribution
 In summary, the main contributions would be:
 \begin{itemize}
 \item An application for creating how things works illustration for hydraulic machinery 3D models.
-\item A method for detecting motion and interaction of fluid inside model parts.
+\item A method for detecting motion and interaction of fluid in the model parts.
 \item Algorithms to automatically generate illustrations with motion arrows and frame sequences
 \end{itemize}
 
@@ -127,7 +128,7 @@ This is usually found in comics books or in instructions sets.\\
 Nienhaus proposed a technique to depict motion in 3D animations~\cite{Nienhaus2005}.
 Scene and behaviour descriptions from specialized scene graphs were analysed in order to create the motion cues.  
 Researchers have have look into generate automatic illustrations for mechanical assemblies \cite{Mitra2010}.
-Furthermore, Lowe showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken as users can fail at extract the necessary information due to the nature of the animation~\cite{Lowe2014}.
+Furthermore, Lowe showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken as users can fail to extract the necessary information due to the nature of the animation~\cite{Lowe2014}.
 %TODO Extend even more????
 
 
@@ -138,9 +139,9 @@ Fluid simulation is a well known research area.
 One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2} by applying forward Euler time integration. 
 Stam \cite{Stam1999} extended this method in order to overcome stability issues.
 More recent simulations introduced the Smooth Particle Hydrodynamics (SPH) technique \cite{DesbrunMathieuandGascuel1996}.
-However the previous techniques assumed the fluid to have no interplay with any rigid body (solid-coupling).
+However the previous techniques assumed no interplay within the fluid and rigid bodies (solid-fluid coupling).
 Carlson \cite{Carlson2004} proposed solid-fluid coupling algorithm for grids models using distributed Lagrange multipliers.
-On the other hand, Muller \cite{Muller2004} presented his own method for SPH simulations, which Akinci \cite{Akinci2012} further improveded with the inclusion of friction and dragging. 
+While, Muller \cite{Muller2004} presented his own method for SPH simulations, which Akinci \cite{Akinci2012} further improveded with the inclusion of friction and dragging. 
 Shao \cite{Shao2014} also solved stability issues in the previous SPH solid-fluid coupling techniques.
 For more information on real time fluid simulations see Vines survey ~\cite{Vines2012}.
 While for survey specific to SPH fluid simulation see Ihmsen~\cite{Ihmsen2014}.
@@ -158,8 +159,8 @@ Where $\mathbf{u}_t$ is the time derivative vector field of the fluid velocity, 
 \subsection{Flow visualization}
 
 Extensive work has been done in this area as visualizing fluid movement has a broad range of applications.
-However this is a challenging area as it has to effectively display either complex and copious amounts of data, as fluid simulation is usually solved using highly divided grids or with large number of particles, as explained in section~\ref{prevWorkFluidSim}.
-Given the constrains of our problem we will exclusively visualize steady flow.\\
+However this is a challenging task as it has to effectively display complex and copious amounts of data.
+Seeing that fluid simulation is generally solved by means of highly divided grids or with large number of particles, as explained in section~\ref{prevWorkFluidSim}.\\
 
 \begin{figure}
 	\centering
@@ -172,23 +173,24 @@ Given the constrains of our problem we will exclusively visualize steady flow.\\
 	\begin{minipage}[t]{.45\textwidth}
 		\centering
 		\includegraphics[width=.8\textwidth,height=4cm]{images/streamArrows}
-		\caption{Arrows placed on streamlines paths in on a 3D surface~\cite{loffelmann1998}.}
+		\caption{Arrows placed on streamlines paths in a 3D surface~\cite{loffelmann1998}.}
 		\label{fig:streamArrows}
 	\end{minipage}
 \end{figure}
 
 Streamlines are convenient tools to describe and visualize flow, as shown in figure~\ref{fig:streamLines}.
-A streamline is defined as curve that is everywhere tangent to flow field, i.e. it is parallel to the local velocity vector.
+A streamline is defined as a curve that is everywhere tangent to flow field, i.e. it is parallel to the local velocity vector.
 Therefore, they provide an intuitive mechanism to show the fluid travel direction.
 Furthermore, they have properties such as: streamlines will not cross each other (flow will not go across them), or a particle in the fluid starting on one streamline will not leave it.
-Once the streamlines has been calculated, instead of displaying them as such, they are arrows are replaced by arrows arranged using some criteria.
+Once the streamlines has been calculated, instead of displaying them as such, they can be replaced by arrows arranged using some criteria.
 For instance, on the path of each streamline or after clustering some streamlines together, as shown in figure~\ref{fig:streamArrows}.\\
 %Could be useful to talk about streamtubes.
 
-On the 2D image domain, an image-guided algorithm for visualizing 2D flow in images was proposed by Turk \cite{Turk1996} and which Li improved to use the fewest number of streamlines \cite{Li2008}. \\
+On the 2D image domain, an image-guided algorithm for visualizing 2D flow in images was proposed by Turk \cite{Turk1996}.
+Which Li improved, by only generating the fewest possible number of streamlines \cite{Li2008}. \\
 
-Seeding techniques for curves on 3D surfaces were explored by Wicke \cite{Wicke2009}, who developed a technique to combine model reduction with with grid based methods.
-And Spencer \cite{Spencer2009} whose method generates streamlines only for visible parts of the surface, thus providing a significant gain in efficiency.
+Seeding techniques for curves on 3D surfaces were explored by Wicke \cite{Wicke2009}, who developed a technique to combine model reduction with grid based methods.
+And by Spencer \cite{Spencer2009}, whose method generates streamlines only for visible parts of the surface, thus providing a significant gain in efficiency.
 For more information on flow visualization see McLoughlin survey on the topic~\cite{McLoughlin2010}.
 
 %Sould this section go before the previous work or where it is now????
