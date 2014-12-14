@@ -4,6 +4,8 @@
 \usepackage{baththesis}
 \usepackage{amssymb} %for Blackboard bold etc \usepackage{graphicx} %for including eps graphics % front matter
 \usepackage[pdftex]{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{url}
 \usepackage{amsmath}
 \usepackage{txfonts}
@@ -31,19 +33,27 @@ Such as viewing the system from different angles, zoom degrees,  transparency le
 Generating material of this sort typically involves manual methods, usually in the form of an expert drawing each illustration by hand or composing a fixed animation using specific software.\\
 
 \begin{figure}
-	\centering
-	\begin{minipage}[t]{.45\textwidth}
-		\centering
-		\includegraphics[width=.8\textwidth,height=4cm]{images/h_pump}
-		\caption{Cross section of a typical hydraulic cylinder.}
-		\label{fig:h_pump}
-	\end{minipage}\hfill
-	\begin{minipage}[t]{.45\textwidth}
-		\centering
-		\includegraphics[width=.8\textwidth,height=4cm]{images/cylinder_animation}
-		\caption{Frame of manually generated animation of a hydraulic pump.}
-		\label{fig:cylinder_animation}
-	\end{minipage}
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{images/h_pump}
+                \caption{Cross section of a typical hydraulic cylinder.}
+                \label{fig:h_pump}
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{images/piston}
+                \caption{A 3D model of a hydraulic piston.}
+                \label{fig:pistonModel}
+        \end{subfigure}
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{images/cylinder_animation}
+                \caption{Frame of manually generated animation of a hydraulic pump.}
+                \label{fig:cylinder_animation}
+        \end{subfigure}
+        \caption{Overview of the intented workflow}\label{fig:AnimOverview}
 \end{figure}
 
 %2. Introduction to hydraulics mechanisms
@@ -57,6 +67,7 @@ Therefore, to illustrate the general process, the spatial configuration of each 
 As well as the chain of motions that takes place within the gears and the liquid fluids.\\
 
 %3. What are the visualization/illustration techniques for hydraulics mechanisms, refer to SIG10 gear paper.
+To add \textit{How things work} information, we first need a 3D model of the machinery that we want to work with, as shown in Figure~\ref{fig:pistonModel}.
 There are some common visualisation and illustration techniques used for hydraulic machinery, as shown in Figure~\ref{fig:cylinder_animation}.
 \textbf{Motion arrows} can point out how the solid parts move and they also indicate fluid flow movement.
 \textbf{Frame sequences} display key frames in complex motions and they can highlight temporal interactions between the parts.
