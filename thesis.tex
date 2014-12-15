@@ -111,9 +111,9 @@ Namely, adding arrows depicting the fluid movement.\\
 
 The problem can be subdivided into:
 \begin{enumerate}
-\item Part analysis: Detecting fluid containers and fluid handling parts.
-\item Fluid simulation: Simulate how the fluid behaves in the previously detected parts.
-\item Fluid visualization: Display the fluid simulation data in a intuitive format.\\
+\item \textbf{Part analysis:} Detecting fluid containers and fluid handling parts.
+\item \textbf{Fluid simulation:} Simulate how the fluid behaves in the previously detected parts.
+\item \textbf{Fluid visualization:} Display the fluid simulation data in a intuitive format.\\
 \end{enumerate}
 
 Part analysis involves detecting the part type, how it moves and interacts with others.
@@ -147,6 +147,27 @@ Furthermore, Lowe showed that even though animations have become a generalized t
 \subsection{Fluid simulation}
 \label{prevWorkFluidSim}
 
+The current paradigm in fluid simulation consist of solving the Navier-Stokes equations of fluid dynamics, shown in Equations~\ref{eq:navierStokes1} and  ~\ref{eq:navierStokes1}.
+
+\begin{gather}
+\label{eq:navierStokes1}
+\nabla \cdot \mathbf{u} = 0\\
+\label{eq:navierStokes2}
+\mathbf{u}_t = -(\mathbf{u} \cdot \nabla)\mathbf{u} + \nabla \cdot ( v \nabla \mathbf{u} - \frac{1}{\rho} \nabla p + \mathbf{f} )
+\end{gather}
+
+These two equations represent the conservation of mass and momentum, respectively.
+Where $\mathbf{u}_t$ is the time derivative vector field of the fluid velocity, $p$  is the scalar pressure field, $\rho$ is the density of the fluid, $v$ is the kinematic viscosity and $\mathbf{f}$ represents the body force per unit mass, usually gravity.
+
+Along the years several methods have been proposed that are based on the same Navier-Stokes equations.
+
+\begin{itemize}
+\item \textbf{Procedural simulation:}  aa
+\item \textbf{SPH simulation:}  aa
+\item \textbf{Grid based simulation:}  aa
+\item \textbf{Hybrid simulation:}  aa
+\end{itemize}
+
 \subsubsection{Procedural simulation}
 
 %Talk about general simulation and fluid coupling in each of them
@@ -167,16 +188,6 @@ While, Muller \cite{Muller2004} presented his own method for SPH simulations, wh
 Shao \cite{Shao2014} also solved stability issues in the previous SPH solid-fluid coupling techniques.
 For more information on real time fluid simulations see Vines survey ~\cite{Vines2012}.
 While for survey specific to SPH fluid simulation see Ihmsen~\cite{Ihmsen2014}.
-
-\begin{gather}
-\label{eq:navierStokes1}
-\nabla \cdot \mathbf{u} = 0\\
-\label{eq:navierStokes2}
-\mathbf{u}_t = -(\mathbf{u} \cdot \nabla)\mathbf{u} + \nabla \cdot ( v \nabla \mathbf{u} - \frac{1}{\rho} \nabla p + \mathbf{f} )
-\end{gather}
-
-These two equations represent the conservation of mass and momentum, respectively.
-Where $\mathbf{u}_t$ is the time derivative vector field of the fluid velocity, $p$  is the scalar pressure field, $\rho$ is the density of the fluid, $v$ is the kinematic viscosity and $\mathbf{f}$ represents the body force per unit mass, usually gravity.
 
 \subsection{Flow visualization}
 
