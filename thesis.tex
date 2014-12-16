@@ -191,9 +191,15 @@ Visually pleasing results were achieved generating random Fourier amplitudes.
 The previous method was further improved by Cieutat \cite{Cieutat2003}, with the addition of solid (ships).
 And by Chiu \cite{Chiu2006} with adaptive surface tessellation.
 
+
+ADD MORE AND MOVE SOLID FLUID COUPLING PAPERS TO HERE
 %Talk about general simulation and fluid coupling in each of them
 
 \subsubsection{Grid based}
+
+Grid methods were among the first techniques to solve fluid simulation and so the firsts ones implement intuitive solutions.
+Grid based methods solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2}, in a fixed position in space (i.e. grid).
+As fluid flows, the equations are solved in each position, giving a value for speed and pressure at each time step.\\
 
 One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2} by applying forward Euler time integration. 
 Stam \cite{Stam1999} extended this method in order to overcome stability issues.
@@ -202,13 +208,14 @@ Carlson \cite{Carlson2004} proposed solid-fluid coupling algorithm for grids mod
 \subsubsection{Smooth Particle Hydrodynamics}
 
 Smooth Particle Hydrodynamics(SPH) has been established as one the major breakthroughs for fluid simulations in computer graphics, positioning itself as the most popular method nowadays.
+Compared to grid based methods that need high resolution grids to produce foam and splashes, SPH can achieve the same with less computational load.\\
+
 SPH were first introduced by Desbrun \cite{DesbrunMathieuandGascuel1996}, where each particle encodes its position, velocity, mass and the forces that act on it.\\
 
 While, Muller \cite{Muller2004} presented a method for computing solid fluid coupling. Where boundary particles are created on the surface of the solid and then particle coupling is calculated.
 Akinci \cite{Akinci2012} further improved the previous method with the inclusion of irregular particle distributions as well as friction and dragging. 
 Shao \cite{Shao2014} also solved stability issues in the previous SPH solid-fluid coupling techniques, using a correction scheme.
 Furthermore their algorithm was implemented on GPUs, thus achieving better performance than previous methods.  
-
 
 \subsubsection{Hybrid}
 
