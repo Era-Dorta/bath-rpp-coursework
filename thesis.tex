@@ -202,7 +202,8 @@ Grid based methods solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref
 As fluid flows, the equations are solved in each position, giving a value for speed and pressure at each time step.\\
 
 One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2} by applying forward Euler time integration. 
-Stam \cite{Stam1999} extended this method in order to overcome stability issues.
+Stam \cite{Stam1999} extended this method in order to overcome stability issues.\\
+
 Carlson \cite{Carlson2004} proposed solid-fluid coupling algorithm for grids models using distributed Lagrange multipliers.
 
 \subsubsection{Smooth Particle Hydrodynamics}
@@ -225,14 +226,6 @@ Fluid simulation is a well known research area.
 \subsection{Flow visualization}
 
 %In each of them talk first about steady flow and then about unsteady flow 
-
-\subsubsection{2D visualization}
-
-\subsubsection{Stream lines on surfaces}
-
-\subsubsection{Particle tracing lines on surfaces}
-
-\subsubsection{Volume integral objects}
 
 Extensive work has been done in this area as visualizing fluid movement has a broad range of applications.
 However this is a challenging task as it has to effectively display complex and copious amounts of data.
@@ -260,15 +253,24 @@ Therefore, they provide an intuitive mechanism to show the fluid travel directio
 Furthermore, they have properties such as: streamlines will not cross each other (flow will not go across them), or a particle in the fluid starting on one streamline will not leave it.
 Once the streamlines has been calculated, instead of displaying them as such, they can be replaced by arrows arranged using some criteria.
 For instance, on the path of each streamline or after clustering some streamlines together, as shown in figure~\ref{fig:streamArrows}.\\
-%Could be useful to talk about streamtubes.
+
+For more information on flow visualization see McLoughlin survey on the topic~\cite{McLoughlin2010}.
+
+\subsubsection{2D visualization}
 
 On the 2D image domain, an image-guided algorithm for visualizing 2D flow in images was proposed by Turk \cite{Turk1996}.
-Which Li improved, by only generating the fewest possible number of streamlines \cite{Li2008}. \\
+Which Li improved, by only generating the fewest possible number of streamlines \cite{Li2008}. 
+
+\subsubsection{Stream lines on surfaces}
 
 Seeding techniques for curves on 3D surfaces were explored by Wicke \cite{Wicke2009}, who developed a technique to combine model reduction with grid based methods.
 And by Spencer \cite{Spencer2009}, whose method generates streamlines only for visible parts of the surface, thus providing a significant gain in efficiency.
-For more information on flow visualization see McLoughlin survey on the topic~\cite{McLoughlin2010}.\\
 
+\subsubsection{Particle tracing lines on surfaces}
+
+\subsubsection{Volume integral objects}
+
+%Could be useful to talk about streamtubes.
 
 IMPORTANT: Make sure the technical/theoretical/practical issues of previous work is clearly stated 
 
