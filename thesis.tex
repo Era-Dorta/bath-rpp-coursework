@@ -165,11 +165,17 @@ Along the years several methods have been proposed that are based on the same Na
 \item \textbf{Fourier Transform based:} uses a several superimposed sinusoidal waves to model the fluid behaviour. 
 \item \textbf{SPH:} tracks a large number of particle in the fluid.
 \item \textbf{Grid based:} tracks the fluid features at fixed points in space.
-\item \textbf{Hybrid:} are combinations of the aforementioned methods.
+\item \textbf{Hybrid:} are combinations of the aforementioned methods.\\
 \end{itemize}
 
+Regardless of the chosen method, to update the particles in the for the next frame must be computed.
+However, it is common for the algorithms to have a upper time step, if the update is computed after the limit there is no guaranty that the output would be reasonable.\\
+
 Another important concept in fluid simulation is whether the simulation implements interplay within the fluid and rigid bodies that come in contact with it (solid-fluid coupling).
-And how flexible is this interaction, one way solid fluid(e.g. a rock drops on a small pool of water, so the water moves but the rock is almost not affected by the  and moves it, but the fluid does not affect the rock), or fluid solid(e.g. a small buoy floating in the ocean has little effect on the surrounding water), and two way solid fluid interaction(e.g. a flexible object drops into a pool of fluid).
+And how flexible is this interaction, one way solid fluid(e.g. a rock drops on a small pool of water, so the water moves but the rock is almost not affected by the  and moves it, but the fluid does not affect the rock), or fluid solid(e.g. a small buoy floating in the ocean has little effect on the surrounding water), and two way solid fluid interaction(e.g. a flexible object drops into a pool of fluid).\\
+
+For more information on real time fluid simulations see Vines survey ~\cite{Vines2012}.
+While for survey specific to SPH fluid simulation see Ihmsen~\cite{Ihmsen2014}.
 
 \subsubsection{Fourier Transform based}
 
@@ -190,17 +196,18 @@ And by Chiu \cite{Chiu2006} with adaptive surface tessellation.
 \subsubsection{Smooth Particle Hydrodynamics}
 
 Smooth Particle Hydrodynamics(SPH) has been established as one the major breakthroughs for fluid simulations in computer graphics, positioning itself as the most popular method nowadays.
-SPH were first introduced by Desbrun \cite{DesbrunMathieuandGascuel1996}.
-Carlson \cite{Carlson2004} proposed solid-fluid coupling algorithm for grids models using distributed Lagrange multipliers.
-While, Muller \cite{Muller2004} presented his own method for SPH simulations, which Akinci \cite{Akinci2012} further improveded with the inclusion of friction and dragging. 
-Shao \cite{Shao2014} also solved stability issues in the previous SPH solid-fluid coupling techniques.
-For more information on real time fluid simulations see Vines survey ~\cite{Vines2012}.
-While for survey specific to SPH fluid simulation see Ihmsen~\cite{Ihmsen2014}.
+SPH were first introduced by Desbrun \cite{DesbrunMathieuandGascuel1996}, where each particle encodes its position, velocity, mass and the forces that act on it.\\
+
+While, Muller \cite{Muller2004} presented a method for computing solid fluid coupling. Where boundary particles are created on the surface of the solid and then particle coupling is calculated.
+Akinci \cite{Akinci2012} further improved the previous method with the inclusion of irregular particle distributions as well as friction and dragging. 
+Shao \cite{Shao2014} also solved stability issues in the previous SPH solid-fluid coupling techniques, using a correction scheme.
+Furthermore their algorithm was implemented on GPUs, thus achieving better performance than previous methods.  
 
 \subsubsection{Grid based}
 
 One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2} by applying forward Euler time integration. 
 Stam \cite{Stam1999} extended this method in order to overcome stability issues.
+Carlson \cite{Carlson2004} proposed solid-fluid coupling algorithm for grids models using distributed Lagrange multipliers.
 
 
 \subsubsection{Hybrid}
