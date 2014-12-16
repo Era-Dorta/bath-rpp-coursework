@@ -156,19 +156,31 @@ The current paradigm in fluid simulation consist of solving the Navier-Stokes eq
 \mathbf{u}_t = -(\mathbf{u} \cdot \nabla)\mathbf{u} + \nabla \cdot ( v \nabla \mathbf{u} - \frac{1}{\rho} \nabla p + \mathbf{f} )
 \end{gather}
 
-These two equations represent the conservation of mass and momentum, respectively.
-Where $\mathbf{u}_t$ is the time derivative vector field of the fluid velocity, $p$  is the scalar pressure field, $\rho$ is the density of the fluid, $v$ is the kinematic viscosity and $\mathbf{f}$ represents the body force per unit mass, usually gravity.
+The first equation enforces mass conservation and ensures incompressibility, while the second encodes momentum conservation it is derived from Newton's Second Law.
+Where $\mathbf{u}_t$ is the time derivative vector field of the fluid velocity, $p$  is the scalar pressure field, $\rho$ is the density of the fluid, $v$ is the kinematic viscosity and $\mathbf{f}$ represents the body force per unit mass, usually gravity.\\
 
 Along the years several methods have been proposed that are based on the same Navier-Stokes equations.
 
 \begin{itemize}
-\item \textbf{Procedural simulation:}  aa
-\item \textbf{SPH simulation:}  aa
-\item \textbf{Grid based simulation:}  aa
-\item \textbf{Hybrid simulation:}  aa
+\item \textbf{Fourier Transform based:} uses a several superimposed sinusoidal waves to model the fluid behaviour. 
+\item \textbf{SPH:} tracks a large number of particle in the fluid.
+\item \textbf{Grid based:} tracks the fluid features at fixed points in space.
+\item \textbf{Hybrid:} are combinations of the aforementioned methods.
 \end{itemize}
 
-\subsubsection{Procedural simulation}
+\subsubsection{Fourier Transform based}
+
+When simulating fluid with periodic boundary conditions, procedural simulation can be applied with a low computational cost.
+Usually this method is used with large masses of water (ocean simulation), as they are an approximation to periodic boundary conditions fluids.
+The waves can be modelled as a superimposition of sinusoidal waves, which can be efficiently decomposed using Fast Fourier Transform methods, INSERT FFT CITATION.
+Waves produced in this fashion are visually plausible but physical accuracy is not enforced inherently by the model.\\
+
+Each wave has a wave number $k$ and a wave vector $\mathbf{k}$.
+Tessendorf \cite{Tessendorf2001} presented the basic technique in this area.
+The authors modelled the ocean surface as a summation of complex sinusoids with different wave vectors.
+Visually pleasing results were achieved generating random Fourier amplitudes.
+The previous method was further improved by Cieutat \cite{Cieutat2003}, with the addition of solid (ships).
+And by Chiu \cite{Chiu2006} with adaptive surface tessellation.
 
 %Talk about general simulation and fluid coupling in each of them
 
