@@ -177,7 +177,7 @@ And how flexible is this interaction, one way solid fluid(e.g. a rock drops on a
 For more information on real time fluid simulations see Vines survey ~\cite{Vines2012}.
 While for survey specific to SPH fluid simulation see Ihmsen~\cite{Ihmsen2014}.
 
-\subsubsection{Fourier Transform based}
+\subsubsection{Fourier Transform}
 
 When simulating fluid with periodic boundary conditions, procedural simulation can be applied with a low computational cost.
 Usually this method is used with large masses of water (ocean simulation), as they are an approximation to periodic boundary conditions fluids.
@@ -195,7 +195,7 @@ And by Chiu \cite{Chiu2006} with adaptive surface tessellation.
 ADD MORE AND MOVE SOLID FLUID COUPLING PAPERS TO HERE
 %Talk about general simulation and fluid coupling in each of them
 
-\subsubsection{Grid based}
+\subsubsection{Grid}
 
 Grid methods were among the first techniques to solve fluid simulation and so the firsts ones implement intuitive solutions.
 Grid based methods solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2}, in a fixed position in space (i.e. grid).
@@ -209,7 +209,9 @@ Carlson \cite{Carlson2004} proposed solid-fluid coupling algorithm for grids mod
 \subsubsection{Smooth Particle Hydrodynamics}
 
 Smooth Particle Hydrodynamics(SPH) has been established as one the major breakthroughs for fluid simulations in computer graphics, positioning itself as the most popular method nowadays.
-Compared to grid based methods that need high resolution grids to produce foam and splashes, SPH can achieve the same with less computational load.\\
+Compared to grid based methods that need high resolution grids to produce foam and splashes, SPH can achieve the same with less computational load.
+Two extra advantages are that mass conservation is automatically satisfied if the amount and mass of the particles is keep constant;
+and as the particles move with the fluid, the advection term does not need to be calculated explicitly.\\
 
 SPH were first introduced by Desbrun \cite{DesbrunMathieuandGascuel1996}, where each particle encodes its position, velocity, mass and the forces that act on it.\\
 
@@ -220,7 +222,7 @@ Furthermore their algorithm was implemented on GPUs, thus achieving better perfo
 
 \subsubsection{Hybrid}
 
-Fluid simulation is a well known research area. 
+Hybrid methods are combinations of the aforementioned 
 
 
 \subsection{Flow visualization}
