@@ -168,6 +168,9 @@ Along the years several methods have been proposed that are based on the same Na
 \item \textbf{Hybrid:} are combinations of the aforementioned methods.
 \end{itemize}
 
+Another important concept in fluid simulation is whether the simulation implements interplay within the fluid and rigid bodies that come in contact with it (solid-fluid coupling).
+And how flexible is this interaction, one way solid fluid(e.g. a rock drops on a small pool of water, so the water moves but the rock is almost not affected by the  and moves it, but the fluid does not affect the rock), or fluid solid(e.g. a small buoy floating in the ocean has little effect on the surrounding water), and two way solid fluid interaction(e.g. a flexible object drops into a pool of fluid).
+
 \subsubsection{Fourier Transform based}
 
 When simulating fluid with periodic boundary conditions, procedural simulation can be applied with a low computational cost.
@@ -184,22 +187,26 @@ And by Chiu \cite{Chiu2006} with adaptive surface tessellation.
 
 %Talk about general simulation and fluid coupling in each of them
 
-\subsubsection{SPH simulation}
+\subsubsection{Smooth Particle Hydrodynamics}
 
-\subsubsection{Grid based simulation}
-
-\subsubsection{Hybrid simulation}
-
-Fluid simulation is a well known research area. 
-One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2} by applying forward Euler time integration. 
-Stam \cite{Stam1999} extended this method in order to overcome stability issues.
-More recent simulations introduced the Smooth Particle Hydrodynamics (SPH) technique \cite{DesbrunMathieuandGascuel1996}.
-However the previous techniques assumed no interplay within the fluid and rigid bodies (solid-fluid coupling).
+Smooth Particle Hydrodynamics(SPH) has been established as one the major breakthroughs for fluid simulations in computer graphics, positioning itself as the most popular method nowadays.
+SPH were first introduced by Desbrun \cite{DesbrunMathieuandGascuel1996}.
 Carlson \cite{Carlson2004} proposed solid-fluid coupling algorithm for grids models using distributed Lagrange multipliers.
 While, Muller \cite{Muller2004} presented his own method for SPH simulations, which Akinci \cite{Akinci2012} further improveded with the inclusion of friction and dragging. 
 Shao \cite{Shao2014} also solved stability issues in the previous SPH solid-fluid coupling techniques.
 For more information on real time fluid simulations see Vines survey ~\cite{Vines2012}.
 While for survey specific to SPH fluid simulation see Ihmsen~\cite{Ihmsen2014}.
+
+\subsubsection{Grid based}
+
+One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2} by applying forward Euler time integration. 
+Stam \cite{Stam1999} extended this method in order to overcome stability issues.
+
+
+\subsubsection{Hybrid}
+
+Fluid simulation is a well known research area. 
+
 
 \subsection{Flow visualization}
 
