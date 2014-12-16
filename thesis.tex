@@ -199,7 +199,8 @@ ADD MORE AND MOVE SOLID FLUID COUPLING PAPERS TO HERE
 
 Grid methods were among the first techniques to solve fluid simulation and so the firsts ones implement intuitive solutions.
 Grid based methods solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2}, in a fixed position in space (i.e. grid).
-As fluid flows, the equations are solved in each position, giving a value for speed and pressure at each time step.\\
+As fluid flows, the equations are solved in each position, giving a value for speed and pressure at each time step.
+This approach is advantageous as many numerical methods can be applied easily on grids and with they are more easily adaptable to GPUs implementations than other methods.\\
 
 One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2} by applying forward Euler time integration. 
 Stam \cite{Stam1999} extended this method in order to overcome stability issues.\\
