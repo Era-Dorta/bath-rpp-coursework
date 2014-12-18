@@ -39,10 +39,20 @@ Furthermore, Lowe~\cite{Lowe2014} showed that even though animations have become
 3D model libraries are quite common, in addition they contain enormous number of models.   
 Usually points clouds can be obtained easily from 3D models.
 However, this clouds lack middle and high level information such as: symmetry, parallelism or part segmentation.
-Therefore a we must obtain this information from this meshes.\\
+Therefore a we must obtain this information from this meshes.
+Since solving for general shapes is quite challenging, a number of constrained approaches have been proposed.\\
 
-Several techniques have been proposed to address this issue.
-Gelfand \cite{Gelfand2004}
+Gelfand \cite{Gelfand2004}  proposed a method for segmenting mechanical objects based on local slippage.
+This is quite useful as it gives for each part its degrees of freedom, e.g. sphere (3 rotations), cylinder (1 rotation and 1 translation), plane (1 rotation and 2 translations), etc.
+Mizoguchi \cite{Mizoguchi2006} proposed a mesh segmentation technique based on curvature estimation with sharp edge recognition.
+Lai \cite{Lai2006} proposed a cluster based segmentation algorithm,
+and random walks segmentation extensions \cite{Lai2008} and  \cite{Lai2009}.
+Golovinskiy \cite{Golovinskiy2009} also presented a clustering technique with special emphasis on edge and face consistency.
+Wang's \cite{Wang2011} approach for mesh segmentation functions with a combination of curvature estimation, Gauss mapping and B-spline surface fitting.
+A quadratic surface fitting algorithm was presented by Yang \cite{Yan2012}.
+However all the previous methods except Gelfand's cannot be directly applied to segment mechanical parts.
+Nevertheless, Yi \cite{Yi2014} improved Gelfand's method making it more robust to noise, and giving extra primitive information(e.g. normal of a plane, center of a sphere, etc ).
+
 
 
 \section{Fluid simulation}
