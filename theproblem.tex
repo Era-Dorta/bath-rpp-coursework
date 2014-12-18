@@ -1,5 +1,5 @@
-\chapter{The Problem}
-\label{sec:problem}
+\chapter{Previous Work}
+\label{sec:prevWork}
 
 Given a 3D CAD model of some hydraulic machinery we want to generate how things work visualizations.
 Namely, adding arrows depicting the fluid movement.\\
@@ -23,23 +23,29 @@ The output of the simulation will then carry the information along to the next p
 Lastly, in order to visualize the fluid simulation data we will need to generate a visual cue that will indicate intuitively the fluid movement.
 A simple approach would be to place arrows indicating the overall fluid movement.
 
-\section{Previous Work}
-
-This proposal is based on the following three areas of previous work.
-
-\subsection{Explanatory illustration}
+\section{Explanatory illustration}
 
 Explanatory illustration has to adequately transmit motion on a still image, consequently transforming from the temporal space to the image domain.
 This is usually found in comics books or in instructions sets.\\
 
-Nienhaus proposed a technique to depict motion in 3D animations~\cite{Nienhaus2005}.
+Nienhaus~\cite{Nienhaus2005} proposed a technique to depict motion in 3D animations.
 Scene and behaviour descriptions from specialized scene graphs were analysed in order to create the motion cues.  
 Researchers have have look into generate automatic illustrations for mechanical assemblies \cite{Mitra2010}.
-Furthermore, Lowe showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken as users can fail to extract the necessary information due to the nature of the animation~\cite{Lowe2014}.
-%TODO Extend even more????
+Furthermore, Lowe~\cite{Lowe2014} showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken as users can fail to extract the necessary information due to the nature of the animation.
+%TODO Extend even more
+
+\section{Part analysis}
+
+3D model libraries are quite common, in addition they contain enormous number of models.   
+Usually points clouds can be obtained easily from 3D models.
+However, this clouds lack middle and high level information such as: symmetry, parallelism or part segmentation.
+Therefore a we must obtain this information from this meshes.\\
+
+Several techniques have been proposed to address this issue.
+Gelfand \cite{Gelfand2004}
 
 
-\subsection{Fluid simulation}
+\section{Fluid simulation}
 \label{prevWorkFluidSim}
 
 The current paradigm in fluid simulation consist of solving the Navier-Stokes equations of fluid dynamics, shown in Equations~\ref{eq:navierStokes1} and  ~\ref{eq:navierStokes1}.
@@ -72,7 +78,7 @@ And how flexible is this interaction, one way solid fluid(e.g. a rock drops on a
 For more information on real time fluid simulations see Vines survey ~\cite{Vines2012}.
 While for survey specific to SPH fluid simulation see Ihmsen~\cite{Ihmsen2014}.
 
-\subsubsection{Fourier Transform}
+\subsection{Fourier Transform}
 
 When simulating fluid with periodic boundary conditions, procedural simulation can be applied with a low computational cost.
 Usually this method is used with large masses of water (ocean simulation), as they are an approximation to periodic boundary conditions fluids.
@@ -90,7 +96,7 @@ And by Chiu \cite{Chiu2006} with adaptive surface tessellation.
 ADD MORE AND MOVE SOLID FLUID COUPLING PAPERS TO HERE
 %Talk about general simulation and fluid coupling in each of them
 
-\subsubsection{Grid}
+\subsection{Grid}
 
 Grid methods were among the first techniques to solve fluid simulation and so the firsts ones implement intuitive solutions.
 Grid based methods solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2}, in a fixed position in space (i.e. grid).
@@ -102,7 +108,7 @@ Stam \cite{Stam1999} extended this method in order to overcome stability issues.
 
 Carlson \cite{Carlson2004} proposed solid-fluid coupling algorithm for grids models using distributed Lagrange multipliers.
 
-\subsubsection{Smooth Particle Hydrodynamics}
+\subsection{Smooth Particle Hydrodynamics}
 
 Smooth Particle Hydrodynamics(SPH) has been established as one the major breakthroughs for fluid simulations in computer graphics, positioning itself as the most popular method nowadays.
 Compared to grid based methods that need high resolution grids to produce foam and splashes, SPH can achieve the same with less computational load.
@@ -116,7 +122,7 @@ Akinci \cite{Akinci2012} further improved the previous method with the inclusion
 Shao \cite{Shao2014} also solved stability issues in the previous SPH solid-fluid coupling techniques, using a correction scheme.
 Furthermore their algorithm was implemented on GPUs, thus achieving better performance than previous methods.  
 
-\subsubsection{Hybrid}
+\subsection{Hybrid}
 
 Hybrid methods are combinations of the aforementioned approaches.
 As with other hybrid techniques, the objective is to capitalize the advantages of each and discard the weaknesses.\\
@@ -132,7 +138,7 @@ DONT REALLY KNOW HOW THEY DO IT.
 Moreover, Raveendran \cite{Raveendran2011} extended FLIP to be able to solve the equations in a coarse grid. 
 % Instead, the variation of a quantity is computed from the grid, and this in turn is used to update particle information.
 
-\subsection{Flow visualization}
+\section{Flow visualization}
 
 %In each of them talk first about steady flow and then about unsteady flow 
 
@@ -165,19 +171,19 @@ For instance, on the path of each streamline or after clustering some streamline
 
 For more information on flow visualization see McLoughlin survey on the topic~\cite{McLoughlin2010}.
 
-\subsubsection{2D visualization}
+\subsection{2D visualization}
 
 On the 2D image domain, an image-guided algorithm for visualizing 2D flow in images was proposed by Turk \cite{Turk1996}.
 Which Li improved, by only generating the fewest possible number of streamlines \cite{Li2008}. 
 
-\subsubsection{Stream lines on surfaces}
+\subsection{Stream lines on surfaces}
 
 Seeding techniques for curves on 3D surfaces were explored by Wicke \cite{Wicke2009}, who developed a technique to combine model reduction with grid based methods.
 And by Spencer \cite{Spencer2009}, whose method generates streamlines only for visible parts of the surface, thus providing a significant gain in efficiency.
 
-\subsubsection{Particle tracing lines on surfaces}
+\subsection{Particle tracing lines on surfaces}
 
-\subsubsection{Volume integral objects}
+\subsection{Volume integral objects}
 
 %Could be useful to talk about streamtubes.
 
