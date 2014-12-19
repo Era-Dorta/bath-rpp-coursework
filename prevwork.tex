@@ -11,14 +11,18 @@ The problem can be subdivided into:
 \item \textbf{Fluid visualization:} Display the fluid simulation data in a intuitive format.\\
 \end{enumerate}
 
-Part analysis involves detecting the part type, how it moves and interacts with others.
-So the information saved for type would be gear, cylinder, valve, reservoir, etc.
-In this section there is a clear difference between the parts that interact with fluids and the ones that do not. 
-With respect to types of movement, it would be direction of movement, axis of rotation, axis of translation, etc.\\
+Part analysis involves two steps: part segmentation and part information extraction.
+Usually 3D models consist of meshes or point clouds were there is no clear distinction between each piece.
+Consequently, any additional analysis and simulation would be overly complicated without further simplifications.  
+Therefore, a segmentation stage is needed in order to divide the model into its constituent components.
+Part information extraction consists of detecting the piece type, how it moves and interacts with others.
+So the information saved for type would be axle, gear, reservoir, fluid conduct, etc.
+In this classification parts are also organized considering fluid interaction criteria, e.g. if the piece interplays or not with the hydraulic fluid.
+With respect to types of movement, it will be direction of movement, axis of rotation, axis of translation, etc.\\
 
-Once the parts have been categorized and given an input force, we will have to simulate how the force is transmitted along the different parts.
-In the special case where a part is a container of a fluid or is in direct contact with one, that force will have to be introduced in a fluid simulation algorithm.
-The output of the simulation will then carry the information along to the next parts.\\
+Once the parts have been categorized and given an input force, we will have to simulate how the force is transmitted along the different elements.
+In the special case where a component is a container of a fluid or is in direct contact with one, that force will have to be introduced in a fluid simulation algorithm.
+The output of the simulation will then carry the information along to the next piece.\\
 
 Lastly, in order to visualize the fluid simulation data we will need to generate a visual cue that will indicate intuitively the fluid movement.
 A simple approach would be to place arrows indicating the overall fluid movement.
