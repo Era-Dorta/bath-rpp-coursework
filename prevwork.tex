@@ -25,7 +25,7 @@ In the special case where a component is a container of a fluid or is in direct 
 The output of the simulation will then carry the information along to the next piece.\\
 
 Lastly, in order to visualize the fluid simulation data we will need to generate a visual cue that will indicate intuitively the fluid movement.
-A simple approach would be to place arrows indicating the overall fluid movement.
+Either generating arrows indicating the overall fluid movement, with an animation or showing illustrative key frames.
 
 \section{Explanatory illustration}
 
@@ -36,14 +36,15 @@ Nienhaus~\cite{Nienhaus2005} proposed a technique to depict motion in 3D animati
 Scene and behaviour descriptions from specialized scene graphs were analysed in order to create the motion cues.  
 Researchers have have look into generate automatic illustrations for mechanical assemblies \cite{Mitra2010}.
 Furthermore, Lowe~\cite{Lowe2014} showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken as users can fail to extract the necessary information due to the nature of the animation.
-%TODO Extend even more
+
+MORE PAPERS, MORE DETAILS, DIVIDE IN SECTIONS AS WELL
 
 \section{Part analysis}
 
-3D model libraries are quite common, in addition they contain enormous number of models.   
-Usually points clouds can be obtained easily from 3D models.
-However, this clouds lack middle and high level information such as: symmetry, parallelism or part segmentation.
-Therefore a we must obtain this information from this meshes.
+Libraries of 3D mesh models are quite common, in addition they contain vast quantities of models.   
+Usually the models are also represented using points clouds, which can be obtained easily from the meshes.
+However, clouds and mesh models lack middle and high level information such as: symmetry, parallelism or part segmentation.
+Therefore we must extract this information from either representation.
 Since solving for general shapes is quite challenging, a number of constrained approaches have been proposed.\\
 
 %Can divide this in region growing, wathersed, kmeans, mesh shift, shaper diameter function, random walk.
@@ -59,11 +60,12 @@ Since solving for general shapes is quite challenging, a number of constrained a
 
 \subsection{Random walk}
 
+Random walks segmentation extensions \cite{Lai2008} and  \cite{Lai2009}
+
 \subsection{General segmentation methods}
 
 Mizoguchi \cite{Mizoguchi2006} proposed a mesh segmentation technique based on curvature estimation with sharp edge recognition.
-Lai \cite{Lai2006} presented a cluster based segmentation algorithm,
-and random walks segmentation extensions \cite{Lai2008} and  \cite{Lai2009}.
+Lai \cite{Lai2006} presented a cluster based segmentation algorithm.
 Golovinskiy \cite{Golovinskiy2009} also demonstrated a clustering technique with special emphasis on edge and face consistency.
 Wang's \cite{Wang2011} approach for mesh segmentation functions with a combination of curvature estimation, Gauss mapping and B-spline surface fitting.
 A quadratic surface fitting algorithm was presented by Yang \cite{Yan2012}.
