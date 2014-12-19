@@ -42,6 +42,19 @@ However, this clouds lack middle and high level information such as: symmetry, p
 Therefore a we must obtain this information from this meshes.
 Since solving for general shapes is quite challenging, a number of constrained approaches have been proposed.\\
 
+%Can divide this in region growing, wathersed, kmeans, mesh shift, shaper diameter function, random walk.
+\subsection{Region growing}
+
+\subsection{Watershed}
+
+\subsection{Kmeans}
+
+\subsection{Mesh shift}
+
+\subsection{Shaper diameter function}
+
+\subsection{Random walk}
+
 \subsection{General segmentation methods}
 
 Mizoguchi \cite{Mizoguchi2006} proposed a mesh segmentation technique based on curvature estimation with sharp edge recognition.
@@ -52,7 +65,7 @@ Wang's \cite{Wang2011} approach for mesh segmentation functions with a combinati
 A quadratic surface fitting algorithm was presented by Yang \cite{Yan2012}.
 However all the previous methods cannot be directly applied to segment mechanical parts.
 
-\subsection{Segmentation methods for mechanical objects}
+\subsection{Slippage analysis}
 
 Gelfand \cite{Gelfand2004}  proposed a method for segmenting mechanical objects based on local slippage.
 This is quite useful as it gives for each part its degrees of freedom, e.g. sphere (3 rotations), cylinder (1 rotation and 1 translation), plane (1 rotation and 2 translations), etc.
@@ -161,7 +174,8 @@ Extensive work has been done in this area as visualizing fluid movement has a br
 However this is a challenging task as it has to effectively display complex and copious amounts of data.
 Seeing that fluid simulation is generally solved by means of highly divided grids or with large number of particles, as explained in section~\ref{prevWorkFluidSim}.\\
 
-\begin{figure}
+%TODO Changed the here option and let latex do its work, but it puts the picture before the flow visualization section
+\begin{figure}[h]
 	\centering
 	\begin{minipage}[t]{.45\textwidth}
 		\centering
