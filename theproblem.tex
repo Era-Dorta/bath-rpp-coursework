@@ -42,16 +42,21 @@ However, this clouds lack middle and high level information such as: symmetry, p
 Therefore a we must obtain this information from this meshes.
 Since solving for general shapes is quite challenging, a number of constrained approaches have been proposed.\\
 
-Gelfand \cite{Gelfand2004}  proposed a method for segmenting mechanical objects based on local slippage.
-This is quite useful as it gives for each part its degrees of freedom, e.g. sphere (3 rotations), cylinder (1 rotation and 1 translation), plane (1 rotation and 2 translations), etc.
+\subsection{General segmentation methods}
+
 Mizoguchi \cite{Mizoguchi2006} proposed a mesh segmentation technique based on curvature estimation with sharp edge recognition.
-Lai \cite{Lai2006} proposed a cluster based segmentation algorithm,
+Lai \cite{Lai2006} presented a cluster based segmentation algorithm,
 and random walks segmentation extensions \cite{Lai2008} and  \cite{Lai2009}.
-Golovinskiy \cite{Golovinskiy2009} also presented a clustering technique with special emphasis on edge and face consistency.
+Golovinskiy \cite{Golovinskiy2009} also demonstrated a clustering technique with special emphasis on edge and face consistency.
 Wang's \cite{Wang2011} approach for mesh segmentation functions with a combination of curvature estimation, Gauss mapping and B-spline surface fitting.
 A quadratic surface fitting algorithm was presented by Yang \cite{Yan2012}.
-However all the previous methods except Gelfand's cannot be directly applied to segment mechanical parts.
-Nevertheless, Yi \cite{Yi2014} improved Gelfand's method making it more robust to noise, and giving extra primitive information(e.g. normal of a plane, center of a sphere, etc ).
+However all the previous methods cannot be directly applied to segment mechanical parts.
+
+\subsection{Segmentation methods for mechanical objects}
+
+Gelfand \cite{Gelfand2004}  proposed a method for segmenting mechanical objects based on local slippage.
+This is quite useful as it gives for each part its degrees of freedom, e.g. sphere (3 rotations), cylinder (1 rotation and 1 translation), plane (1 rotation and 2 translations), etc.
+Yi \cite{Yi2014} improved Gelfand's method making it more robust to noise and giving extra primitive information(e.g. normal of a plane, center of a sphere, etc ).
 
 
 
