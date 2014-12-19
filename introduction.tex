@@ -36,7 +36,7 @@ Generating material of this sort typically involves manual methods, usually in t
 Hydraulic machinery is commonly used in our everyday lives.
 Such as lifting cars with jacks, rams on excavators or gerotors to control fuel intake, as shown in Figure~\ref{fig:h_pump}.
 Their popularity is based on their faculty to transmit a force or torque multiplication independently of the distance between input and output.  
-A typical hydraulic equipment has a contained liquid fluid that becomes pressurised when a force is applied to it.
+A typical hydraulic equipment has a contained liquid fluid that becomes pressurised when a force is applied to it, as shown in Figures~\ref{fig:hydraSimpleDiag} and \ref{fig:hydraSimpleCircuit}.
 Then that force is transmitted to the other end of the fluid. 
 In order to grasp how the whole system works, it is essential to understand how the pressure is directed and how it interacts with other parts in the machinery. 
 Therefore, to illustrate the general process, the spatial configuration of each part in the system must be unveiled.
@@ -55,6 +55,24 @@ They must understand in detail what forces are generated as parts interact among
 Furthermore, when 2D illustrations are used, they main disadvantage is the impossibility to change the viewpoint to explore the object from different angle.
 Moreover, when animations for hydraulic visualizations are generated, they are infrequently updated. 
 Since manual animation is a costly and time consuming task.\\
+
+
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{images/Hydraulic_Force_Torque}
+                \caption{Simple hydraulic diagram with a mechanical analogy for easier understanding.}
+                \label{fig:hydraSimpleDiag}
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{images/Hydraulic_Force_Torque}
+                \caption{Simplified hydraulic circuit for a hydraulic cylinder.}
+                \label{fig:hydraSimpleCircuit}
+        \end{subfigure}
+        \caption{Sample diagrams for hydraulic mechanisms}\label{fig:HydraulicDrawings}
+\end{figure}
 
 %5. Current status in the research field (mechanical assemblies SIG10, flow systems SIG ASIA 11, maybe some others? No need reference, just some general  discussion, since we have related work part also. And these work cannot handle hydraulics system)
 There has been some work done on automatically generating illustrations and visualizations on mechanical assemblies.
