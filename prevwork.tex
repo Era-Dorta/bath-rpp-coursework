@@ -50,13 +50,17 @@ Since solving for general shapes is quite challenging, a number of constrained a
 %Can divide this in region growing, wathersed, kmeans, mesh shift, shaper diameter function, random walk.
 \subsection{Region growing}
 
+Mizoguchi \cite{Mizoguchi2006} proposed a mesh segmentation technique based on curvature estimation with sharp edge recognition.
+
 \subsection{Watershed}
 
-\subsection{Kmeans}
+\subsection{Hierarchical clustering}
+
+Lai \cite{Lai2006} presented a cluster based segmentation algorithm.
 
 \subsection{Mesh shift}
 
-\subsection{Shaper diameter function}
+\subsection{Shape diameter function}
 
 \subsection{Random walk}
 
@@ -64,9 +68,10 @@ Random walks segmentation extensions \cite{Lai2008} and  \cite{Lai2009}
 
 \subsection{General segmentation methods}
 
-Mizoguchi \cite{Mizoguchi2006} proposed a mesh segmentation technique based on curvature estimation with sharp edge recognition.
-Lai \cite{Lai2006} presented a cluster based segmentation algorithm.
+%Acoording to 2013 Mitra paper, this is co-analysis
 Golovinskiy \cite{Golovinskiy2009} also demonstrated a clustering technique with special emphasis on edge and face consistency.
+
+
 Wang's \cite{Wang2011} approach for mesh segmentation functions with a combination of curvature estimation, Gauss mapping and B-spline surface fitting.
 A quadratic surface fitting algorithm was presented by Yang \cite{Yan2012}.
 However all the previous methods cannot be directly applied to segment mechanical parts.
