@@ -68,7 +68,10 @@ However, oversegmentation occurs in models with soft edges.
 Iterative clustering is based on the k-means clustering algorithm.
 Representatives for each cluster are chosen and then using some metric  the elements are assigned to the best cluster and the representatives are recalculated.
 \cite{Lai2006} presented a cluster based segmentation algorithm.
+The method performs better with hierarchical models composed of regions at multiple scales.
+Therefore, it gives the same results regardless of model scale or the coarseness of the mesh.
 A quadratic surface fitting algorithm was presented by \cite{Yan2012}.
+Which combines several distance metrics to perform the quadratic minimization.
 
 %\subsection{Mesh shift}
 
@@ -81,11 +84,17 @@ Then for each unlabelled face, the probabilities that a random walker will reach
 Finally, each face is assigned to the highest probability label.
 \cite{Grady2006} proposed a first random walks implementation constrained into the imaged domain.
 Thereafter, \cite{Lai2009} extended it to for 3D mesh models, the author's technique also included an automatic seeding mode were seeds quantity and placement is based on a spring-like energy function.
+Seeds placement can greatly affect the final segmentation.
+Nevertheless, the authors tackle the issue with a post processing stage were the clusters are merged if oversegmentation occurred and the edges are smoothed.
+ 
 
 \subsection{Data driven}
 
 %Acoording to 2013 Mitra paper, this is co-analysis
 \cite{Golovinskiy2009} also demonstrated a clustering technique with special emphasis on edge and face consistency.
+The algorithm is based on a graph construction which encodes triangle neighbour information.
+The method then performs the clustering on the graph space.
+The main advantage is consistent segmentation of similar models.
 
 \subsection{Global energy function}
 
