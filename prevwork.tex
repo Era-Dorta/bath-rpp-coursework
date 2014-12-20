@@ -62,6 +62,8 @@ Region growing algorithms start with a seed element for the sub-mesh and then pe
 
 \subsection{Iterative clustering}
 
+Iterative clustering is based on the k-means clustering algorithm.
+Representatives for each cluster are chosen and then using some metric  the elements are assigned to the best cluster and the representatives are recalculated.
 \cite{Lai2006} presented a cluster based segmentation algorithm.
 A quadratic surface fitting algorithm was presented by \cite{Yan2012}.
 
@@ -71,7 +73,11 @@ A quadratic surface fitting algorithm was presented by \cite{Yan2012}.
 
 \subsection{Random walk}
 
-Random walks segmentation extensions \cite{Lai2008} and  \cite{Lai2009}
+With the random walks approach, $n$ faces are chosen as seeds, with $n$ been the number of desired segments.
+Then for each unlabelled face, the probabilities that a random walker will reach each labelled face are calculated.
+Finally, each face is assigned to the highest probability label.
+\cite{Grady2006} proposed a first random walks implementation constrained into the imaged domain.
+Thereafter, \cite{Lai2009} extended it to for 3d mesh models, the author's technique also included an automatic seeding mode were seeds quantity and placement is based on a spring-like energy function.
 
 \subsection{Data driven}
 
