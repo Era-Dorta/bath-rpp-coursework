@@ -41,7 +41,7 @@ MORE PAPERS, MORE DETAILS, DIVIDE IN SECTIONS AS WELL
 
 \section{Part analysis}
 
-Libraries of 3D mesh models are quite common, in addition they contain vast quantities of models.   
+Libraries of 3D mesh models are quite common \cite{Trimble2014}, \cite{GrabCAD2014}, \cite{Autodesk2014}, in addition they contain vast quantities of models.   
 Usually the models are also represented using points clouds, which can be obtained easily from the meshes.
 However, clouds and mesh models lack middle and high level information such as: symmetry, parallelism or part segmentation.
 Therefore we must extract this information from either representation.
@@ -77,7 +77,7 @@ With the random walks approach, $n$ faces are chosen as seeds, with $n$ been the
 Then for each unlabelled face, the probabilities that a random walker will reach each labelled face are calculated.
 Finally, each face is assigned to the highest probability label.
 \cite{Grady2006} proposed a first random walks implementation constrained into the imaged domain.
-Thereafter, \cite{Lai2009} extended it to for 3d mesh models, the author's technique also included an automatic seeding mode were seeds quantity and placement is based on a spring-like energy function.
+Thereafter, \cite{Lai2009} extended it to for 3D mesh models, the author's technique also included an automatic seeding mode were seeds quantity and placement is based on a spring-like energy function.
 
 \subsection{Data driven}
 
