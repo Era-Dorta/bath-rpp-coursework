@@ -195,10 +195,13 @@ Grid based methods solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref
 As fluid flows, the equations are solved in each position, giving a value for speed and pressure at each time step.
 This approach is advantageous as many numerical methods can be applied easily on grids and with they are more easily adaptable to GPUs implementations than other methods.\\
 
-One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2} by applying forward Euler time integration. 
-\cite{Stam1999} extended this method in order to overcome stability issues.\\
+One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2} by applying forward Euler time integration.
+However, their solid fluid coupling was one way only, the solids do not affect the fluid behaviour.
+\cite{Stam1999} extended this method in order to overcome stability issues.
+The author's implemented a stable solver which allowed for larger time steps, trough an operator splitting scheme and more importantly a semi-Lagrangian method to calculate the advection term. \\
 
 \cite{Carlson2004} proposed solid-fluid coupling algorithm for grids models using distributed Lagrange multipliers.
+Nevertheless, the author's method uses  a non adaptive grid and multiphase fluids and bubbles are not covered by it.
 
 \subsection{Smooth Particle Hydrodynamics}
 
