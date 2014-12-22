@@ -175,19 +175,18 @@ While for survey specific to SPH fluid simulation see \cite{Ihmsen2014}.
 
 When simulating fluid with periodic boundary conditions, procedural simulation can be applied with a low computational cost.
 Usually this method is used with large masses of water (ocean simulation), as they are an approximation to periodic boundary conditions fluids.
-The waves can be modelled as a superimposition of sinusoidal waves, which can be efficiently decomposed using Fast Fourier Transform methods, \cite{Mastin1987}.
+The waves can be modelled as a superimposition of sinusoidal waves, which can be efficiently decomposed using Fast Fourier Transform methods \cite{Mastin1987}.
 Waves produced in this fashion are visually plausible but physical accuracy is not enforced inherently by the model.\\
 
 Each wave has a wave number $k$ and a wave vector $\mathbf{k}$.
 \cite{Tessendorf2001} presented the basic technique in this area.
 The authors modelled the ocean surface as a summation of complex sinusoids with different wave vectors.
-Visually pleasing results were achieved generating random Fourier amplitudes.
-The previous method was further improved by \cite{Cieutat2003}, with the addition of solid (ships).
+Visually pleasing results were achieved generating random Fourier amplitudes.\\
+
+The previous method was further improved by \cite{Cieutat2003}, with the addition of solid (ships, coast line, etc).
+The model developed more complex wave shape and motion equations, with differentiated equations in open sea and near the shore.
 And by \cite{Chiu2006} with adaptive surface tessellation.
-
-
-ADD MORE AND MOVE SOLID FLUID COUPLING PAPERS TO HERE
-%Talk about general simulation and fluid coupling in each of them
+Furthermore, the method was implemented on GPUs, and also included shallow water effects and spray dynamics.
 
 \subsection{Grid}
 
