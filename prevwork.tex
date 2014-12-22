@@ -1,6 +1,8 @@
 \chapter{Previous Work}
 \label{sec:prevWork}
 
+IMPORTANT: Make sure the technical/theoretical/practical issues of previous work is clearly stated.\\
+
 Given a 3D CAD model of some hydraulic machinery we want to generate how things work visualizations.
 Namely, adding arrows depicting the fluid movement.\\
 
@@ -239,7 +241,7 @@ FLIP was extended by \cite{Raveendran2011} to be able to solve the equations in 
 %In each of them talk first about steady flow and then about unsteady flow 
 
 Extensive work has been done in this area as visualizing fluid movement has a broad range of applications.
-However this is a challenging task as it has to effectively display complex and copious amounts of data.
+However, this is a challenging task as it has to effectively display complex and copious amounts of data.
 Seeing that fluid simulation is generally solved by means of highly divided grids or with large number of particles, as explained in section~\ref{prevWorkFluidSim}.\\
 
 %TODO Changed the here option and let latex do its work, but it puts the picture before the flow visualization section
@@ -266,22 +268,27 @@ Furthermore, they have properties such as: streamlines will not cross each other
 Once the streamlines has been calculated, instead of displaying them as such, they can be replaced by arrows arranged using some criteria.
 For instance, on the path of each streamline or after clustering some streamlines together, as shown in figure~\ref{fig:streamArrows}.\\
 
-For more information on flow visualization see~\cite{McLoughlin2010} survey on the topic.
+In the following sections we focus only on steady flow visualization.
+For more information on the subject we refer the readers to~\cite{McLoughlin2010} survey.
 
 \subsection{2D visualization}
 
 On the 2D image domain, an image-guided algorithm for visualizing 2D flow in images was proposed by \cite{Turk1996}.
 Which \cite{Li2008} improved, by only generating the fewest possible number of streamlines. 
 
-\subsection{Stream lines on surfaces}
+\subsection{Streamlines on surfaces}
 
 Seeding techniques for curves on 3D surfaces were explored by  \cite{Wicke2009}, who developed a technique to combine model reduction with grid based methods.
 And by \cite{Spencer2009}, whose method generates streamlines only for visible parts of the surface, thus providing a significant gain in efficiency.
 
-\subsection{Particle tracing lines on surfaces}
+\subsection{Streamline rendering and placement}
+
+Rendering too many streamlines can result in clutter and too few can lead to omit important characteristics.
+There has been plenty research into optimizing streamline production and placement.
+However for our hydraulic machinery the issue is less critical than in other areas.\\
+
+
 
 \subsection{Volume integral objects}
 
 %Could be useful to talk about streamtubes.
-
-IMPORTANT: Make sure the technical/theoretical/practical issues of previous work is clearly stated 
