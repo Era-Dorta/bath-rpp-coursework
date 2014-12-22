@@ -227,10 +227,11 @@ It solves the advection using SPH and the incompressibility with an Euler grid.
 In more detail, the particles are averaged onto a grid where all the terms in the Navier-Stokes Equations \ref{eq:navierStokes1} and \ref{eq:navierStokes2} are calculated, except advection.
 Next, the particles are translated using the grid velocity.
 This method has been used in a variety of situations, for example \cite{Zhu2005} used it for sand simulation, while \cite{Horvath2009} explored fire simulations.
-A further improvement in the fluid implicit particle (FLIP), \cite{J.U.Brackbill1986}.
-Where the particles are not updated directly with grid data, but 
-DONT REALLY KNOW HOW THEY DO IT.
-Moreover, \cite{Raveendran2011} extended FLIP to be able to solve the equations in a coarse grid. 
+A further improvement is an implicit approach, namely the fluid implicit particle (FLIP) \cite{J.U.Brackbill1986}.
+Where the particles are not updated directly with grid data.
+The main strength of FLIP is that the advection term calculation is always stable.
+However, the particles can sometimes clamp or have voids.
+FLIP was extended by \cite{Raveendran2011} to be able to solve the equations in a coarse grid. 
 % Instead, the variation of a quantity is computed from the grid, and this in turn is used to update particle information.
 
 \section{Flow visualization}
