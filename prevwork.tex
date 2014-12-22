@@ -32,16 +32,30 @@ Either generating arrows indicating the overall fluid movement, with an animatio
 Explanatory illustration has to adequately transmit motion on a still image, consequently transforming from the temporal space to the image domain.
 This is usually found in comics books and instructions sets.\\
 
+\subsection{Image based illustration}
+
+Even though comics books are regularly considered inferior forms for presenting information, each scene contains abundant data and they can be understood by children without even reading the letters.
+\cite{McCloud1993} cited by \cite{Cutting2002} reviewed visualization and abstraction techniques used in comics books.
+Such as, how to depict the motion of single objects and to illustrate noises and speeches bound to time.
 \cite{Cutting2002} surveyed traditional techniques for depicting motion.
 Including, sequences of key frames, blur, squeeze and stretch, unbalanced postures and stroboscopic effects.
 The author introduced criteria to judge the effectiveness of a particular representation.
 For example, evocativeness, clarity of object, direction of motion and precision of motion.
-
-
 \cite{Nienhaus2005} proposed a technique to depict motion in 3D animations.
-Scene and behaviour descriptions from specialized scene graphs were analysed in order to create the motion cues.  
-Researchers have have look into generate automatic illustrations for mechanical assemblies \cite{Mitra2010}.
+Scene and behaviour descriptions from specialized scene graphs were analysed in order to create the motion cues.
+In the author's implementation the user has to select a depiction target and assign labels to it, using the graph information motion lines and simplified sketch images are generated.
+
+\subsection{Video based illustration}
+
+\cite{Collomosse2005} presented a method to embed cartoon-style motion cues in video.
+Their algorithm has two stages: a motion tracking step, where a feature manually marked will be tracked; and a computer graphics stages, where a cue will be generated and added to the video.
+The system can add motion lines as well as squash and stretch objects.
+However, the second case is restricted to videos where the background can be reconstructed from previous frames.
 Furthermore, \cite{Lowe2014} showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken as users can fail to extract the necessary information due to the nature of the animation.
+
+\subsection{Hybrid}
+
+Researchers have have look into generate automatic illustrations for mechanical assemblies \cite{Mitra2010}.
 
 MORE PAPERS, MORE DETAILS, DIVIDE IN SECTIONS AS WELL
 
