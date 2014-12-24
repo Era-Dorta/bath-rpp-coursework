@@ -64,7 +64,12 @@ Therefore, motions are exaggerated or at the very least some hints to reinforce 
 Their algorithm has two stages: a motion tracking step, where a feature manually marked will be tracked; and a computer graphics stages, where a cue will be generated and added to the video.
 The system can add motion lines as well as squash and stretch objects.
 However, the second case is restricted to videos where the background can be reconstructed from previous frames.
-Furthermore, \cite{Lowe2014} showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken as users can fail to extract the necessary information due to the nature of the animation.
+\cite{Zhu2011} presented a sketching system for fluids dynamics.
+The paper uses hybrid multi layered grid solver, discussed in Section~\ref{gridFluidSolvers}, to solve 2.5D fluid flow.
+Flow paths and other objects can be added or changed in real time through a sketching interface.
+A hydraulic graph is created and is modified behind the scenes every time the visual model is edited.
+While the flow is shown using streamlines, discussed in Section~\ref{sec:flowVisualization}.
+\cite{Lowe2014} showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken as users can fail to extract the necessary information due to the nature of the animation.
 
 \section{Part analysis}
 
@@ -191,6 +196,7 @@ And by \cite{Chiu2006} with adaptive surface tessellation.
 Furthermore, the method was implemented on GPUs, and also included shallow water effects and spray dynamics.
 
 \subsection{Grid}
+\label{gridFluidSolvers}
 
 Grid methods were among the first techniques to solve fluid simulation and so the firsts ones implement intuitive solutions.
 Grid based methods solve Navier-Stokes Equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2}, in a fixed position in space (i.e. grid).
@@ -237,6 +243,7 @@ FLIP was extended by \cite{Raveendran2011} to be able to solve the equations in 
 % Instead, the variation of a quantity is computed from the grid, and this in turn is used to update particle information.
 
 \section{Flow visualization}
+\label{sec:flowVisualization}
 
 %In each of them talk first about steady flow and then about unsteady flow 
 
