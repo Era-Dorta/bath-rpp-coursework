@@ -193,11 +193,11 @@ Furthermore, the method was implemented on GPUs, and also included shallow water
 \subsection{Grid}
 
 Grid methods were among the first techniques to solve fluid simulation and so the firsts ones implement intuitive solutions.
-Grid based methods solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2}, in a fixed position in space (i.e. grid).
+Grid based methods solve Navier-Stokes Equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2}, in a fixed position in space (i.e. grid).
 As fluid flows, the equations are solved in each position, giving a value for speed and pressure at each time step.
 This approach is advantageous as many numerical methods can be applied easily on grids and with they are more easily adaptable to GPUs implementations than other methods.\\
 
-One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2} by applying forward Euler time integration.
+One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations by applying forward Euler time integration.
 However, their solid fluid coupling was one way only, the solids do not affect the fluid behaviour.
 \cite{Stam1999} extended this method in order to overcome stability issues.
 The author's implemented a stable solver which allowed for larger time steps, trough an operator splitting scheme and more importantly a semi-Lagrangian method to calculate the advection term. \\
@@ -266,7 +266,7 @@ A streamline is defined as a curve that is everywhere tangent to flow field, i.e
 Therefore, they provide an intuitive mechanism to show the fluid travel direction.
 Furthermore, they have properties such as: streamlines will not cross each other (flow will not go across them), or a particle in the fluid starting on one streamline will not leave it.
 Once the streamlines has been calculated, instead of displaying them as such, they can be replaced by arrows arranged using some criteria.
-For instance, on the path of each streamline or after clustering some streamlines together, as shown in figure~\ref{fig:streamArrows}.\\
+For instance, on the path of each streamline or after clustering some streamlines together, as shown in Figure~\ref{fig:streamArrows}.\\
 
 In the following sections we focus only on steady flow visualization.
 For more information on the subject we refer the readers to~\cite{McLoughlin2010} survey.
@@ -287,7 +287,28 @@ Rendering too many streamlines can result in clutter and too few can lead to omi
 There has been plenty research into optimizing streamline production and placement.
 However for our hydraulic machinery the issue is less critical than in other areas.\\
 
+\begin{figure}
+	\centering
+	\includegraphics[scale=.2]{images/streamComet}
+	\caption{Streamcomet depiction with its degrees of freedom outlined.}
+	\label{fig:streaComent}
+\end{figure}
 
+\cite{Laramee2005} presented the streamcomet and a fast animating technique.
+A streamcomet, as shown in Figure~\ref{fig:streaComent}, is an extension of a streamline, they move along the path of a stream line, with adjustable head position, length and translucency of tail, and variable animation speed.
+While the fast animating technique applies a stipple pattern to the streamline path, so the pattern is shifted at rendering time to add animation.
+\cite{Rosanwo2009} proposed a dual seeding technique for streamline placement.
+Dual streamlines that are orthogonal to the fluid flow are also calculated.
+However they are not rendered but rather used to better decide which and how the primal streamlines are going to be drawn.
+Considering the occlusion problems that normally arise in this area, \cite{Marchesin2010} tackle the streamline rendering from a view dependant perspective.
+The authors precompute a random pool of streamlines.
+Then, occluded areas are pruned and empty areas are reseeded for the current view via occupancy buffers.
+What is more, a GPU implementation of their method is provided.
+Clustering is a common technique for reducing the amount of rendered streamlines.
+To address slow euclidean distance tests in clustering, \cite{McLoughlin2013} presented a signature based metric.
+The streamline attributes for the signature are curvature, torsion and tortuosity.
+The authors presented two variations, a fast simpler method and a hierarchical one that scarifies speed for superior results.
+However, both provide a performance increase over euclidean distance calculations.
 
 \subsection{Volume integral objects}
 
