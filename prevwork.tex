@@ -290,12 +290,12 @@ However for our hydraulic machinery the issue is less critical than in other are
 \begin{figure}
 	\centering
 	\includegraphics[scale=.2]{images/streamComet}
-	\caption{Streamcomet depiction with its degrees of freedom outlined.}
-	\label{fig:streaComent}
+	\caption{Streamcomet depiction with its degrees of freedom outlined \cite{Laramee2005}.}
+	\label{fig:streamComent}
 \end{figure}
 
 \cite{Laramee2005} presented the streamcomet and a fast animating technique.
-A streamcomet, as shown in Figure~\ref{fig:streaComent}, is an extension of a streamline, they move along the path of a stream line, with adjustable head position, length and translucency of tail, and variable animation speed.
+A streamcomet, as shown in Figure~\ref{fig:streamComent}, is an extension of a streamline, they move along the path of a stream line, with adjustable head position, length and translucency of tail, and variable animation speed.
 While the fast animating technique applies a stipple pattern to the streamline path, so the pattern is shifted at rendering time to add animation.
 \cite{Rosanwo2009} proposed a dual seeding technique for streamline placement.
 Dual streamlines that are orthogonal to the fluid flow are also calculated.
@@ -310,6 +310,47 @@ The streamline attributes for the signature are curvature, torsion and tortuosit
 The authors presented two variations, a fast simpler method and a hierarchical one that scarifies speed for superior results.
 However, both provide a performance increase over euclidean distance calculations.
 
-\subsection{Volume integral objects}
+\subsection{Surface based integral objects}
+
+Streamlines can be extended dimensionally in order to work with surfaces instead of lines, an example of a streamsurface is shown in Figure~\ref{fig:streamSurface}.
+Evidently, following this path leads to more complex methods as a new dimension in added.
+Nevertheless, surfaces can provide better visualization results.
+For example, the use of shading gives an improved depth insight.\\
+
+\begin{figure}
+	\centering
+	\begin{minipage}[t]{.45\textwidth}
+		\centering
+		\includegraphics[width=1.05\textwidth]{images/streamSurface}
+		\caption{Streamsurface illustrating fuel flow in an engine~\cite{Laramee2005a}.}
+		\label{fig:streamSurface}
+	\end{minipage}\qquad
+	\begin{minipage}[t]{.45\textwidth}
+		\centering
+		\includegraphics[width=.8\textwidth]{images/streamArrows2}
+		\caption{Streamarrows in an occluded flow situation~\cite{Loffelmann1997}.}
+		\label{fig:streamArrows2}
+	\end{minipage}
+\end{figure}
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[scale=.2]{images/streamSurface}
+%	\caption{Streamcomet depiction with its degrees of freedom outlined.}
+%	\label{fig:streamSurface}
+%\end{figure}
+
+Streamsurfaces were introduced by \cite{Hultquist1992}.
+The author's method seeds streamlines from a curve and those streamlines are advanced through the vector field.
+New streamlines are seeded in a the points reach a certain distance.
+They are also terminated if another streamline is too close.
+The streamlines points are used to create the streamsurface mesh.
+To aid in the interpretation of flow, \cite{Loffelmann1997} extended streamsurface model with the addition of streamarrows, as shown in Figure~\ref{fig:streamArrows}.
+The author's technique involves adding arrows to show flow direction, and removing the arrow space on the surface to help with occlusion.
+A hybrid method with streamlines and streamtubes was proposed by \cite{Zhang2003}.
+Depicting linear anisotropy regions with streamtube and planar anisotropy ones with streamsurfaces.
+The colors used for rendering encode additional anisotropy information.
+More recently, \cite{Born2010} presented extensions in streamsurface rendering to address occlusion issues, as well as a GPU implementation of their technique.
+Contour lines, halftoning, silhouetts, contour arrows, cuts and slabs are applied to a raw streamsurface in order to be able to depict occluded areas.
 
 %Could be useful to talk about streamtubes.
