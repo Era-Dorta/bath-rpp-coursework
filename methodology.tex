@@ -28,7 +28,9 @@ For example, the biggest cylindrical part will probably be the reservoir for the
 
 \section{Fluid simulation}
 
-Once we have each
+Once we have segmented the model and we know how each part can move and where can the hydraulic fluid flow, we need to calculate how the liquid interacts with the solid parts.
+Given the characteristics of our problem, an physically accurate simulation with two way solid-fluid coupling is needed.
+However, effects such as foams, droplets, etc, are irrelevant in this area.
 
 Using SPH, Grid or Hybrid simulation.
 Looks like grid since we are constrained to a small area and we do care about foams or other extra realism stuff.
