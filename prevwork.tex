@@ -1,30 +1,30 @@
 \chapter{Previous Work}
 \label{sec:prevWork}
 
-IMPORTANT: Make sure the technical/theoretical/practical issues of previous work is clearly stated.\\
+IMPORTANT: Make sure the technical/theoretical/practical issues of previous work is clearly stated.
 
 Given a 3D CAD model of some hydraulic machinery we want to generate how things work visualizations.
-Namely, adding arrows depicting the fluid movement.\\
+Namely, adding arrows depicting the fluid movement.
 
 The problem can be subdivided into:
 \begin{enumerate}
 \item \textbf{Part analysis:} Detecting fluid containers and fluid handling parts.
 \item \textbf{Fluid simulation:} Simulate how the fluid behaves in the previously detected parts.
-\item \textbf{Fluid visualization:} Display the fluid simulation data in a intuitive format.\\
+\item \textbf{Fluid visualization:} Display the fluid simulation data in a intuitive format.
 \end{enumerate}
 
 Part analysis involves two steps: part segmentation and part information extraction.
-Usually 3D models consist of meshes or point clouds were there is no clear distinction between each piece.
+Usually 3D models consist of meshes or point clouds were there is not a clear distinction between each piece.
 Consequently, any additional analysis and simulation would be overly complicated without further simplifications.  
 Therefore, a segmentation stage is needed in order to divide the model into its constituent components.
 Part information extraction consists of detecting the piece type, how it moves and interacts with others.
 So the information saved for type would be axle, gear, reservoir, fluid conduct, etc.
 In this classification parts are also organized considering fluid interaction criteria, e.g. if the piece interplays or not with the hydraulic fluid.
-With respect to types of movement, it will be direction of movement, axis of rotation, axis of translation, etc.\\
+With respect to types of movement, it will be direction of movement, axis of rotation, axis of translation, etc.
 
 Once the parts have been categorized and given an input force, we will have to simulate how the force is transmitted along the different elements.
 In the special case where a component is a container of a fluid or is in direct contact with one, that force will have to be introduced in a fluid simulation algorithm.
-The output of the simulation will then carry the information along to the next piece.\\
+The output of the simulation will then carry the information along to the next piece.
 
 Lastly, in order to visualize the fluid simulation data we will need to generate a visual cue that will indicate intuitively the fluid movement.
 Either generating arrows indicating the overall fluid movement, with an animation or showing illustrative key frames.
@@ -32,7 +32,7 @@ Either generating arrows indicating the overall fluid movement, with an animatio
 \section{Explanatory illustration}
 
 Explanatory illustration has to adequately transmit motion on a still image, consequently transforming from the temporal space to the image domain.
-This is usually found in comics books and instructions sets.\\
+This is usually found in comics books and instructions sets.
 
 \subsection{Image and key frames output}
 
@@ -42,7 +42,7 @@ Such as, how to depict the motion of single objects and to illustrate noises and
 \cite{Cutting2002} surveyed traditional techniques for depicting motion.
 Including, sequences of key frames, blur, squeeze and stretch, unbalanced postures and stroboscopic effects.
 The author introduced criteria to judge the effectiveness of a particular representation.
-For example, evocativeness, clarity of object, direction of motion and precision of motion.\\
+For example, evocativeness, clarity of object, direction of motion and precision of motion.
 
 \cite{Nienhaus2005} proposed a technique to depict motion in 3D animations.
 Scene and behaviour descriptions from specialized scene graphs were analysed in order to create the motion cues.
@@ -58,7 +58,7 @@ The system is able to generate, motion arrows depicting mechanical assembly inte
 \subsection{Video output}
 
 Video based illustration is applied to enhance the motion information while maintaining the original video format.
-Therefore, motions are exaggerated or at the very least some hints to reinforce movement perception are added.\\
+Therefore, motions are exaggerated or at the very least some hints to reinforce movement perception are added.
 
 \cite{Collomosse2005} presented a method to embed cartoon-style motion cues in video.
 Their algorithm has two stages: a motion tracking step, where a feature manually marked will be tracked; and a computer graphics stages, where a cue will be generated and added to the video.
@@ -78,7 +78,7 @@ Usually the models are also represented using points clouds, which can be obtain
 However, clouds and mesh models lack middle and high level information such as: symmetry, parallelism or part segmentation.
 Therefore we must extract this information from either representation.
 Since solving for general shapes is quite challenging, a number of constrained approaches have been proposed.
-For a more in depth knowledge there are a number of surveys on the topic \cite{Varady1997}, \cite{Agathos2007} and \cite{Shamir2008}.\\
+For a more in depth knowledge there are a number of surveys on the topic \cite{Varady1997}, \cite{Agathos2007} and \cite{Shamir2008}.
 
 %Can divide this in region growing, wathersed, kmeans, mesh shift, shaper diameter function, random walk.
 \subsection{Region growing}
@@ -158,7 +158,7 @@ The current paradigm in fluid simulation consist of solving the Navier-Stokes eq
 \end{gather}
 
 The first equation enforces mass conservation and ensures incompressibility, while the second encodes momentum conservation it is derived from Newton's Second Law.
-Where $\mathbf{u}_t$ is the time derivative vector field of the fluid velocity, $p$  is the scalar pressure field, $\rho$ is the density of the fluid, $v$ is the kinematic viscosity and $\mathbf{f}$ represents the body force per unit mass, usually gravity.\\
+Where $\mathbf{u}_t$ is the time derivative vector field of the fluid velocity, $p$  is the scalar pressure field, $\rho$ is the density of the fluid, $v$ is the kinematic viscosity and $\mathbf{f}$ represents the body force per unit mass, usually gravity.
 
 Along the years several methods have been proposed, although all of them are based on the same Navier-Stokes equations.
 
@@ -166,14 +166,14 @@ Along the years several methods have been proposed, although all of them are bas
 \item \textbf{Fourier Transform} techniques uses several superimposed sinusoidal waves to model the fluid behaviour.
 \item \textbf{Grid} based methods track the fluid features at fixed points in space.
 \item \textbf{Smooth Particle Hydrodynamics} track a large number of particle in the fluid.
-\item \textbf{Hybrid} algorithms are combinations of the aforementioned methods.\\
+\item \textbf{Hybrid} algorithms are combinations of the aforementioned methods.
 \end{itemize}
 
 Regardless of the chosen method, to update the particles in the for the next frame must be computed.
-However, it is common for the algorithms to have a upper time step, if the update is computed after the limit there is no guaranty that the output would be reasonable.\\
+However, it is common for the algorithms to have a upper time step, if the update is computed after the limit there is no guaranty that the output would be reasonable.
 
 Another important concept in fluid simulation is whether the simulation implements interplay within the fluid and rigid bodies that come in contact with it (solid-fluid coupling).
-And how flexible is this interaction, one way solid fluid(e.g. a rock drops on a small pool of water, so the water moves but the rock is almost not affected by the  and moves it, but the fluid does not affect the rock), or fluid solid(e.g. a small buoy floating in the ocean has little effect on the surrounding water), and two way solid fluid interaction(e.g. a flexible object drops into a pool of fluid).\\
+And how flexible is this interaction, one way solid fluid(e.g. a rock drops on a small pool of water, so the water moves but the rock is almost not affected by the  and moves it, but the fluid does not affect the rock), or fluid solid(e.g. a small buoy floating in the ocean has little effect on the surrounding water), and two way solid fluid interaction(e.g. a flexible object drops into a pool of fluid).
 
 For more information on real time fluid simulations see \cite{Vines2012} survey.
 While for survey specific to SPH fluid simulation see \cite{Ihmsen2014}.
@@ -183,12 +183,12 @@ While for survey specific to SPH fluid simulation see \cite{Ihmsen2014}.
 When simulating fluid with periodic boundary conditions, procedural simulation can be applied with a low computational cost.
 Usually this method is used with large masses of water (ocean simulation), as they are an approximation to periodic boundary conditions fluids.
 The waves can be modelled as a superimposition of sinusoidal waves, which can be efficiently decomposed using Fast Fourier Transform methods \cite{Mastin1987}.
-Waves produced in this fashion are visually plausible but physical accuracy is not enforced inherently by the model.\\
+Waves produced in this fashion are visually plausible but physical accuracy is not enforced inherently by the model.
 
 Each wave has a wave number $k$ and a wave vector $\mathbf{k}$.
 \cite{Tessendorf2001} presented the basic technique in this area.
 The authors modelled the ocean surface as a summation of complex sinusoids with different wave vectors.
-Visually pleasing results were achieved generating random Fourier amplitudes.\\
+Visually pleasing results were achieved generating random Fourier amplitudes.
 
 The previous method was further improved by \cite{Cieutat2003}, with the addition of solid (ships, coast line, etc).
 The model developed more complex wave shape and motion equations, with differentiated equations in open sea and near the shore.
@@ -201,12 +201,12 @@ Furthermore, the method was implemented on GPUs, and also included shallow water
 Grid methods were among the first techniques to solve fluid simulation and so the firsts ones implement intuitive solutions.
 Grid based methods solve Navier-Stokes Equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2}, in a fixed position in space (i.e. grid).
 As fluid flows, the equations are solved in each position, giving a value for speed and pressure at each time step.
-This approach is advantageous as many numerical methods can be applied easily on grids and with they are more easily adaptable to GPUs implementations than other methods.\\
+This approach is advantageous as many numerical methods can be applied easily on grids and with they are more easily adaptable to GPUs implementations than other methods.
 
 One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations by applying forward Euler time integration.
 However, their solid fluid coupling was one way only, the solids do not affect the fluid behaviour.
 \cite{Stam1999} extended this method in order to overcome stability issues.
-The author's implemented a stable solver which allowed for larger time steps, trough an operator splitting scheme and more importantly a semi-Lagrangian method to calculate the advection term. \\
+The author's implemented a stable solver which allowed for larger time steps, trough an operator splitting scheme and more importantly a semi-Lagrangian method to calculate the advection term.
 
 \cite{Carlson2004} proposed solid-fluid coupling algorithm for grids models using distributed Lagrange multipliers.
 Nevertheless, the author's method uses  a non adaptive grid and multiphase fluids and bubbles are not covered by it.
@@ -216,9 +216,9 @@ Nevertheless, the author's method uses  a non adaptive grid and multiphase fluid
 Smooth Particle Hydrodynamics(SPH) has been established as one the major breakthroughs for fluid simulations in computer graphics, positioning itself as the most popular method nowadays.
 Compared to grid based methods that need high resolution grids to produce foam and splashes, SPH can achieve the same with less computational load.
 Two extra advantages are that mass conservation is automatically satisfied if the amount and mass of the particles is keep constant;
-and as the particles move with the fluid, the advection term does not need to be calculated explicitly.\\
+and as the particles move with the fluid, the advection term does not need to be calculated explicitly.
 
-SPH were first introduced by \cite{DesbrunMathieuandGascuel1996}, where each particle encodes its position, velocity, mass and the forces that act on it.\\
+SPH were first introduced by \cite{DesbrunMathieuandGascuel1996}, where each particle encodes its position, velocity, mass and the forces that act on it.
 
 While, \cite{Muller2004} presented a method for computing solid fluid coupling. Where boundary particles are created on the surface of the solid and then particle coupling is calculated.
 \cite{Akinci2012} further improved the previous method with the inclusion of irregular particle distributions as well as friction and dragging. 
@@ -228,7 +228,7 @@ Furthermore their algorithm was implemented on GPUs, thus achieving better perfo
 \subsection{Hybrid}
 
 Hybrid methods are combinations of the aforementioned approaches.
-As with other hybrid techniques, the objective is to capitalize the advantages of each and discard the weaknesses.\\
+As with other hybrid techniques, the objective is to capitalize the advantages of each and discard the weaknesses.
 
 A common hybrid approach is the particle-in-cell (PIC) method, \cite{Harlow1962}.
 It solves the advection using SPH and the incompressibility with an Euler grid.
@@ -249,7 +249,7 @@ FLIP was extended by \cite{Raveendran2011} to be able to solve the equations in 
 
 Extensive work has been done in this area as visualizing fluid movement has a broad range of applications.
 However, this is a challenging task as it has to effectively display complex and copious amounts of data.
-Seeing that fluid simulation is generally solved by means of highly divided grids or with large number of particles, as explained in section~\ref{prevWorkFluidSim}.\\
+Seeing that fluid simulation is generally solved by means of highly divided grids or with large number of particles, as explained in section~\ref{prevWorkFluidSim}.
 
 %TODO Changed the here option and let latex do its work, but it puts the picture before the flow visualization section
 \begin{figure}[h]
@@ -273,7 +273,7 @@ A streamline is defined as a curve that is everywhere tangent to flow field, i.e
 Therefore, they provide an intuitive mechanism to show the fluid travel direction.
 Furthermore, they have properties such as: streamlines will not cross each other (flow will not go across them), or a particle in the fluid starting on one streamline will not leave it.
 Once the streamlines has been calculated, instead of displaying them as such, they can be replaced by arrows arranged using some criteria.
-For instance, on the path of each streamline or after clustering some streamlines together, as shown in Figure~\ref{fig:streamArrows}.\\
+For instance, on the path of each streamline or after clustering some streamlines together, as shown in Figure~\ref{fig:streamArrows}.
 
 In the following sections we focus only on steady flow visualization.
 For more information on the subject we refer the readers to~\cite{McLoughlin2010} survey.
@@ -292,7 +292,7 @@ And by \cite{Spencer2009}, whose method generates streamlines only for visible p
 
 Rendering too many streamlines can result in clutter and too few can lead to omit important characteristics.
 There has been plenty research into optimizing streamline production and placement.
-However for our hydraulic machinery the issue is less critical than in other areas.\\
+However for our hydraulic machinery the issue is less critical than in other areas.
 
 \begin{figure}
 	\centering
@@ -322,7 +322,7 @@ However, both provide a performance increase over euclidean distance calculation
 Streamlines can be extended dimensionally in order to work with surfaces instead of lines, an example of a streamsurface is shown in Figure~\ref{fig:streamSurface}.
 Evidently, following this path leads to more complex methods as a new dimension in added.
 Nevertheless, surfaces can provide better visualization results.
-For example, the use of shading gives an improved depth insight.\\
+For example, the use of shading gives an improved depth insight.
 
 \begin{figure}
 	\centering
