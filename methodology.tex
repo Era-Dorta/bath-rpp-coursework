@@ -16,6 +16,10 @@ In Section \ref{sec:partAnalysis} we presented several options to segment meshes
 However, slippage analysis is the only method that can be applied directly to mechanical machinery.
 Moreover, this method gives the degrees of freedom of each part. Therefore, a geometric analysis can be perform and we can work with models that do not have extra time information embedded.
 Which is the case for most of the models available in the model libraries in Section \ref{sec:partAnalysis}.
+However, none of the methods will automatically detect which parts will interact with the hydraulic fluid.
+A first approach will be to manually mark them.
+Nevertheless, other paths can be explored, such as heuristics that look at segment shape.
+For example, the biggest cylindrical part will probably be the reservoir for the fluid, and the parts connected to it have high probability to have the hydraulic liquid flowing through then.
 
 %How are we going to detect the parts.
 %Heuristics to detect were the liquid is?
@@ -23,6 +27,8 @@ Which is the case for most of the models available in the model libraries in Sec
 %I.e. to specify pump input or to say where the liquid is.
 
 \section{Fluid simulation}
+
+Once we have each
 
 Using SPH, Grid or Hybrid simulation.
 Looks like grid since we are constrained to a small area and we do care about foams or other extra realism stuff.
