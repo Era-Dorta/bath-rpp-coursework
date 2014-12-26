@@ -29,11 +29,17 @@ For example, the biggest cylindrical part will probably be the reservoir for the
 \section{Fluid simulation}
 
 Once we have segmented the model and we know how each part can move and where can the hydraulic fluid flow, we need to calculate how the liquid interacts with the solid parts.
-Given the characteristics of our problem, an physically accurate simulation with two way solid-fluid coupling is needed.
-However, effects such as foams, droplets, etc, are irrelevant in this area.
+Given the characteristics of our problem, a physically accurate simulation with two way solid-fluid coupling is needed.
+However, extra realistic effects, such as foams or droplets, are irrelevant for this proposal.
+Fourier methods are discarded because we we will not be modelling vast amounts of fluid.
+Then, we are left we either SPH, grid and hybrid simulations, SPH have become quite popular in the last years.
+The great disadvantage of grid simulations is the need to compute the simulation in highly divided grids.
+Hybrids systems are more complicated to implement than non hybrid ones.
+Nevertheless, for hydraulic machinery the fluid will be constrained to a small area.
+Therefore, the previous grid disadvantage is no longer applicable, making it the more appropriate type of simulation for our purposes.
 
-Using SPH, Grid or Hybrid simulation.
-Looks like grid since we are constrained to a small area and we do care about foams or other extra realism stuff.
+%Using SPH, Grid or Hybrid simulation.
+%Looks like grid since we are constrained to a small area and we do care about foams or other extra realism stuff.
 
 \section{Flow visualization}
 
