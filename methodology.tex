@@ -61,8 +61,14 @@ Rip off gears papers
 
 \section{Key frames visualization}
 
-sample the animation
-For uniform translation only one in between, sample the animation at critical points
+To create key frame visualizations a simple approach is to sample the animation created from the fluid simulation at key points.
+In order to select those key points there are two cases: objects with cyclical movement and parts that do not.
+The first ones would be spinning components, for example cylinders in engines whose movement is a periodic loop.
+For this case, a displacement curve can be drawn and the sample points would be the extrema and middle frames in between.
+In machinery that does not present cyclical movement, such as a simple cylinder as in Figure~\ref{fig:h_pump}, it is evident that the extrema have to be included.
+However, we are face with a problem of either under or oversampling in the middle points as the minimal number of key frames to illustrate the motion are unknown. 
+%sample the animation
+%For uniform translation only one in between, sample the animation at critical points
 
 \section{Time line}
 
