@@ -31,11 +31,11 @@
 \onehalfspacing
 
 % If you are getting two degrees, use \and between the names.
-\def\degree#1{\setbox0\hbox{#1}  %for side effect of setting \@degreeword
-  \gdef\@degree{#1}}
+\def\unit#1{\setbox0\hbox{#1}  %for side effect of setting \@degreeword
+  \gdef\@unit{#1}}
 
 % \and is used inside the \degree argument to separate two degrees
-\def\and{\gdef\@degreeword{degrees} \par and \par}
+\def\and{\gdef\@unitword{units} \par and \par}
 \def\degreemonthyear#1{\gdef\@degreemonthyear{#1}}
 
 % input department name
@@ -77,13 +77,15 @@ submitted by
 
 {\huge \@author}
 
-for the degree of \@degree 
+\@unit 
 
-of the 
+Unit Leader: Prof Yong-Liang Yang
 
 {\huge University of Bath}
 
 \@department
+
+EngD in Digital Entertainment
 
 \@degreemonthyear
 \vfill
