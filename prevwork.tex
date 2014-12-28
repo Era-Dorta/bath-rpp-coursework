@@ -162,6 +162,7 @@ The previous method was further improved by \cite{Cieutat2003}, with the additio
 The model developed more complex wave shape and motion equations, with differentiated equations in open sea and near the shore.
 And by \cite{Chiu2006} with adaptive surface tessellation.
 Furthermore, the method was implemented on GPUs, and also included shallow water effects and spray dynamics.
+However, Fourier transform methods can still only be applied to simulate oceans or other huge masses of fluid. 
 
 \subsection{Grid}
 \label{gridFluidSolvers}
@@ -192,6 +193,7 @@ While, \cite{Muller2004} presented a method for computing solid fluid coupling. 
 \cite{Akinci2012} further improved the previous method with the inclusion of irregular particle distributions as well as friction and dragging. 
 \cite{Shao2014} also solved stability issues in the previous SPH solid-fluid coupling techniques, using a correction scheme.
 Furthermore their algorithm was implemented on GPUs, thus achieving better performance than previous methods.  
+However, the method is still not physically completely accurate and erroneous penetrations can arise in certain situations. 
 
 \subsection{Hybrid}
 
