@@ -10,7 +10,8 @@ The problem can be subdivided into:
 \begin{enumerate}
 \item \textbf{Part analysis:} Detecting fluid containers and fluid handling parts.
 \item \textbf{Fluid simulation:} Simulate how the fluid behaves in the previously detected parts.
-\item \textbf{Fluid visualization:} Display the fluid simulation data in a intuitive format.
+\item \textbf{Flow visualization:} Display the fluid simulation data in a intuitive format.
+\item \textbf{Explanatory illustration:} Transform the flow visualization data in one or several still images.
 \end{enumerate}
 
 Part analysis involves two steps: part segmentation and part information extraction.
@@ -26,50 +27,11 @@ Once the parts have been categorized and given an input force, we will have to s
 In the special case where a component is a container of a fluid or is in direct contact with one, that force will have to be introduced in a fluid simulation algorithm.
 The output of the simulation will then carry the information along to the next piece.
 
-Lastly, in order to visualize the fluid simulation data we will need to generate a visual cue that will indicate intuitively the fluid movement.
+In order to visualize the fluid simulation data we will need to generate a visual cue that will indicate intuitively the fluid movement.
 Either generating arrows indicating the overall fluid movement, with an animation or showing illustrative key frames.
 
-\section{Explanatory illustration}
-
-Explanatory illustration has to adequately transmit motion on a still image, consequently transforming from the temporal space to the image domain.
-This is usually found in comics books and instructions sets.
-
-\subsection{Image and key frames output}
-
-Even though comics books are regularly considered inferior forms for presenting information, each scene contains abundant data and they can be understood by children without even reading the letters.
-\cite{McCloud1993} cited by \cite{Cutting2002} reviewed visualization and abstraction techniques used in comics books.
-Such as, how to depict the motion of single objects and to illustrate noises and speeches bound to time.
-\cite{Cutting2002} surveyed traditional techniques for depicting motion.
-Including, sequences of key frames, blur, squeeze and stretch, unbalanced postures and stroboscopic effects.
-The author introduced criteria to judge the effectiveness of a particular representation.
-For example, evocativeness, clarity of object, direction of motion and precision of motion.
-
-\cite{Nienhaus2005} proposed a technique to depict motion in 3D animations.
-Scene and behaviour descriptions from specialized scene graphs were analysed in order to create the motion cues.
-In the author's implementation the user has to select a depiction target and assign labels to it, using the graph information motion lines and simplified sketch images are generated.
-\cite{Joshi2005} presented a similar approach for volumetric data.
-Speedlines and flow ribbons are combined to generate illustrations encoding 3D rigid movement and flow dynamics.
-The flow ribbons use comic inspired line abstraction technique to handle occlusion.
-Researchers have have look into automatic illustration generation for mechanical assemblies \cite{Mitra2010}.
-The author's work is based only on geometry information, extracted from 3D CAD models.
-Part analysis is performed using slippage analysis, see Section \ref{SlippageAnalysis}, while the motions are extracted from an interaction graph that is defined by edge contact between the components.
-The system is able to generate, motion arrows depicting mechanical assembly interaction, as well as generating key frames of periodic motions.
-
-\subsection{Video output}
-
-Video based illustration is applied to enhance the motion information while maintaining the original video format.
-Therefore, motions are exaggerated or at the very least some hints to reinforce movement perception are added.
-
-\cite{Collomosse2005} presented a method to embed cartoon-style motion cues in video.
-Their algorithm has two stages: a motion tracking step, where a feature manually marked will be tracked; and a computer graphics stages, where a cue will be generated and added to the video.
-The system can add motion lines as well as squash and stretch objects.
-However, the second case is restricted to videos where the background can be reconstructed from previous frames.
-\cite{Zhu2011} presented a sketching system for fluids dynamics.
-The paper uses hybrid multi layered grid solver, discussed in Section~\ref{gridFluidSolvers}, to solve 2.5D fluid flow.
-Flow paths and other objects can be added or changed in real time through a sketching interface.
-A hydraulic graph is created and is modified behind the scenes every time the visual model is edited.
-While the flow is shown using streamlines, discussed in Section~\ref{sec:flowVisualization}.
-\cite{Lowe2014} showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken as users can fail to extract the necessary information due to the nature of the animation.
+Lastly, \textit{How things work} illustrations have to be generated from the flow visualization data, that is by itself a time variant data.
+Therefore, techniques to embed motion in a single picture are used.
 
 \section{Part analysis}
 \label{sec:partAnalysis}
@@ -355,3 +317,45 @@ More recently, \cite{Born2010} presented extensions in streamsurface rendering t
 Contour lines, halftoning, silhouetts, contour arrows, cuts and slabs are applied to a raw streamsurface in order to be able to depict occluded areas.
 
 %Could be useful to talk about streamtubes.
+
+\section{Explanatory illustration}
+
+Explanatory illustration has to adequately transmit motion on a still image, consequently transforming from the temporal space to the image domain.
+This is usually found in comics books and instructions sets.
+
+\subsection{Image and key frames output}
+
+Even though comics books are regularly considered inferior forms for presenting information, each scene contains abundant data and they can be understood by children without even reading the letters.
+\cite{McCloud1993} cited by \cite{Cutting2002} reviewed visualization and abstraction techniques used in comics books.
+Such as, how to depict the motion of single objects and to illustrate noises and speeches bound to time.
+\cite{Cutting2002} surveyed traditional techniques for depicting motion.
+Including, sequences of key frames, blur, squeeze and stretch, unbalanced postures and stroboscopic effects.
+The author introduced criteria to judge the effectiveness of a particular representation.
+For example, evocativeness, clarity of object, direction of motion and precision of motion.
+
+\cite{Nienhaus2005} proposed a technique to depict motion in 3D animations.
+Scene and behaviour descriptions from specialized scene graphs were analysed in order to create the motion cues.
+In the author's implementation the user has to select a depiction target and assign labels to it, using the graph information motion lines and simplified sketch images are generated.
+\cite{Joshi2005} presented a similar approach for volumetric data.
+Speedlines and flow ribbons are combined to generate illustrations encoding 3D rigid movement and flow dynamics.
+The flow ribbons use comic inspired line abstraction technique to handle occlusion.
+Researchers have have look into automatic illustration generation for mechanical assemblies \cite{Mitra2010}.
+The author's work is based only on geometry information, extracted from 3D CAD models.
+Part analysis is performed using slippage analysis, see Section \ref{SlippageAnalysis}, while the motions are extracted from an interaction graph that is defined by edge contact between the components.
+The system is able to generate, motion arrows depicting mechanical assembly interaction, as well as generating key frames of periodic motions.
+
+\subsection{Video output}
+
+Video based illustration is applied to enhance the motion information while maintaining the original video format.
+Therefore, motions are exaggerated or at the very least some hints to reinforce movement perception are added.
+
+\cite{Collomosse2005} presented a method to embed cartoon-style motion cues in video.
+Their algorithm has two stages: a motion tracking step, where a feature manually marked will be tracked; and a computer graphics stages, where a cue will be generated and added to the video.
+The system can add motion lines as well as squash and stretch objects.
+However, the second case is restricted to videos where the background can be reconstructed from previous frames.
+\cite{Zhu2011} presented a sketching system for fluids dynamics.
+The paper uses hybrid multi layered grid solver, discussed in Section~\ref{gridFluidSolvers}, to solve 2.5D fluid flow.
+Flow paths and other objects can be added or changed in real time through a sketching interface.
+A hydraulic graph is created and is modified behind the scenes every time the visual model is edited.
+While the flow is shown using streamlines, discussed in Section~\ref{sec:flowVisualization}.
+\cite{Lowe2014} showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken as users can fail to extract the necessary information due to the nature of the animation.
