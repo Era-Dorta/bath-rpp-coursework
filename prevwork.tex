@@ -89,21 +89,24 @@ Given its nature, random techniques give different results on different executio
 \subsection{Data driven}
 
 %Acoording to 2013 Mitra paper, this is co-analysis
-\cite{Golovinskiy2009} also demonstrated a clustering technique with special emphasis on edge and face consistency.
+\cite{Golovinskiy2009} presented an extension to the clustering technique with special emphasis on edge and face consistency, that became a new segmentation area.
 The algorithm is based on a graph construction which encodes triangle neighbour information.
 The method then performs the clustering on the graph space.
 The main advantage is consistent segmentation of similar models.
-However there are several parameters that need to be input by the user.
+For example, on different chair models, segments always represent legs, backs and armrests. 
+However, there are several parameters that need to be input by the user.
 Moreover, as the method is based on consistency across a set of models, if the alignment between the different models fails, the resulting segmentation quality will decrease. 
 
 \subsection{Global energy function}
 
 \cite{DeCastro2014} presented a novel segmentation technique based on calculating a global discrepancy function, based on the Lambert illumination model, for each triangle in the mesh.
-Then directly using that value to segment the model in several parts.
+Then they directly use that value to segment the model in several parts.
+However, their segmentation results are still not comparable with other state of the art methods.
 
 \subsection{Hybrid}
 
 \cite{Wang2011} approach for mesh segmentation functions with a combination of curvature estimation, Gauss mapping and B-spline surface fitting.
+Their methods performs relatively well, however there are six numerical parameters to adjust and the presented results show oversegmentation with certain models.
 
 \subsection{Slippage analysis}
 \label{SlippageAnalysis}
