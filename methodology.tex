@@ -1,8 +1,8 @@
 \chapter{Proposed methodology}
 
-To start with, data is need in the form on CAD 3D models.
-A 3D visualization program such as SketchUp~\cite{Trimble2014} can be used to open, visualize and edit the models.
-Once we have this input we can begin the process to generate \textit{How things work} illustrations from them.
+To start with, input data is needed in the form on CAD 3D models.
+A 3D visualization program such as SketchUp~\cite{Trimble2014} can be used to create, visualize and edit the models.
+Once we have this input, we can begin the process to generate \textit{How things work} illustrations from them.
 
 %How are we actually going to solve the problem.
 %What is the proposed approach?
@@ -30,12 +30,14 @@ For example, the biggest cylindrical part will probably be the reservoir for the
 
 Once we have segmented the model and we know how each part can move and where can the hydraulic fluid flow, we need to calculate how the liquid interacts with the solid parts.
 Given the characteristics of our problem, a physically accurate simulation with two way solid-fluid coupling is needed.
-However, extra realistic effects, such as foams or droplets, are irrelevant for this proposal.
 Fourier methods are discarded because we we will not be modelling vast amounts of fluid.
-Then, we are left we either SPH, grid and hybrid simulations, SPH have become quite popular in the last years.
-The great disadvantage of grid simulations is the need to compute the simulation in highly divided grids.
-Hybrids systems are more complicated to implement than non hybrid ones.
+Then, we are left with either SPH, grid or hybrid simulations.
+In terms of implementation complexity, grid methods are generally simpler, followed by SPH and lastly by hybrid systems.
+If we look at quality of the simulation, hybrid and SPH tend to be better while grid methods lag behind.
+However, the great disadvantage of grid simulations is the need to compute the simulation in highly divided grids in order to be able to display foams and other effects.
+What is more, SPH have become quite popular in the last years as a general purpose fluid simulation tool.
 Nevertheless, for hydraulic machinery the fluid will be constrained to a small area.
+Moreover, extra realistic effects, such as foams or droplets, are irrelevant for this proposal.
 Therefore, the previous grid disadvantage is no longer applicable, making it the more appropriate type of simulation for our purposes.
 
 %Using SPH, Grid or Hybrid simulation.
@@ -64,9 +66,9 @@ $\rightarrow$ Do exactly as 2010 gears paper, is this section needed or should i
 To create key frame visualizations a simple approach is to sample the animation created from the fluid simulation at key points.
 In order to select those key points there are two cases: objects with cyclical movement and parts that do not.
 The first ones would be spinning components, for example cylinders in engines whose movement is a periodic loop.
-For this case, a displacement curve can be drawn and the sample points would be the extrema and middle frames in between.
-In machinery that does not present cyclical movement, such as a simple cylinder as in Figure~\ref{fig:h_pump}, it is evident that the extrema have to be included.
-However, we are face with a problem of either under or oversampling in the middle points as the minimal number of key frames to illustrate the motion are unknown. 
+In this case, a displacement curve can be drawn and the sample points would be the extrema and middle frames in between.
+In machinery that does not present cyclical movement, such as the simple cylinder shown in Figure~\ref{fig:h_pump}, it is evident that the extrema have to be included.
+However, we are faced with a problem of either under or oversampling in the middle points, as the minimal number of key frames to illustrate the motion are unknown. 
 %sample the animation
 %For uniform translation only one in between, sample the animation at critical points
 

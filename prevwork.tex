@@ -284,13 +284,13 @@ What is more, a GPU implementation of their method is provided.
 Clustering is a common technique for reducing the amount of rendered streamlines.
 To address slow euclidean distance tests in clustering, \cite{McLoughlin2013} presented a signature based metric.
 The streamline attributes for the signature are curvature, torsion and tortuosity.
-The authors presented two variations, a fast simpler method and a hierarchical one that scarifies speed for superior results.
+The authors presented two variations, a fast simpler method and a hierarchical one that sacrifices speed for superior results.
 However, both provide a performance increase over euclidean distance calculations.
 
 \subsection{Surface based integral objects}
 
-Streamlines can be extended dimensionally in order to work with surfaces instead of lines, an example of a streamsurface is shown in Figure~\ref{fig:streamSurface}.
-Evidently, following this path leads to more complex methods as a new dimension in added.
+Streamlines can be extended dimensionally in order to represent 3D surfaces instead of 3D lines, an example of a streamsurface is shown in Figure~\ref{fig:streamSurface}.
+Following this path leads to increased complexity in the methods, due to the new dimension needed to represent a surface.
 Nevertheless, surfaces can provide better visualization results.
 For example, the use of shading gives an improved depth insight.
 
@@ -312,8 +312,7 @@ For example, the use of shading gives an improved depth insight.
 
 Streamsurfaces were introduced by \cite{Hultquist1992}.
 The author's method seeds streamlines from a curve and those streamlines are advanced through the vector field.
-New streamlines are seeded in a the points reach a certain distance.
-They are also terminated if another streamline is too close.
+New streamlines are seeded or exiting ones are terminated if the points reach a predetermined maximum or minimum distance threshold.
 The streamlines points are used to create the streamsurface mesh.
 To aid in the interpretation of flow, \cite{Loffelmann1997} extended streamsurface model with the addition of streamarrows, as shown in Figure~\ref{fig:streamArrows}.
 The author's technique involves adding arrows to show flow direction, and removing the arrow space on the surface to help with occlusion.
