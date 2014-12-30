@@ -50,6 +50,7 @@ Region growing algorithms start with a seed element for the sub-mesh and then pe
 \cite{Mizoguchi2006} proposed a mesh segmentation technique based on curvature estimation with sharp edge recognition.
 The author's method performs well on mechanical objects and it is also robust to noise.
 However, oversegmentation occurs in models with soft edges.
+Extensions to this model include Markov Random Fields \cite{Lavoue2008},
 %Maybe add more papers, too lazy to do it now
 
 %TODO Add papers on all this sections if short on words
@@ -95,10 +96,13 @@ The method then performs the clustering on the graph space.
 The main advantage is consistent segmentation of similar models.
 For example, on different chair models, segments always represent legs, backs and armrests. 
 However, there are several parameters that need to be input by the user.
-Moreover, as the method is based on consistency across a set of models, if the alignment between the different models fails, the resulting segmentation quality will decrease. 
+Moreover, as the method is based on consistency across a set of models, if the alignment between the different models fails, the resulting segmentation quality will decrease.
+Researchers have presented extensions to the original \cite{Golovinskiy2009} approach, such as: setting a objective function as a Conditional Random Field model \cite{Kalogerakis2010}.
 
 \subsection{Global energy function}
 
+\cite{Benhabiles2011} proposed a method based on a boundary edged function that would be learned by an AdaBoost classifier.
+Nevertheless, the method needs a large database of manually segmented meshes, and it also has problems generalizing the function for difficult test data.
 \cite{DeCastro2014} presented a novel segmentation technique based on calculating a global discrepancy function, based on the Lambert illumination model, for each triangle in the mesh.
 Then they directly use that value to segment the model in several parts.
 However, their segmentation results are still not comparable with other state of the art methods.
