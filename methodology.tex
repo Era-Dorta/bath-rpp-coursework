@@ -75,3 +75,24 @@ However, we are faced with a problem of either under or oversampling in the midd
 \section{Time line}
 
 Table with a time line, diagram?
+
+\begin{figure}[h]
+\begin{center}
+
+\begin{ganttchart}{1}{12}
+	\gantttitle{Weeks}{12} \\
+	\gantttitlelist{1,...,12}{1} \\
+	\ganttgroup{Group 1}{1}{7} \\
+	\ganttbar{Segmentation}{1}{2} \\
+	\ganttlinkedbar{Fluid simulation}{3}{7}
+	\ganttnewline
+	\ganttmilestone{Milestone}{7}
+	\ganttnewline
+	\ganttbar{Flow visualization}{8}{12}
+	\ganttlink{elem2}{elem3}
+	\ganttlink{elem3}{elem4}
+\end{ganttchart}
+
+\end{center}
+\caption{Gantt Chart}
+\end{figure}
