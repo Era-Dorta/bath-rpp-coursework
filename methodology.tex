@@ -28,7 +28,7 @@ Once the parts have been categorized and given an input force, we will have to s
 In the special case where a component is a container of a fluid or is in direct contact with one, that force will have to be introduced in a fluid simulation algorithm.
 The output of the simulation will then carry the information along to the next piece.
 
-In order to visualize the fluid simulation data we will need to generate a visual cue that will indicate intuitively the fluid movement.
+In order to visualize the fluid simulation data we will need to generate a visual cue that will intuitively indicate the fluid movement.
 Either generating arrows indicating the overall fluid movement, with an animation or showing illustrative key frames.
 
 Lastly, \textit{How things work} illustrations have to be generated from the flow visualization data, that is by itself a time variant data.
@@ -111,21 +111,18 @@ This estimation is highly dependant on the features to be implemented and the co
 \begin{center}
 
 \begin{ganttchart}{1}{16}
-	\gantttitle{Weeks}{16} \\
-	\gantttitlelist{1,...,16}{1} \\
-	\ganttgroup{Group 1}{1}{7} \\
-	\ganttbar{Part Segmentation}{1}{2} \\
-	\ganttlinkedbar{Fluid simulation}{3}{7}
-	\ganttnewline
-	\ganttmilestone{Milestone}{7}
-	\ganttnewline
-	\ganttbar{Flow visualization}{8}{10}
-	\ganttnewline
-	\ganttlinkedbar{Solid parts visualization}{11}{12}
-	\ganttnewline
-	\ganttlinkedbar{Key frames visualization}{13}{16}
-	\ganttlink{elem2}{elem3} % Link to milestone
-	\ganttlink{elem3}{elem4} % Link from milestone
+	\gantttitle{Weeks}{16} \ganttnewline
+	\gantttitlelist{1,...,16}{1} \ganttnewline
+	%\ganttgroup{Group 1}{1}{7} \\
+	\ganttbar{Part Segmentation}{1}{4} \ganttbar{}{8}{8} \ganttbar{}{11}{11} \ganttnewline
+	\ganttbar{Fluid simulation}{4}{8} \ganttbar{}{11}{11} \ganttnewline
+	%\ganttmilestone{Milestone}{7}
+	%\ganttnewline
+	\ganttbar{Flow visualization}{8}{11} \ganttbar{}{14}{14} \ganttnewline
+	\ganttbar{Solid parts visualization}{11}{14} \ganttnewline
+	\ganttbar{Key frames visualization}{14}{16}
+	%\ganttlink{elem2}{elem3} % Link to milestone
+	%\ganttlink{elem3}{elem4} % Link from milestone
 \end{ganttchart}
 
 \end{center}
