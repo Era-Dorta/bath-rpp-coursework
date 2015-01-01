@@ -1,8 +1,38 @@
 \chapter{Proposed methodology}
 
+Given a 3D CAD model of some hydraulic machinery we want to generate how things work visualizations.
+Namely, adding arrows depicting the fluid movement.
+
+The problem can be subdivided into:
+\begin{enumerate}
+\item \textbf{Part analysis:} Detecting fluid containers and fluid handling parts.
+\item \textbf{Fluid simulation:} Simulate how the fluid behaves in the previously detected parts.
+\item \textbf{Flow visualization:} Display the fluid simulation data in a intuitive format.
+\item \textbf{Explanatory illustration:} Transform the flow visualization data in one or several still images.
+\end{enumerate}
+
 To start with, input data is needed in the form on CAD 3D models.
 A 3D visualization program such as SketchUp~\cite{Trimble2014} can be used to create, visualize and edit the models.
 Once we have this input, we can begin the process to generate \textit{How things work} illustrations from them.
+
+Part analysis involves two steps: part segmentation and part information extraction.
+Usually 3D models consist of meshes or point clouds were there is not a clear distinction between each piece.
+Consequently, any additional analysis and simulation would be overly complicated without further simplifications.  
+Therefore, a segmentation stage is needed in order to divide the model into its constituent components.
+Part information extraction consists of detecting the piece type, how it moves and interacts with others.
+So the information saved for type would be axle, gear, reservoir, fluid conduct, etc.
+In this classification parts are also organized considering fluid interaction criteria, e.g. if the piece interplays or not with the hydraulic fluid.
+With respect to types of movement, it will be direction of movement, axis of rotation, axis of translation, etc.
+
+Once the parts have been categorized and given an input force, we will have to simulate how the force is transmitted along the different elements.
+In the special case where a component is a container of a fluid or is in direct contact with one, that force will have to be introduced in a fluid simulation algorithm.
+The output of the simulation will then carry the information along to the next piece.
+
+In order to visualize the fluid simulation data we will need to generate a visual cue that will indicate intuitively the fluid movement.
+Either generating arrows indicating the overall fluid movement, with an animation or showing illustrative key frames.
+
+Lastly, \textit{How things work} illustrations have to be generated from the flow visualization data, that is by itself a time variant data.
+Therefore, techniques to embed motion in a single picture are used.
 
 %How are we actually going to solve the problem.
 %What is the proposed approach?
