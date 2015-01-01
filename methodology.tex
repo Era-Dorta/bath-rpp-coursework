@@ -39,7 +39,7 @@ Therefore, techniques to embed motion in a single picture are used.
 %Here we talk about what we are going to use.
 %Still not clear what are the actual contributions of the proposal.
 
-\section{Part detection}
+\section{Part analysis}
 
 As discussed in Sections \ref{ch:intro} and \ref{ch:prevWork}, the first step is to segment the 3D CAD model mesh into useful parts for our task.
 In Section \ref{sec:partAnalysis} we presented several options to segment meshes.
@@ -107,7 +107,7 @@ However, we are faced with a problem of either under or oversampling in the midd
 In Figure \ref{fig:timeLine} we present an estimated time line for the implementation of the proposal.
 This estimation is highly dependant on the features to be implemented and the complexity of the CAD input models.
 The output of one task is the input of the next, so overlapping naturally occurs when we switch to one task to the next, as we inevitably have to fix unexpected errors or introduce new features.
-Moreover, the changes may backtrack to tasks several steps backs as shown in the isolated bars of Part Segmentation or Fluid Simulation. 
+Moreover, the changes may backtrack to tasks several steps backs as shown in the isolated bars of Part Analysis or Fluid Simulation. 
 
 \begin{figure}[h]
 \begin{center}
@@ -116,13 +116,13 @@ Moreover, the changes may backtrack to tasks several steps backs as shown in the
 	\gantttitle{Weeks}{16} \ganttnewline
 	\gantttitlelist{1,...,16}{1} \ganttnewline
 	%\ganttgroup{Group 1}{1}{7} \\
-	\ganttbar{Part Segmentation}{1}{4} \ganttbar{}{8}{8} \ganttbar{}{11}{11} \ganttnewline
-	\ganttbar{Fluid simulation}{4}{8} \ganttbar{}{11}{11} \ganttnewline
+	\ganttbar{Part Analysis}{1}{4} \ganttbar{}{8}{8} \ganttbar{}{11}{11} \ganttnewline
+	\ganttbar{Fluid Simulation}{4}{8} \ganttbar{}{11}{11} \ganttnewline
 	%\ganttmilestone{Milestone}{7}
 	%\ganttnewline
-	\ganttbar{Flow visualization}{8}{11} \ganttbar{}{14}{14} \ganttnewline
-	\ganttbar{Solid parts visualization}{11}{14} \ganttnewline
-	\ganttbar{Key frames visualization}{14}{16}
+	\ganttbar{Flow Visualization}{8}{11} \ganttbar{}{14}{14} \ganttnewline
+	\ganttbar{Solid Parts Visualization}{11}{14} \ganttnewline
+	\ganttbar{Key Frames Visualization}{14}{16}
 	%\ganttlink{elem2}{elem3} % Link to milestone
 	%\ganttlink{elem3}{elem4} % Link from milestone
 \end{ganttchart}
