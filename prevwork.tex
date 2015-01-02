@@ -13,6 +13,8 @@ Therefore we must extract this information from either representation.
 Since solving for general shapes is quite challenging, a number of constrained approaches have been proposed.
 We refer the readers to the following surveys on segmentation techniques, \cite{Varady1997}, \cite{Agathos2007} and \cite{Shamir2008}.
 
+Part analysis goes beyond part segmentation, it also includes analysing part semantics and relations between them. 
+
 %Can divide this in region growing, wathersed, kmeans, mesh shift, shaper diameter function, random walk.
 \subsection{Region growing}
 
@@ -92,6 +94,15 @@ This is quite useful as it gives for each part its degrees of freedom, e.g. sphe
 \cite{Xu2009} applied slippage analysis to perform joint-aware deformations in man-made objects.
 \cite{Yi2014} improved \cite{Gelfand2004} method making it more robust to noise and giving extra primitive information(e.g. normal of a plane, center of a sphere, etc).
 
+\subsection{Symmetry detection}
+
+Segment symmetry analysis can be used to compute possible rotation or translation axis in the parts.
+
+\subsection{Interaction analysis}
+
+Geometry based interaction analysis.
+Look for more types of interaction analysis.
+
 \section{Fluid simulation}
 \label{prevWorkFluidSim}
 
@@ -122,8 +133,7 @@ However, it is common for the algorithms to have a upper time step, if the updat
 Another important concept in fluid simulation is whether the simulation implements interplay within the fluid and rigid bodies that come in contact with it (solid-fluid coupling).
 And how flexible is this interaction, one way solid fluid(e.g. a rock drops on a small pool of water, so the water moves but the rock is almost not affected by the  and moves it, but the fluid does not affect the rock), or fluid solid(e.g. a small buoy floating in the ocean has little effect on the surrounding water), and two way solid fluid interaction(e.g. a flexible object drops into a pool of fluid).
 
-For more information on real time fluid simulations see \cite{Vines2012} survey.
-While for survey specific to SPH fluid simulation see \cite{Ihmsen2014}.
+For more information on real time fluid simulations we refer the readers to \cite{Vines2012} and \cite{Ihmsen2014} surveys.
 
 \subsection{Fourier Transform}
 
