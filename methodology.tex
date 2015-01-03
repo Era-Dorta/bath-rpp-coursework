@@ -53,6 +53,7 @@ However, none of the methods will automatically detect which parts will interact
 A first approach will be to manually mark them.
 Nevertheless, other paths can be explored, such as heuristics that analyse the segment shape.
 For example, the biggest cylindrical part will probably be the reservoir for the fluid, and the parts connected to it have high probability to have the hydraulic liquid flowing through then.
+Therefore the part analysis stage will be based mainly on the work of \cite{Yi2014}.
 
 %How are we going to detect the parts.
 %Heuristics to detect were the liquid is?
@@ -71,7 +72,7 @@ However, the great disadvantage of grid simulations is the need to compute the s
 What is more, SPH have become quite popular in the last years as a general purpose fluid simulation tool.
 Nevertheless, for hydraulic machinery the fluid will be constrained to a small area.
 Moreover, extra realistic effects, such as foams or droplets, are irrelevant for this proposal.
-Therefore, the previous grid disadvantage is no longer applicable, making it the more appropriate type of simulation for our purposes.
+Therefore, the previous grid disadvantage is no longer applicable, making methods such as \cite{Carlson2004}, the more appropriate type of simulation for our purposes.
 
 %Using SPH, Grid or Hybrid simulation.
 %Looks like grid since we are constrained to a small area and we do care about foams or other extra realism stuff.
@@ -83,7 +84,8 @@ Following the techniques discussed in Section~\ref{sec:flowVisualization}, we wi
 \textit{How things work} illustrations do not have complex flow visualizations, as the objective is to understand roughly how the system works, not to give a perfect scientific representation of fluid dynamics.
 Since our CAD models are 3D, 2D methods are ruled out.
 There is not clear advantage in applying surface based integral objects as in hydraulic equipment there are not complex fluid flow situations.
-Streamcoments offer a more natural way to visualize the flow, and having a translucent body means that occlusion is less likely to happen.
+Streamcomets offer a more natural way to visualize the flow, and having a translucent body means that occlusion is less likely to happen.
+However, we consider streamcomets too complex for our purposes, therefore a simpler technique such as \cite{Wicke2009} would be used, with the optimizations presented by \cite{McLoughlin2013} should the generation be too slow.
 This flow visualization should also include an optimization step, where the arrow placement would be improved.
 In more detail, steps such as bigger arrows for zones with more flow, arrow replacement in occluded areas or extra arrows in for bigger areas, following the criteria in \cite{Mitra2010}.
 %We are going to use stream lines on surfaces and then replace them by arrows.
@@ -98,7 +100,7 @@ $\rightarrow$ Do exactly as 2010 gears paper, is this section needed or should i
 
 \section{Key frames visualization}
 
-To create key frame visualizations a simple approach is to sample the animation created from the fluid simulation at key points.
+To create key frame visualizations a simple approach is to sample the animation created from the fluid simulation at key points \cite{Mitra2010}.
 In order to select those key points there are two cases: objects with cyclical movement and parts that do not.
 The first ones would be spinning components, for example cylinders in engines whose movement is a periodic loop.
 In this case, a displacement curve can be drawn and the sample points would be the extrema and middle frames in between.
