@@ -5,7 +5,7 @@ Namely, adding arrows depicting the fluid movement.
 
 The problem can be subdivided into:
 \begin{enumerate}
-\item \textbf{Part analysis:} Detecting fluid containers and fluid handling parts.
+\item \textbf{Part analysis:} Detecting parts segments and inferring part properties.
 \item \textbf{Fluid simulation:} Simulate how the fluid behaves in the previously detected parts.
 \item \textbf{Flow visualization:} Display the fluid simulation data in a intuitive format.
 \item \textbf{Explanatory illustration:} Transform the flow visualization data in one or several still images.
@@ -15,11 +15,11 @@ To start with, input data is needed in the form on CAD 3D models.
 A 3D visualization program such as SketchUp~\cite{Trimble2014} can be used to create, visualize and edit the models.
 Once we have this input, we can begin the process to generate \textit{How things work} illustrations from them.
 
-Part analysis involves two steps: part segmentation and part information extraction.
+Part analysis involves two steps: part segmentation and part analysis.
 Usually 3D models consist of meshes or point clouds were there is not a clear distinction between each piece.
 Consequently, any additional analysis and simulation would be overly complicated without further simplifications.  
 Therefore, a segmentation stage is needed in order to divide the model into its constituent components.
-Part information extraction consists of detecting the piece type, how it moves and interacts with others.
+Part analysis consists of detecting the piece type, how it moves and interacts with others.
 So the information saved for type would be axle, gear, reservoir, fluid conduct, etc.
 In this classification parts are also organized considering fluid interaction criteria, e.g. if the piece interplays or not with the hydraulic fluid.
 With respect to types of movement, it will be direction of movement, axis of rotation, axis of translation, etc.
@@ -44,11 +44,12 @@ Therefore, techniques to embed motion in a single picture are used.
 As discussed in Sections \ref{ch:intro} and \ref{ch:prevWork}, the first step is to segment the 3D CAD model mesh into useful parts for our task.
 In Section \ref{sec:partAnalysis} we presented several options to segment meshes.
 However, slippage analysis is the only method that can be applied directly to mechanical machinery.
-Moreover, this method gives the degrees of freedom of each part. Therefore, a geometric analysis can be perform and we can work with models that do not have extra time information embedded.
+Moreover, this method outputs the degrees of freedom for each part. 
+Therefore, a geometric analysis can be performed and we can work with models that do not have extra time information embedded.
 Which is the case for most of the models available in the model libraries in Section \ref{sec:partAnalysis}.
 However, none of the methods will automatically detect which parts will interact with the hydraulic fluid.
 A first approach will be to manually mark them.
-Nevertheless, other paths can be explored, such as heuristics that look at segment shape.
+Nevertheless, other paths can be explored, such as heuristics that analyse the segment shape.
 For example, the biggest cylindrical part will probably be the reservoir for the fluid, and the parts connected to it have high probability to have the hydraulic liquid flowing through then.
 
 %How are we going to detect the parts.
