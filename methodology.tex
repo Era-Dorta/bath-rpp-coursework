@@ -1,5 +1,7 @@
 \chapter{Proposed methodology}
 
+CITE THE RELEVANT PAPERS IN EACH AREA
+
 Given a 3D CAD model of some hydraulic machinery we want to generate how things work visualizations.
 Namely, adding arrows depicting the fluid movement.
 
@@ -82,6 +84,8 @@ Following the techniques discussed in Section~\ref{sec:flowVisualization}, we wi
 Since our CAD models are 3D, 2D methods are ruled out.
 There is not clear advantage in applying surface based integral objects as in hydraulic equipment there are not complex fluid flow situations.
 Streamcoments offer a more natural way to visualize the flow, and having a translucent body means that occlusion is less likely to happen.
+This flow visualization should also include an optimization step, where the arrow placement would be improved.
+In more detail, steps such as bigger arrows for zones with more flow, arrow replacement in occluded areas or extra arrows in for bigger areas, following the criteria in \cite{Mitra2010}.
 %We are going to use stream lines on surfaces and then replace them by arrows.
 
 \section{Solid parts visualization}
