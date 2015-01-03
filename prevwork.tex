@@ -11,11 +11,9 @@ Usually the models are also represented using points clouds, which can be obtain
 However, clouds and mesh models lack middle and high level information such as: symmetry, parallelism or part segmentation.
 Therefore we must extract this information from either representation.
 Since solving for general shapes is quite challenging, a number of constrained approaches have been proposed.
+Moreover, part analysis goes beyond part segmentation, including part semantics and part relations analysis. 
 We refer the readers to the following surveys on segmentation techniques, \cite{Varady1997}, \cite{Agathos2007} and \cite{Shamir2008}.
 
-Part analysis goes beyond part segmentation, it also includes analysing part semantics and relations between them. 
-
-%Can divide this in region growing, wathersed, kmeans, mesh shift, shaper diameter function, random walk.
 \subsection{Region growing}
 
 Region growing algorithms start with a seed element for the sub-mesh and then perform a local greedy element addition to the current cluster.
