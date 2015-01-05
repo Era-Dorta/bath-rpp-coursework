@@ -12,7 +12,8 @@ However, clouds and mesh models lack middle and high level information such as: 
 Therefore we must extract this information from either representation.
 Since solving for general shapes is quite challenging, a number of constrained approaches have been proposed.
 Moreover, part analysis goes beyond part segmentation, including part semantics and part relations analysis. 
-We refer the readers to the following surveys on segmentation techniques, \cite{Varady1997}, \cite{Agathos2007} and \cite{Shamir2008}.
+For an overview on segmentation techniques, we refer the readers to the following surveys \cite{Varady1997}, \cite{Agathos2007} and \cite{Shamir2008}.
+Whereas, for symmetry detection we recommend \cite{Mitra2013} survey.
 
 \subsection{Region growing}
 
@@ -97,6 +98,14 @@ This is quite useful as it gives for each part its degrees of freedom, e.g. sphe
 In man-made objects, and specially with assembly models, object symmetry can be used to detect important features in a part.
 With symmetric parts possible axis of rotation or translation can be computed.
 Additionally, non symmetric ones tend to imply movement constrains to the other parts.
+
+\cite{Mitra2006} presented a approximate symmetry detection method, using a voting scheme.
+The technique detects reflections, rotational symmetries and scaling.
+Mitra et al. later extended their previous work to automatic object symmetrization \cite{Mitra2007}.
+\cite{Bokeloh2009} proposed an alternative approach to detect only rigid symmetries.
+Their method is based on feature lines, whose main advantage is better performance than previous methods.
+\cite{Xu2012} presented a partial intrinsic symmetry detection system.
+With a multi-scale voting scheme intrinsic symmetries are extracted on multiple scales.
 
 \subsection{Interaction analysis}
 
