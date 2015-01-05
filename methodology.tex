@@ -1,4 +1,6 @@
-\chapter{Proposed methodology}
+\chapter{Methodology}
+
+\section{Overview}
 
 Given a 3D CAD model of some hydraulic machinery we want to generate how things work visualizations.
 Namely, adding arrows depicting the fluid movement.
@@ -39,7 +41,9 @@ Therefore, techniques to embed motion in a single picture are used.
 %Here we talk about what we are going to use.
 %Still not clear what are the actual contributions of the proposal.
 
-\section{Part analysis}
+\section{Proposed Methodology}
+
+\subsection{Part analysis}
 
 As discussed in Sections \ref{ch:intro} and \ref{ch:prevWork}, the first step is to segment the 3D CAD model mesh into useful parts for our task.
 In Section \ref{sec:partAnalysis} we presented several options to segment meshes.
@@ -60,7 +64,7 @@ Other characteristics of the part have to be extracted, such as symmetry, edges,
 %The slippage thing, with manual input when needed.
 %I.e. to specify pump input or to say where the liquid is.
 
-\section{Fluid simulation}
+\subsection{Fluid simulation}
 
 Once we have segmented the model and we know how each part can move and where can the hydraulic fluid flow, we need to calculate how the liquid interacts with the solid parts.
 Given the characteristics of our problem, a physically accurate simulation with two way solid-fluid coupling is needed.
@@ -77,7 +81,7 @@ Therefore, the previous grid disadvantage is no longer applicable, making method
 %Using SPH, Grid or Hybrid simulation.
 %Looks like grid since we are constrained to a small area and we do care about foams or other extra realism stuff.
 
-\section{Flow visualization}
+\subsection{Flow visualization}
 
 The next step is to generate the flow visualization from the simulation data.
 Following the techniques discussed in Section~\ref{sec:flowVisualization}, we will use streamlines to visualize the flow.
@@ -90,7 +94,7 @@ This flow visualization should also include an optimization step, where the arro
 Following the criteria in \cite{Mitra2010}, steps such as increasing arrow size in zones with more flow, replacing arrows in occluded areas or adding extra arrows in bigger areas, will be necessary to improve illustration quality.
 %We are going to use stream lines on surfaces and then replace them by arrows.
 
-\section{Solid parts visualization}
+\subsection{Solid parts visualization}
 
 Solid parts visualization will be based on \cite{Mitra2010} methods for mechanical assemblies.
 This stage involves placing arrows to convey part movement on the edge of each junction.
@@ -98,7 +102,7 @@ Different arrow types will be used, such as the ones shown in Figure \ref{fig:ar
 Moreover, extra arrows will be added if the parts are too long and, if occlusion were to happen the arrow placement can be optimized.
 However, if this is not enough, the type of the arrow could be switched if it produced an increased in visibility, from cap to side or viceversa.
 
-\section{Key frames visualization}
+\subsection{Key frames visualization}
 
 To create key frame visualizations a simple approach is to sample the animation created from the fluid simulation at key points \cite{Mitra2010}.
 In order to select those key points there are two cases: objects with cyclical movement and parts that do not.
