@@ -253,10 +253,14 @@ For instance, on the path of each streamline or after clustering some streamline
 In the following sections we focus only on steady flow visualization.
 For more information on the subject we refer the readers to~\cite{McLoughlin2010} survey.
 
-\subsection{2D visualization}
+\subsection{2D flow}
 
 On the 2D image domain, an image-guided algorithm for visualizing 2D flow in images was proposed by \cite{Turk1996}.
-Which \cite{Li2008} improved, by only generating the fewest possible number of streamlines. 
+The approach used inefficient seeding and streamline calculations.
+The first problem was addressed by \cite{Jobard1997}, with a controllable seeding algorithm using two distance parameters.
+While the second was solved by \cite{Mebarki2005}, the authors used a farthest seeding point strategy with a 2D Delauney triangulation.
+\cite{Li2008} presented a novel method by only generating the fewest possible number of streamlines, while also preserving the most important flow features.
+Exploiting local coherence, similarity between streamlines is measured and used as criteria to disregard repetitive patterns.
 
 \subsection{Streamlines on surfaces}
 
