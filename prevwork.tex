@@ -264,8 +264,12 @@ Exploiting local coherence, similarity between streamlines is measured and used 
 
 \subsection{Streamlines on surfaces}
 
-Seeding techniques for curves on 3D surfaces were explored by  \cite{Wicke2009}, who developed a technique to combine model reduction with grid based methods.
-And by \cite{Spencer2009}, whose method generates streamlines only for visible parts of the surface, thus providing a significant gain in efficiency.
+Seeding techniques for curves on 3D surfaces were explored by \cite{VanWijk1992}, who developed a particle based visualization method.
+Particles are seeded from geometric objects and continuous points sources will create streamlines.
+\cite{Mao1998} proposed a technique to generate evenly spaced streamlines, extending \cite{Turk1996} work.
+The algorithm maps 3D surface vectors in an extended 2D image domain and maps back the streamlines to 3D. 
+\cite{Spencer2009} presented a method to generate streamlines only for visible parts of the surface, thus providing a significant gain in efficiency.
+Moreover, the technique is able to handle general surfaces, adaptive resolution and supports exploration through user interaction.
 
 \subsection{Streamline rendering and placement}
 
