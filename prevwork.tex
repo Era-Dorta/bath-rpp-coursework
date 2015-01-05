@@ -97,15 +97,18 @@ This is quite useful as it gives for each part its degrees of freedom, e.g. sphe
 
 In man-made objects, and specially with assembly models, object symmetry can be used to detect important features in a part.
 With symmetric parts possible axis of rotation or translation can be computed.
-Additionally, non symmetric ones tend to imply movement constrains to the other parts.
+Additionally, non symmetric ones normally imply movement constrains to the other parts.
 
 \cite{Mitra2006} presented a approximate symmetry detection method, using a voting scheme.
 The technique detects reflections, rotational symmetries and scaling.
 Mitra et al. later extended their previous work to automatic object symmetrization \cite{Mitra2007}.
+However, parameters for symmetry detection and shape deformation still have to be manually given to the algorithm.
 An alternative approach to detect only rigid symmetries was proposed by \cite{Bokeloh2009}.
 Their method is based on feature lines, whose main advantage is better performance than previous methods.
+Nevertheless, their method is constrained to only rigid transformations.
 \cite{Xu2012} presented a partial intrinsic symmetry detection system.
 With a multi-scale voting scheme intrinsic symmetries are extracted on multiple scales.
+Anyhow, erroneous symmetry fusion between different parts may occur when the sample points are on the same scale cluster. 
 
 \subsection{Part characterization}
 
