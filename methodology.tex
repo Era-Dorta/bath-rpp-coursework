@@ -45,8 +45,9 @@ Therefore, techniques to embed motion in a single picture are used.
 
 As discussed in Sections \ref{ch:intro} and \ref{ch:prevWork}, the first step is to segment the 3D CAD model mesh into useful parts for our task.
 In Section \ref{sec:partAnalysis} we presented several options to segment meshes.
-However, slippage analysis is the only method that can be applied directly to mechanical machinery.
-Moreover, this method outputs the degrees of freedom for each part. 
+However, slippage analysis \cite{Yi2014} is the only method that can be applied directly to mechanical machinery.
+Moreover, this method outputs the degrees of freedom for each part.
+However, symmetry analysis can also be used to identify part rotation and translation axis \cite{Mitra2007}.
 Therefore, a geometric analysis can be performed and we can work with models that do not have extra time information embedded.
 Which is the case for most of the models available in the model libraries in Section \ref{sec:partAnalysis}.
 However, none of the methods will automatically detect which parts will interact with the hydraulic fluid.
@@ -54,8 +55,7 @@ A first approach will be to manually mark them.
 Nevertheless, other paths can be explored, such as heuristics that analyse the segment shape.
 For example, the biggest cylindrical part will probably be the reservoir for the fluid, and the parts connected to it have high probability to have the hydraulic liquid flowing through then.
 Other characteristics of the part have to be extracted, such as symmetry, edges, gear radius, etc.
-1D features curves are useful for characterizing man-made parts  \cite{Gal2009}.
-Therefore the part analysis stage will be based mainly on the work of \cite{Yi2014}.
+1D features curves are useful for characterizing man-made parts \cite{Gal2009}.
 
 %How are we going to detect the parts.
 %Heuristics to detect were the liquid is?
