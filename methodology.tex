@@ -132,17 +132,37 @@ While the second can be considered more complex than the other areas, and as suc
 \begin{figure}[!htbp]
 \begin{center}
 
-\begin{ganttchart}{1}{16}
+\begin{ganttchart}[
+	y unit title=0.4cm,
+	y unit chart=0.5cm,
+	vgrid,
+	bar label font=\normalsize\color{black!50},
+	title label node/.append style={below=-1.6ex},
+	title left shift=.05,
+	title right shift=-.05,
+	title height=1,
+	bar height=.6,
+	group right shift=0,
+	group top shift=.6,
+	group height=.3,
+	group peaks height=.2
+]{1}{16}
 	\gantttitle{Weeks}{16} \ganttnewline
 	\gantttitlelist{1,...,16}{1} \ganttnewline
-	%\ganttgroup{Group 1}{1}{7} \\
-	\ganttbar{Part Analysis}{1}{4} \ganttbar{}{8}{8} \ganttbar{}{11}{11} \ganttnewline
-	\ganttbar{Fluid Simulation}{4}{8} \ganttbar{}{11}{11} \ganttnewline
+	\ganttgroup{Part Analysis}{1}{4} \ganttnewline
+	\ganttbar{Preparation}{1}{1} \ganttnewline
+	\ganttbar{Part Segmentation}{2}{2} \ganttnewline
+	\ganttbar{Part Characterization}{3}{4} \ganttbar{}{8}{8} \ganttnewline
+	\ganttgroup{Fluid Simulation}{4}{8} \ganttnewline
+	\ganttbar{Fluid Only}{4}{6} \ganttbar{}{8}{8} \ganttnewline
+	\ganttbar{Solid-Fluid Coupling}{6}{7} \ganttbar{}{11}{11} \ganttnewline
+	\ganttbar{With hydraulic parts}{8}{8} \ganttnewline
 	%\ganttmilestone{Milestone}{7}
 	%\ganttnewline
-	\ganttbar{Flow Visualization}{8}{11} \ganttbar{}{14}{14} \ganttnewline
-	\ganttbar{Solid Parts Visualization}{11}{14} \ganttnewline
-	\ganttbar{Key Frames Visualization}{14}{16}
+	\ganttgroup{Visualization}{8}{16} \ganttnewline
+	\ganttbar{Flow}{8}{11} \ganttbar{}{14}{14} \ganttnewline
+	\ganttbar{Solid Parts}{11}{14} \ganttnewline
+	\ganttbar{Key Frames}{14}{16}
 	%\ganttlink{elem2}{elem3} % Link to milestone
 	%\ganttlink{elem3}{elem4} % Link from milestone
 \end{ganttchart}
