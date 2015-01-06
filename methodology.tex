@@ -50,18 +50,17 @@ In Section \ref{sec:partAnalysis} we presented several options to segment meshes
 If we are to treat the more general case we need to perform a model to part segmentation.
 Volumetric extraction segmentation is needed to perform this task.
 Depending of the quality of the mesh a simpler method like \cite{Attene2006} or a more complex one \cite{Yumer2012} will be used.
-Then, the parts itself have to be segmented to obtain segment information, such as type of the part or rotation axis.
-However, slippage analysis \cite{Yi2014} is the only method that can be applied directly to mechanical machinery.
+Then, the parts itself have to be segmented to obtain more information, such as type of the part or rotation axis.
+Slippage analysis \cite{Yi2014} is the only method that can be applied directly to mechanical machinery.
 Moreover, this method outputs the degrees of freedom for each part.
-However, symmetry analysis can give more detailed information about part rotation and translation axis \cite{Mitra2007}.
+However, symmetry analysis \cite{Mitra2007} can give more detailed information about part rotation and translation axis, and to extract extra features such as edges or gear radius.
+1D features curves are useful for characterizing these and other attributes of man-made parts \cite{Gal2009}.
 Therefore, a geometric analysis can be performed and we can work with models that do not have extra time information embedded.
 Which is the case for most of the models available in the model libraries in Section \ref{sec:partAnalysis}.
 However, none of the methods will automatically detect which parts will interact with the hydraulic fluid.
 A first approach will be to manually mark them.
 Nevertheless, other paths can be explored, such as heuristics that analyse the segment shape.
 For example, the biggest cylindrical part will probably be the reservoir for the fluid, and the parts connected to it have high probability to have the hydraulic liquid flowing through then.
-Other characteristics of the part have to be extracted, such as symmetry, edges, gear radius, etc.
-1D features curves are useful for characterizing man-made parts \cite{Gal2009}.
 
 %How are we going to detect the parts.
 %Heuristics to detect were the liquid is?
