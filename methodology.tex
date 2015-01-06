@@ -123,11 +123,9 @@ However, we are faced with a problem of either under or oversampling in the midd
 
 In Figure \ref{fig:timeLine} we present an estimated time line for the implementation of the proposal.
 This estimation is highly dependant on the features to be implemented and the complexity of the CAD input models.
-The output of one task is the input of the next, so overlapping naturally occurs when we switch to one task to the next, as we inevitably have to fix unexpected errors or introduce new features.
-Moreover, the changes may backtrack to tasks several steps backs as shown in the isolated bars of Part Analysis or Fluid Simulation.
-Furthermore, the first two tasks are given more than the rest.
-The first task frequently takes longer to finish, as it also includes time to set the working environment and familiarization with the tools and the area.
-While the second can be considered more complex than the other areas, and as such it will need extra time to reach its completion.
+The input of one task is the output of the one preceding, so overlapping naturally occurs when we are finishing one task as moving towards the  next.
+We inevitably have to fix unexpected errors or introduce new features in the former task.
+Moreover, the changes may backtrack several steps backs as shown in the isolated bars of Part Characterization or Fluid Simulation.
 
 \begin{figure}[!htbp]
 \begin{center}
@@ -149,19 +147,19 @@ While the second can be considered more complex than the other areas, and as suc
 ]{1}{16}
 	\gantttitle{Weeks}{16} \ganttnewline
 	\gantttitlelist{1,...,16}{1} \ganttnewline
-	\ganttgroup{Part Analysis}{1}{4} \ganttnewline
+	\ganttgroup{Part Analysis}{1}{6} \ganttnewline
 	\ganttbar{Preparation}{1}{1} \ganttnewline
-	\ganttbar{Part Segmentation}{2}{2} \ganttnewline
-	\ganttbar{Part Characterization}{3}{4} \ganttbar{}{8}{8} \ganttnewline
-	\ganttgroup{Fluid Simulation}{4}{8} \ganttnewline
-	\ganttbar{Fluid Only}{4}{6} \ganttbar{}{8}{8} \ganttnewline
-	\ganttbar{Solid-Fluid Coupling}{6}{7} \ganttbar{}{11}{11} \ganttnewline
-	\ganttbar{With hydraulic parts}{8}{8} \ganttnewline
+	\ganttbar{Part Segmentation}{2}{4} \ganttnewline
+	\ganttbar{Part Characterization}{4}{6} \ganttbar{}{8}{8} \ganttnewline
+	\ganttgroup{Fluid Simulation}{6}{11} \ganttnewline
+	\ganttbar{Fluid Only}{6}{8} \ganttbar{}{11}{11} \ganttnewline
+	\ganttbar{Solid-Fluid Coupling}{8}{9} \ganttbar{}{13}{13} \ganttnewline
+	\ganttbar{With hydraulic parts}{9}{11} \ganttnewline
 	%\ganttmilestone{Milestone}{7}
 	%\ganttnewline
-	\ganttgroup{Visualization}{8}{16} \ganttnewline
-	\ganttbar{Flow}{8}{11} \ganttbar{}{14}{14} \ganttnewline
-	\ganttbar{Solid Parts}{11}{14} \ganttnewline
+	\ganttgroup{Visualization}{11}{16} \ganttnewline
+	\ganttbar{Flow}{11}{13} \ganttbar{}{15}{15} \ganttnewline
+	\ganttbar{Solid Parts}{13}{14} \ganttnewline
 	\ganttbar{Key Frames}{14}{16}
 	%\ganttlink{elem2}{elem3} % Link to milestone
 	%\ganttlink{elem3}{elem4} % Link from milestone
