@@ -121,7 +121,7 @@ Other methods has been explored as well, such as planar based ones \cite{McCrae2
 However, their approach is limited to a learning phase with a training data set manually marked.
 \cite{Yumer2012} proposed a controllable abstraction approach uses a combination of RANSAC and volume-centric primitive fitting to produce a range of simplified models.
 The models were approximated by fitting a set of basic primitives to the model; which are then deformed with a polynomial surface. 
-An alternative to \cite{Attene2006} segmentation is also presented, addressing the previous problems.
+An alternative to \cite{Attene2006} segmentation is also presented, addressing the deficiencies in previous research.
 
 \section{Fluid simulation}
 \label{prevWorkFluidSim}
@@ -294,7 +294,7 @@ While the fast animating technique applies a stipple pattern to the streamline p
 \cite{Rosanwo2009} proposed a dual seeding technique for streamline placement.
 Dual streamlines that are orthogonal to the fluid flow are also calculated.
 However they are not rendered but rather used to better decide which and how the primal streamlines are going to be drawn.
-Considering the occlusion problems that normally arise in this area, \cite{Marchesin2010} tackle the streamline rendering from a view dependant perspective.
+Considering the occlusion issues that normally arise in this area, \cite{Marchesin2010} tackle the streamline rendering from a view dependant perspective.
 The authors precompute a random pool of streamlines.
 Then, occluded areas are pruned and empty areas are reseeded for the current view via occupancy buffers.
 What is more, a GPU implementation of their method is provided.

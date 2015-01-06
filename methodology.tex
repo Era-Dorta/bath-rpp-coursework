@@ -5,7 +5,7 @@
 Given a 3D CAD model of some hydraulic machinery we want to generate how things work visualizations.
 Namely, adding arrows depicting the fluid movement.
 
-The problem can be subdivided into:
+The topic can be subdivided into:
 \begin{enumerate}
 \item \textbf{Part analysis:} Detecting parts segments and inferring part properties.
 \item \textbf{Fluid simulation:} Simulate how the fluid behaves in the previously detected parts.
@@ -73,7 +73,7 @@ Once we have segmented the model and we know how each part can move and where ca
 The previous part analysis is specially useful in order to simplify the simulation stage.
 If we already know how the solid parts can move, the simulation will be simpler since each segments will have constrained degrees of freedom.
 Besides, extra information about the parts,such as maximum translation range, that otherwise would have to be input manually would be automatically available to the fluid simulation.
-Given the characteristics of our problem, a physically accurate simulation with two way solid-fluid coupling is needed.
+Given the characteristics of our input, a physically accurate simulation with two way solid-fluid coupling is needed.
 Fourier methods are discarded because we we will not be modelling vast amounts of fluid.
 Then, we are left with either SPH, grid or hybrid simulations.
 In terms of implementation complexity, grid methods are generally simpler, followed by SPH and lastly by hybrid systems.
