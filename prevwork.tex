@@ -4,10 +4,10 @@
 \section{Part analysis}
 \label{sec:partAnalysis}
 
-Libraries of 3D mesh models are quite common \cite{Trimble2014}, \cite{GrabCAD2014}, \cite{Autodesk2014}, in addition they contain vast quantities of models.   
-Usually the models are also represented using points clouds, which can be obtained easily from the meshes.
-However, clouds and mesh models lack middle and high level information such as: symmetry, parallelism or part segmentation.
-Therefore we must extract this information from either representation.
+Libraries of 3D mesh models are quite common \cite{Trimble2014}, \cite{GrabCAD2014}, \cite{Autodesk2014}, in addition they contain vast quantities of materials.   
+Usually the objects are also represented using points clouds, which can be obtained easily from the meshes.
+However, clouds and mesh models lack middle and high level information such as: symmetry or parallelism information.
+Therefore we must extract this data from either representation.
 Since solving for general shapes is quite challenging, a number of constrained approaches have been proposed.
 Moreover, part analysis goes beyond part segmentation, including part semantics and part relations analysis. 
 For an overview on segmentation techniques, we refer the readers to the following surveys \cite{Varady1997}, \cite{Agathos2007} and \cite{Shamir2008}.
@@ -19,7 +19,9 @@ Region growing algorithms start with a seed element for the sub-mesh and then pe
 \cite{Mizoguchi2006} proposed a mesh segmentation technique based on curvature estimation with sharp edge recognition.
 The author's method performs well on mechanical objects and it is also robust to noise.
 However, oversegmentation occurs in models with soft edges.
-Extensions to this model include Markov Random Fields \cite{Lavoue2008},
+This model was extended by \cite{Lavoue2008} with the use of Markov Random Fields.
+This probabilistic approach provides a optimal global solution using local interactions.
+Anyhow, the algorithm is not particularly efficient, taking several seconds to give a result.
 %Maybe add more papers, too lazy to do it now
 
 %TODO Add papers on all this sections if short on words
@@ -46,41 +48,42 @@ can not be represented by a quadratic surface.
 
 \subsection{Random walk}
 
-With the random walks approach, $n$ faces are chosen as seeds, with $n$ been the number of desired segments.
+With the random walks approach, $n$ faces are chosen as seeds, with $n$ being the number of desired segments.
 Then for each unlabelled face, the probabilities that a random walker will reach each labelled face are calculated.
 Finally, each face is assigned to the highest probability label.
-\cite{Grady2006} proposed a first random walks implementation constrained into the imaged domain.
-Thereafter, \cite{Lai2009} extended it to for 3D mesh models, the author's technique also included an automatic seeding mode were seeds quantity and placement is based on a spring-like energy function.
-Seeds placement can greatly affect the final segmentation.
+\cite{Grady2006} proposed the first random walks implementation constrained into the imaged domain.
+Thereafter, \cite{Lai2009} extended it to for 3D mesh models, the authors' technique also included an automatic seeding mode, where seed quantity and placement is based on a spring-like energy function.
+Seed placement can greatly affect the final segmentation.
 Nevertheless, the authors tackle the issue with a post processing stage were the clusters are merged if oversegmentation occurred and the edges are smoothed.
-Given its nature, random techniques give different results on different executions, the authors addressed the issue with their spring-like energy function, however their method is not completely invariant to seed placement.
+Given its nature, random techniques give different results on each execution, the authors addressed the issue with their spring-like energy function, however their method is not completely invariant to seed placement.
  
 
 \subsection{Data driven}
 
 %Acoording to 2013 Mitra paper, this is co-analysis
-\cite{Golovinskiy2009} presented an extension to the clustering technique with special emphasis on edge and face consistency, that became a new segmentation area.
-The algorithm is based on a graph construction which encodes triangle neighbour information.
-The method then performs the clustering on the graph space.
+\cite{Golovinskiy2009} presented an extension to the previous iterative clustering techniques with special emphasis on edge and face consistency.
+This started the data driven approach to segmentation.
+The algorithm is based on a graph construction which encodes triangle neighbour information, the method then performs a clustering on the graph space.
 The main advantage is consistent segmentation of similar models.
 For example, on different chair models, segments always represent legs, backs and armrests. 
 However, there are several parameters that need to be input by the user.
-Moreover, as the method is based on consistency across a set of models, if the alignment between the different models fails, the resulting segmentation quality will decrease.
+Moreover, as the technique is based on consistency across a set of models, if the alignment between the different models fails, the resulting segmentation quality will decrease.
 Researchers have presented extensions to the original \cite{Golovinskiy2009} approach, such as: setting a objective function as a Conditional Random Field model \cite{Kalogerakis2010}.
 
 \subsection{Global energy function}
 
-\cite{Benhabiles2011} proposed a method based on a boundary edged function that would be learned by an AdaBoost classifier.
-Nevertheless, the method needs a large database of manually segmented meshes, and it also has problems generalizing the function for difficult test data.
-\cite{DeCastro2014} presented a novel segmentation technique based on calculating a global discrepancy function, based on the Lambert illumination model, for each triangle in the mesh.
-Then they directly use that value to segment the model in several parts.
+\cite{Benhabiles2011} proposed a method based on a boundary edge function that would be learned by an AdaBoost classifier.
+Nevertheless, the algorithm needs a large database of manually segmented meshes, and it also has problems generalizing the function for complex test data.
+\cite{DeCastro2014} presented a novel segmentation technique based on calculating a global discrepancy function, based on the Lambert illumination model.
+For each triangle in the mesh a illumination value from several lights is calculated.
+Then they directly use that quantity to segment the model in several parts.
 However, their segmentation results are still not comparable with other state of the art methods.
 
 \subsection{Hybrid}
 
-\cite{Wang2011} approach for mesh segmentation functions with a combination of curvature estimation, Gauss mapping and B-spline surface fitting.
-Their methods performs relatively well, however there are six numerical parameters to adjust and the presented results show oversegmentation with certain models.
-\cite{Yang2014} presented a model to improve the normals calculation by adding joint information, and hence enhancing curvature detection in \cite{Wang2011} method.
+\cite{Wang2011} approach for mesh segmentation is based on a combination of curvature estimation, Gauss mapping and B-spline surface fitting.
+The authors' methods performs relatively well, however there are six numerical parameters to adjust and the presented results show oversegmentation with certain models.
+\cite{Yang2014} proposed a model to improve the normals calculation by adding joint information, and hence enhancing curvature detection in \cite{Wang2011} method.
 
 \subsection{Slippage analysis}
 \label{SlippageAnalysis}
@@ -89,23 +92,23 @@ However all the previous methods cannot be directly applied to segment mechanica
 \cite{Gelfand2004} proposed a method for segmenting mechanical objects based on local slippage.
 This is quite useful as it gives for each part its degrees of freedom, e.g. sphere (3 rotations), cylinder (1 rotation and 1 translation), plane (1 rotation and 2 translations), etc.
 \cite{Xu2009} applied slippage analysis to perform joint-aware deformations in man-made objects.
-\cite{Yi2014} improved \cite{Gelfand2004} method making it more robust to noise and giving extra primitive information(e.g. normal of a plane, center of a sphere, etc).
+\cite{Yi2014} improved \cite{Gelfand2004} method, obtaining an algorithm more robust to noise and that would output extra primitive information (e.g. normal of a plane, center of a sphere, etc).
 
 \subsection{Symmetry detection}
 
 In man-made objects, and specially with assembly models, object symmetry can be used to detect important features in a part.
-With symmetric parts possible axis of rotation or translation can be computed.
-Additionally, non symmetric ones normally imply movement constrains to the other parts.
+With symmetric segments possible axis of rotation or translation can be computed.
+Additionally, non symmetric components normally imply movement constrains to the other parts.
 
-\cite{Mitra2006} presented a approximate symmetry detection method, using a voting scheme.
+\cite{Mitra2006} presented an approximate symmetry detection method based on a voting scheme.
 The technique detects reflections, rotational symmetries and scaling.
 Mitra et al. later extended their previous work to automatic object symmetrization \cite{Mitra2007}.
-However, parameters for symmetry detection and shape deformation still have to be manually given to the algorithm.
+However, parameters for symmetry detection and shape deformation still have to be manually input.
 An alternative approach to detect only rigid symmetries was proposed by \cite{Bokeloh2009}.
 Their method is based on feature lines, whose main advantage is better performance than previous methods.
-Nevertheless, their method is constrained to only rigid transformations.
+Nevertheless, their technique is constrained to only rigid transformations.
 \cite{Xu2012} presented a partial intrinsic symmetry detection system.
-With a multi-scale voting scheme intrinsic symmetries are extracted on multiple scales.
+Through a multi-scale voting scheme, intrinsic symmetries are extracted on multiple scales.
 Anyhow, erroneous symmetry fusion between different parts may occur when the sample points are on the same scale cluster. 
 
 \subsection{Part characterization}
@@ -116,12 +119,12 @@ Nevertheless, the authors' method is not able to identify negative volumes, and 
 Building on previous work, \cite{Attene2008} proposed an extension for region selection using polyhedra.
 \cite{Gal2009} demonstrated that man-made objects can be deformed intuitively with a set of 1D curves extracted from the models.
 An abstraction method, to extract characteristic curve networks was proposed by \cite{Mehra2009}.
-Which iteratively fits envelopes to the surface and does a deforming simplification to smooth out details.
-Other methods has been explored as well, such as planar based ones \cite{McCrae2011}.
-However, their approach is limited to a learning phase with a training data set manually marked.
-\cite{Yumer2012} proposed a controllable abstraction approach uses a combination of RANSAC and volume-centric primitive fitting to produce a range of simplified models.
-The models were approximated by fitting a set of basic primitives to the model; which are then deformed with a polynomial surface. 
-An alternative to \cite{Attene2006} segmentation is also presented, addressing the deficiencies in previous research.
+Which iteratively fits envelopes to the surface and performs a deforming simplification to smooth out details.
+Other techniques has been explored as well, such as planar based ones \cite{McCrae2011}.
+However, their approach is limited to a learning phase with a manually marked training dataset.
+\cite{Yumer2012} proposed a controllable abstraction approach combining RANSAC and volume-centric primitive fitting to produce a range of simplified models.
+The algorithm is based on deforming the fitted primitives with a polynomial surface.
+An alternative to \cite{Attene2006} segmentation approach is also presented, addressing the previously outlined deficiencies.
 
 \section{Fluid simulation}
 \label{prevWorkFluidSim}
