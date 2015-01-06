@@ -45,11 +45,15 @@ Therefore, techniques to embed motion in a single picture are used.
 
 \subsection{Part analysis}
 
-As discussed in Sections \ref{ch:intro} and \ref{ch:prevWork}, the first step is to segment the 3D CAD model mesh into useful parts for our task.
+As discussed in Sections \ref{ch:intro} and \ref{ch:prevWork}, the input models for the system might not be segmented into parts.
 In Section \ref{sec:partAnalysis} we presented several options to segment meshes.
+If we are to treat the more general case we need to perform a model to part segmentation.
+Volumetric extraction segmentation is needed to perform this task.
+Depending of the quality of the mesh a simpler method like \cite{Attene2006} or a more complex one \cite{Yumer2012} will be used.
+Then, the parts itself have to be segmented to obtain segment information, such as type of the part or rotation axis.
 However, slippage analysis \cite{Yi2014} is the only method that can be applied directly to mechanical machinery.
 Moreover, this method outputs the degrees of freedom for each part.
-However, symmetry analysis can also be used to identify part rotation and translation axis \cite{Mitra2007}.
+However, symmetry analysis can give more detailed information about part rotation and translation axis \cite{Mitra2007}.
 Therefore, a geometric analysis can be performed and we can work with models that do not have extra time information embedded.
 Which is the case for most of the models available in the model libraries in Section \ref{sec:partAnalysis}.
 However, none of the methods will automatically detect which parts will interact with the hydraulic fluid.
@@ -67,6 +71,8 @@ Other characteristics of the part have to be extracted, such as symmetry, edges,
 \subsection{Fluid simulation}
 
 Once we have segmented the model and we know how each part can move and where can the hydraulic fluid flow, we need to calculate how the liquid interacts with the solid parts.
+The previous part analysis is specially useful in order to simplify the simulation stage.
+If we already know how the solid parts can move, the simulation will be simpler since each segments will have constrained degrees of freedom.
 Given the characteristics of our problem, a physically accurate simulation with two way solid-fluid coupling is needed.
 Fourier methods are discarded because we we will not be modelling vast amounts of fluid.
 Then, we are left with either SPH, grid or hybrid simulations.
