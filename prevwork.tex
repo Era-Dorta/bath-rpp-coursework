@@ -110,14 +110,18 @@ Anyhow, erroneous symmetry fusion between different parts may occur when the sam
 
 \subsection{Part characterization}
 
+Variational shape approximation has been studied for characterization purposes of engineered objects \cite{Cohen-Steiner2004}.
+Volume based segmentation was explored by \cite{Attene2006}, with a primitive fitting segmentation method.
+Nevertheless, the authors' method is not able to identify negative volumes, and it is not able to distinguish between the inner and the outer parts of the model.
+Building on previous work, \cite{Attene2008} proposed an extension for region selection using polyhedra.
 \cite{Gal2009} demonstrated that man-made objects can be deformed intuitively with a set of 1D curves extracted from the models.
-Variational shape approximation has also been studied for characterization purposes of engineered objects \cite{Cohen-Steiner2004}.
-An abstraction method, to extract a characteristic curve networks was proposed by \cite{Mehra2009}.
-Nevertheless, 
+An abstraction method, to extract characteristic curve networks was proposed by \cite{Mehra2009}.
+Which iteratively fits envelopes to the surface and does a deforming simplification to smooth out details.
 Other methods has been explored as well, such as planar based ones \cite{McCrae2011}.
 However, their approach is limited to a learning phase with a training data set manually marked.
 \cite{Yumer2012} proposed a controllable abstraction approach uses a combination of RANSAC and volume-centric primitive fitting to produce a range of simplified models.
-
+The models were approximated by fitting a set of basic primitives to the model; which are then deformed with a polynomial surface. 
+An alternative to \cite{Attene2006} segmentation is also presented, addressing the previous problems.
 
 \section{Fluid simulation}
 \label{prevWorkFluidSim}
