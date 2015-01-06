@@ -72,6 +72,7 @@ For example, the biggest cylindrical part will probably be the reservoir for the
 Once we have segmented the model and we know how each part can move and where can the hydraulic fluid flow, we need to calculate how the liquid interacts with the solid parts.
 The previous part analysis is specially useful in order to simplify the simulation stage.
 If we already know how the solid parts can move, the simulation will be simpler since each segments will have constrained degrees of freedom.
+Besides, extra information about the parts,such as maximum translation range, that otherwise would have to be input manually would be automatically available to the fluid simulation.
 Given the characteristics of our problem, a physically accurate simulation with two way solid-fluid coupling is needed.
 Fourier methods are discarded because we we will not be modelling vast amounts of fluid.
 Then, we are left with either SPH, grid or hybrid simulations.
