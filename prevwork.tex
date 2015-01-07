@@ -95,6 +95,7 @@ This is quite useful as it gives for each part its degrees of freedom, e.g. sphe
 \cite{Yi2014} improved \cite{Gelfand2004} method, obtaining an algorithm more robust to noise and that would output extra primitive information (e.g. normal of a plane, center of a sphere, etc).
 
 \subsection{Symmetry detection}
+\label{sec:symmetryDetection}
 
 In man-made objects, and specially with assembly models, object symmetry can be used to detect important features in a part.
 With symmetric segments possible axis of rotation or translation can be computed.
@@ -233,7 +234,7 @@ What is more, the authors' work also allowed for larger time steps, however a GP
 
 %In each of them talk first about steady flow and then about unsteady flow 
 
-Extensive work has been done in this area as visualizing fluid movement has a broad range of applications.
+Extensive work has been done in this area as visualizing fluid movement has a broad range of applications, such as turbomachinery design, simulation of weather systems, air-conditioning design, blood flow simulations for surgical purposes, etc.
 However, this is a challenging task as it has to effectively display complex and copious amounts of data.
 Seeing that fluid simulation is generally solved by means of highly divided grids or with large number of particles, as explained in Section~\ref{prevWorkFluidSim}.
 
@@ -256,36 +257,36 @@ Seeing that fluid simulation is generally solved by means of highly divided grid
 Streamlines are convenient tools to describe and visualize flow, as shown in figure~\ref{fig:streamLines}.
 A streamline is defined as a curve that is everywhere tangent to flow field, i.e. it is parallel to the local velocity vector.
 Therefore, they provide an intuitive mechanism to show the fluid travel direction.
-Furthermore, they have properties such as: streamlines will not cross each other (flow will not go across them), or a particle in the fluid starting on one streamline will not leave it.
+Furthermore, they have interesting properties such as: streamlines will not cross each other (i.e. flow will not go across them) and a particle in the fluid starting on one streamline will not leave it.
 Once the streamlines has been calculated, instead of displaying them as such, they can be replaced by arrows arranged using some criteria.
 For instance, on the path of each streamline or after clustering some streamlines together, as shown in Figure~\ref{fig:streamArrows}.
 
-In the following sections we focus only on steady flow visualization.
-For more information on the subject we refer the readers to~\cite{McLoughlin2010} survey.
+In the following sections we will only focus on steady flow visualization with 2D and 3D curves, as well as surface based.
+For complete review on the topic, including unsteady flow and volume integral objects, we refer the readers to~\cite{McLoughlin2010} survey.
 
 \subsection{2D flow}
 
-On the 2D image domain, an image-guided algorithm for visualizing 2D flow in images was proposed by \cite{Turk1996}.
+On the 2D domain, an image-guided algorithm for visualizing two-dimensional flow in images was proposed by \cite{Turk1996}.
 The approach used inefficient seeding and streamline calculations.
 The first problem was addressed by \cite{Jobard1997}, with a controllable seeding algorithm using two distance parameters.
 While the second was solved by \cite{Mebarki2005}, the authors used a farthest seeding point strategy with a 2D Delauney triangulation.
 \cite{Li2008} presented a novel method by only generating the fewest possible number of streamlines, while also preserving the most important flow features.
-Exploiting local coherence, similarity between streamlines is measured and used as criteria to disregard repetitive patterns.
+The authors' exploit local coherence,  measuring similarity between streamlines, to disregard repetitive patterns.
 
 \subsection{Streamlines on surfaces}
 
 Seeding techniques for curves on 3D surfaces were explored by \cite{VanWijk1992}, who developed a particle based visualization method.
 Particles are seeded from geometric objects and continuous points sources will create streamlines.
 \cite{Mao1998} proposed a technique to generate evenly spaced streamlines, extending \cite{Turk1996} work.
-The algorithm maps 3D surface vectors in an extended 2D image domain and maps back the streamlines to 3D. 
+The algorithm maps 3D surface vectors in an extended 2D image domain, calculates the streamlines in the simplified space, and maps them back to 3D. 
 \cite{Spencer2009} presented a method to generate streamlines only for visible parts of the surface, thus providing a significant gain in efficiency.
-Moreover, the technique is able to handle general surfaces, adaptive resolution and supports exploration through user interaction.
+Moreover, the technique is able to handle general surfaces, adaptive resolution and also supports exploration through user interaction.
 
 \subsection{Streamline rendering and placement}
 
-Rendering too many streamlines can result in clutter and too few can lead to omit important characteristics.
-There has been plenty research into optimizing streamline production and placement.
-However for our hydraulic machinery the issue is less critical than in other areas.
+Rendering too many streamlines can result in clutter and too few can lead to omit important characteristics in the flow dynamics.
+There has been copious research into optimizing streamline generation and placement.
+However, for our hydraulic machinery the issue is less critical than in other research areas.
 
 \begin{figure}[htbp]
 	\centering
@@ -294,18 +295,17 @@ However for our hydraulic machinery the issue is less critical than in other are
 	\label{fig:streamComent}
 \end{figure}
 
-\cite{Laramee2005} presented the streamcomet and a fast animating technique.
+\cite{Laramee2005} presented the streamcomet technique and a fast animating method.
 A streamcomet, as shown in Figure~\ref{fig:streamComent}, is an extension of a streamline, they move along the path of a stream line, with adjustable head position, length and translucency of tail, and variable animation speed.
-While the fast animating technique applies a stipple pattern to the streamline path, so the pattern is shifted at rendering time to add animation.
+The fast animating technique applies a stipple pattern to the streamline path, so the pattern is shifted at rendering time to add animation.
 \cite{Rosanwo2009} proposed a dual seeding technique for streamline placement.
-Dual streamlines that are orthogonal to the fluid flow are also calculated.
-However they are not rendered but rather used to better decide which and how the primal streamlines are going to be drawn.
+Standard stream lines and dual streamlines, who are orthogonal to the fluid flow, are calculated.
+However, the dual ones are not rendered; rather they are used to improve primal streamlines selection and rendering.
 Considering the occlusion issues that normally arise in this area, \cite{Marchesin2010} tackle the streamline rendering from a view dependant perspective.
-The authors precompute a random pool of streamlines.
-Then, occluded areas are pruned and empty areas are reseeded for the current view via occupancy buffers.
+The authors precompute a random pool of streamlines, then occluded areas are pruned, and empty areas are reseeded for the current view via occupancy buffers.
 What is more, a GPU implementation of their method is provided.
 Clustering is a common technique for reducing the amount of rendered streamlines.
-To address slow euclidean distance tests in clustering, \cite{McLoughlin2013} presented a signature based metric.
+To address slow euclidean distance tests in clustering \cite{McLoughlin2013} presented a signature based metric.
 The streamline attributes for the signature are curvature, torsion and tortuosity.
 The authors presented two variations, a fast simpler method and a hierarchical one that sacrifices speed for superior results.
 However, both provide a performance increase over euclidean distance calculations.
@@ -313,9 +313,8 @@ However, both provide a performance increase over euclidean distance calculation
 \subsection{Surface based integral objects}
 
 Streamlines can be extended dimensionally in order to represent 3D surfaces instead of 3D lines, an example of a streamsurface is shown in Figure~\ref{fig:streamSurface}.
-Following this path leads to increased complexity in the methods, due to the new dimension needed to represent a surface.
-Nevertheless, surfaces can provide better visualization results.
-For example, the use of shading gives an improved depth insight.
+Following this path leads to an increase in the methods complexity, due to the new dimension needed to represent a surface.
+Nevertheless, surfaces can provide better visualization results, e.g. the use of shading gives an improved depth insight.
 
 \begin{figure}[htbp]
 	\centering
@@ -335,43 +334,44 @@ For example, the use of shading gives an improved depth insight.
 
 Streamsurfaces were introduced by \cite{Hultquist1992}.
 The author's method seeds streamlines from a curve and those streamlines are advanced through the vector field.
-New streamlines are seeded or exiting ones are terminated if the points reach a predetermined maximum or minimum distance threshold.
-The streamlines points are used to create the streamsurface mesh.
-To aid in the interpretation of flow, \cite{Loffelmann1997} extended streamsurface model with the addition of streamarrows, as shown in Figure~\ref{fig:streamArrows}.
-The author's technique involves adding arrows to show flow direction, and removing the arrow space on the surface to help with occlusion.
+New streamlines are seeded or existing ones are terminated if the points reach a predetermined maximum or minimum distance threshold respectively.
+The streamlines points are used to create a streamsurface mesh.
+To aid in the interpretation of flow, \cite{Loffelmann1997} extended the streamsurface model with the addition of streamarrows, as shown in Figure~\ref{fig:streamArrows}.
+The authors' technique involves adding arrows to show flow direction, and removing the arrow space on the surface to reduce occlusion issues.
 A hybrid method with streamlines and streamtubes was proposed by \cite{Zhang2003}.
-Depicting linear anisotropy regions with streamtube and planar anisotropy ones with streamsurfaces.
+Streamtubes are composed of the streamlines that pass through a defined contour in the fluid.
+Depicting linear anisotropy regions with streamtubes and planar anisotropy ones with streamsurfaces.
 The colors used for rendering encode additional anisotropy information.
-More recently, \cite{Born2010} presented extensions in streamsurface rendering to address occlusion issues, as well as a GPU implementation of their technique.
-Contour lines, halftoning, silhouetts, contour arrows, cuts and slabs are applied to a raw streamsurface in order to be able to depict occluded areas.
+More recently \cite{Born2010} presented extensions to the streamsurface rendering techniques to address occlusion issues, as well as a GPU implementation of their method.
+Contour lines, halftoning, silhouetts, contour arrows, cuts and slabs are applied to a raw streamsurface, to be able to depict occluded areas.
 
 %Could be useful to talk about streamtubes.
 
 \section{Explanatory illustration}
 
-Explanatory illustration has to adequately transmit motion on a still image, consequently transforming from the temporal space to the image domain.
-This is usually found in comics books and instructions sets.
+Explanatory illustration is usually found in comics books and instructions sets, were movement has to be inferred from static pictures.
+This method has to adequately transmit motion on a still image, consequently transforming from the temporal space into the image domain.
+Since this is a dimensionality reduction approach, the common issues with this techniques arise, such as how to preserve the important features of the action.
 
 \subsection{Image and key frames output}
 
 Even though comics books are regularly considered inferior forms for presenting information, each scene contains abundant data and they can be understood by children without even reading the letters.
-\cite{McCloud1993} cited by \cite{Cutting2002} reviewed visualization and abstraction techniques used in comics books.
-Such as, how to depict the motion of single objects and to illustrate noises and speeches bound to time.
-\cite{Cutting2002} surveyed traditional techniques for depicting motion.
-Including, sequences of key frames, blur, squeeze and stretch, unbalanced postures and stroboscopic effects.
-The author introduced criteria to judge the effectiveness of a particular representation.
+\cite{McCloud1993} reviewed visualization and abstraction techniques used in comics books.
+The author explored how to depict the motion of single objects, to illustrate noises and speeches bound to time.
+\cite{Cutting2002} surveyed traditional techniques for depicting motion; including sequences of key frames, blur, squeeze and stretch, unbalanced postures and stroboscopic effects.
+Criteria to judge the effectiveness of a particular representation was introduced.
 For example, evocativeness, clarity of object, direction of motion and precision of motion.
 
 \cite{Nienhaus2005} proposed a technique to depict motion in 3D animations.
 Scene and behaviour descriptions from specialized scene graphs were analysed in order to create the motion cues.
-In the author's implementation the user has to select a depiction target and assign labels to it, using the graph information motion lines and simplified sketch images are generated.
+The user has to select a depiction target and assign labels to it, using the graph information motion lines and simplified sketch images are generated.
 \cite{Joshi2005} presented a similar approach for volumetric data.
 Speedlines and flow ribbons are combined to generate illustrations encoding 3D rigid movement and flow dynamics.
-The flow ribbons use comic inspired line abstraction technique to handle occlusion.
+The flow ribbons use a comic inspired line abstraction technique to handle occlusion.
 Researchers have have look into automatic illustration generation for mechanical assemblies \cite{Mitra2010}.
-The author's work is based only on geometry information, extracted from 3D CAD models.
-Part analysis is performed using slippage analysis, see Section \ref{SlippageAnalysis}, while the motions are extracted from an interaction graph that is defined by edge contact between the components.
-The system is able to generate, motion arrows depicting mechanical assembly interaction, as well as generating key frames of periodic motions.
+The author's work is based only on geometry information extracted from 3D CAD models.
+Part analysis is performed using symmetry analysis, see Section \ref{sec:symmetryDetection}, while the motions are extracted from an interaction graph that is defined by edge contact between the components.
+The system is able to generate, motion arrows depicting mechanical assembly interaction, as well as generating key frames from periodic motions.
 
 \begin{figure}[htbp]
 	\centering
@@ -383,15 +383,15 @@ The system is able to generate, motion arrows depicting mechanical assembly inte
 \subsection{Video output}
 
 Video based illustration is applied to enhance the motion information while maintaining the original video format.
-Therefore, motions are exaggerated or at the very least some hints to reinforce movement perception are added.
+Therefore, motions are exaggerated or at the very least some hints to reinforce movement perception are included.
 
 \cite{Collomosse2005} presented a method to embed cartoon-style motion cues in video.
-Their algorithm has two stages: a motion tracking step, where a feature manually marked will be tracked; and a computer graphics stages, where a cue will be generated and added to the video.
-The system can add motion lines as well as squash and stretch objects.
-However, the second case is restricted to videos where the background can be reconstructed from previous frames.
-\cite{Zhu2011} presented a sketching system for fluids dynamics.
-The paper uses hybrid multi layered grid solver, discussed in Section~\ref{gridFluidSolvers}, to solve 2.5D fluid flow.
+Their algorithm has two stages: a motion tracking step, where a feature manually marked will be tracked; and a computer graphics stage, where a cue will be generated and embedded into the video.
+The system can add motion lines as well as squashing and stretching objects.
+However, the second and third case are restricted to videos where the background can be reconstructed from previous frames.
+\cite{Zhu2011} presented a dynamic sketching technique to illustrate fluids systems.
+The paper uses hybrid multi layered grid solver, extended from those discussed in Section~\ref{gridFluidSolvers}, to solve 2.5D fluid flow.
 Flow paths and other objects can be added or changed in real time through a sketching interface.
-A hydraulic graph is created and is modified behind the scenes every time the visual model is edited.
-While the flow is shown using streamlines, discussed in Section~\ref{sec:flowVisualization}.
-\cite{Lowe2014} showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken as users can fail to extract the necessary information due to the nature of the animation.
+A hydraulic graph is created and it is modified behind the scenes every time the visual model is edited.
+The flow is shown using streamlines, as discussed in Section~\ref{sec:flowVisualization}.
+\cite{Lowe2014} showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken since the users can fail to extract the necessary information, due to the nature of the animation.
