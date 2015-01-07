@@ -129,7 +129,7 @@ An alternative to \cite{Attene2006} segmentation approach is also presented, add
 \section{Fluid simulation}
 \label{prevWorkFluidSim}
 
-The current paradigm in fluid simulation consist of solving the Navier-Stokes equations of fluid dynamics, shown in Equations~\ref{eq:navierStokes1} and  ~\ref{eq:navierStokes1}.
+The current paradigm in fluid simulation consist of solving the Navier-Stokes equations of fluid dynamics, shown below.
 
 \begin{gather}
 \label{eq:navierStokes1}
@@ -138,90 +138,94 @@ The current paradigm in fluid simulation consist of solving the Navier-Stokes eq
 \mathbf{u}_t = -(\mathbf{u} \cdot \nabla)\mathbf{u} + \nabla \cdot ( v \nabla \mathbf{u} - \frac{1}{\rho} \nabla p + \mathbf{f} )
 \end{gather}
 
-The first equation enforces mass conservation and ensures incompressibility, while the second is derived from Newton's Second Law and encodes momentum conservation.
+Equation~\ref{eq:navierStokes1} enforces mass conservation and ensures incompressibility. Equation~\ref{eq:navierStokes2} is derived from Newton's Second Law and encodes momentum conservation.
 Where $\mathbf{u}_t$ is the time derivative vector field of the fluid velocity, $p$  is the scalar pressure field, $\rho$ is the density of the fluid, $v$ is the kinematic viscosity and $\mathbf{f}$ represents the body force per unit mass, usually gravity.
 
-Along the years several methods have been proposed, although all of them are based on the same Navier-Stokes equations.
+Along the years several methods have been proposed, although all of them are based on the aforementioned Navier-Stokes equations.
 
 \begin{itemize}
 \item \textbf{Fourier Transform} techniques uses several superimposed sinusoidal waves to model the fluid behaviour.
 \item \textbf{Grid} based methods track the fluid features at fixed points in space.
-\item \textbf{Smooth Particle Hydrodynamics} track a large number of particle in the fluid.
-\item \textbf{Hybrid} algorithms are combinations of the aforementioned methods.
+\item \textbf{Smooth Particle Hydrodynamics} track a large number of particles in the fluid.
+\item \textbf{Hybrid} algorithms are combinations of the preceding methods.
 \end{itemize}
 
-Regardless of the chosen method, to update the particles in the for the next frame must be computed.
-However, it is common for the algorithms to have a upper time step, if the update is computed after the limit there is no guaranty that the output would be reasonable.
+Regardless of the chosen method, the fluid state has to be updated for each new frame.
+However, it is common for the algorithms to have a upper bound in the time step, so if the update is computed after the limit, a reasonable output is not guaranteed.
+Therefore, to avoid having to calculate extra in between updates that would not be rendered, techniques that allow for larger time steps are preferred.  
 
 Another important concept in fluid simulation is whether the simulation implements interplay within the fluid and rigid bodies that come in contact with it (solid-fluid coupling).
-And how flexible is this interaction, one way solid fluid(e.g. a rock drops on a small pool of water, so the water moves but the rock is almost not affected by the  and moves it, but the fluid does not affect the rock), or fluid solid(e.g. a small buoy floating in the ocean has little effect on the surrounding water), and two way solid fluid interaction(e.g. a flexible object drops into a pool of fluid).
+And how flexible is this interaction, one way \emph{solid-fluid} coupling (e.g. a rock drops on a small pool of water, so the water moves but the rock is not affected by the water reaction), one way \emph{fluid-solid} coupling (e.g. a small buoy floating in the ocean has little effect on the surrounding water), and \emph{two way solid-fluid} interaction (e.g. a flexible object drops in a pool of fluid and both affect the behaviour of each other).
 
 For more information on real time fluid simulations we refer the readers to \cite{Vines2012} and \cite{Ihmsen2014} surveys.
 
 \subsection{Fourier Transform}
 
-When simulating fluid with periodic boundary conditions, procedural simulation can be applied with a low computational cost.
-Usually this method is used with large masses of water (ocean simulation), as they are an approximation to periodic boundary conditions fluids.
+When simulating fluid with periodic boundary conditions, procedural simulation can be applied with low computational cost.
+Usually this method is used with large masses of water (e.g. ocean simulation), as they are an approximation to periodic boundary conditions fluids.
 The waves can be modelled as a superimposition of sinusoidal waves, which can be efficiently decomposed using Fast Fourier Transform methods \cite{Mastin1987}.
 Waves produced in this fashion are visually plausible but physical accuracy is not enforced inherently by the model.
 
-Each wave has a wave number $k$ and a wave vector $\mathbf{k}$.
+Each wave is characterized with a wave number $k$ and a wave vector $\mathbf{k}$.
 \cite{Tessendorf2001} presented the basic technique in this area.
-The authors modelled the ocean surface as a summation of complex sinusoids with different wave vectors.
+The authors modelled the ocean surface as a summation of complex sinusoids with different wave vectors $\mathbf{k}$.
 Visually pleasing results were achieved generating random Fourier amplitudes.
 
-The previous method was further improved by \cite{Cieutat2003}, with the addition of solid (ships, coast line, etc).
-The model developed more complex wave shape and motion equations, with differentiated equations in open sea and near the shore.
-And by \cite{Chiu2006} with adaptive surface tessellation.
-Furthermore, the method was implemented on GPUs, and also included shallow water effects and spray dynamics.
+The previous method was further improved by \cite{Cieutat2003}, with the addition of solids (e.g. ships, a coast line, etc).
+The model was extended through more complex wave shape and motion equations, with differentiated equations for open sea and near the shore situations.
+\cite{Chiu2006} further enhanced the method with the inclusion of adaptive surface tessellation.
+Furthermore, the method was implemented on GPUs, and it also included shallow water effects and spray dynamics.
 However, Fourier transform methods can still only be applied to simulate oceans or other huge masses of fluid. 
 
 \subsection{Grid}
 \label{gridFluidSolvers}
 
 Grid methods were among the first techniques to solve fluid simulation and so the firsts ones implement intuitive solutions.
-Grid based methods solve Navier-Stokes Equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2}, in a fixed position in space (i.e. grid).
+Grid based techniques solve Navier-Stokes Equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2}, in a fixed position in space (i.e. grid).
 As fluid flows, the equations are solved in each position, giving a value for speed and pressure at each time step.
-This approach is advantageous as many numerical methods can be applied easily on grids and with they are more easily adaptable to GPUs implementations than other methods.
+This approach is advantageous as many numerical methods can be applied easily on grids and they are more easily adaptable to GPUs implementations than other techniques.
 
-One of the firsts papers in this area introduced a Grid method \cite{Foster1996} to solve Navier-Stokes equations by applying forward Euler time integration.
-However, their solid fluid coupling was one way only, the solids do not affect the fluid behaviour.
+One of the firsts papers in this area applied forward Euler integration to solve the Navier-Stokes equations in a grid \cite{Foster1996}.
+However, their implementation of solid-fluid interaction was restricted to one way solid-fluid coupling, the solids did not affect the fluid behaviour.
 \cite{Stam1999} extended this method in order to overcome stability issues.
-The author's implemented a stable solver which allowed for larger time steps, trough an operator splitting scheme and more importantly a semi-Lagrangian method to calculate the advection term.
+The author's implemented a stable solver which allowed for larger time steps through an operator splitting scheme and more importantly a semi-Lagrangian method to calculate the advection term.
 
-\cite{Carlson2004} proposed solid-fluid coupling algorithm for grids models using distributed Lagrange multipliers.
-Nevertheless, the author's method uses  a non adaptive grid and multiphase fluids and bubbles are not covered by it.
+\cite{Carlson2004} proposed a solid-fluid coupling algorithm for grids models using distributed Lagrange multipliers.
+Nevertheless, the author's method uses  a non adaptive grid and multiphase fluids and bubbles are not covered by their implementation.
 
 \subsection{Smooth Particle Hydrodynamics}
 
 Smooth Particle Hydrodynamics(SPH) has been established as one the major breakthroughs for fluid simulations in computer graphics, positioning itself as the most popular method nowadays.
 Compared to grid based methods that need high resolution grids to produce foam and splashes, SPH can achieve the same with less computational load.
-Two extra advantages are that mass conservation is automatically satisfied if the amount and mass of the particles is keep constant;
-and as the particles move with the fluid, the advection term does not need to be calculated explicitly.
+Two extra advantages are that mass conservation is automatically satisfied, if the amount and mass of the particles is kept constant;
+and since the particles move with the fluid, the advection term does not need to be calculated explicitly.
 
 SPH were first introduced by \cite{DesbrunMathieuandGascuel1996}, where each particle encodes its position, velocity, mass and the forces that act on it.
+A globally adaptive time step is proposed as well, so the time step automatically adapts to the flow dynamics.
+What is more, to achieve more efficiency a local adaptive time integration is used, individual particles will use larger time steps if stability restrictions allow for it.
 
-While, \cite{Muller2004} presented a method for computing solid fluid coupling. Where boundary particles are created on the surface of the solid and then particle coupling is calculated.
+\cite{Muller2004} presented a method for computing solid fluid coupling where boundary particles are created on the surface of the solid and then particle coupling is calculated.
 \cite{Akinci2012} further improved the previous method with the inclusion of irregular particle distributions as well as friction and dragging. 
-\cite{Shao2014} also solved stability issues in the previous SPH solid-fluid coupling techniques, using a correction scheme.
-Furthermore their algorithm was implemented on GPUs, thus achieving better performance than previous methods.  
-However, the method is still not physically completely accurate and erroneous penetrations can arise in certain situations. 
+\cite{Shao2014} solved stability issues in the previous SPH solid-fluid coupling techniques using a correction scheme.
+Furthermore the authors' algorithm was implemented on GPUs, thus achieving better performance than previous methods.  
+However, the method is still not completely physically accurate and erroneous penetrations can arise in certain situations. 
 
 \subsection{Hybrid}
 
 Hybrid methods are combinations of the aforementioned approaches.
-As with other hybrid techniques, the objective is to capitalize the advantages of each and discard the weaknesses.
+As with other hybrid techniques, the objective is to capitalize on the advantages of each, while trying to discard the weaknesses.
 
 A common hybrid approach is the particle-in-cell (PIC) method, \cite{Harlow1962}.
-It solves the advection using SPH and the incompressibility with an Euler grid.
+The author solves the advection using SPH and the incompressibility with an Euler grid.
 In more detail, the particles are averaged onto a grid where all the terms in the Navier-Stokes Equations \ref{eq:navierStokes1} and \ref{eq:navierStokes2} are calculated, except advection.
-Next, the particles are translated using the grid velocity.
-This method has been used in a variety of situations, for example \cite{Zhu2005} used it for sand simulation, while \cite{Horvath2009} explored fire simulations.
+Then, the particles are translated using the calculated grid velocity.
+This method has been used in a variety of situations, for example \cite{Zhu2005} used it for sand simulation and \cite{Horvath2009} applied it for fire generation.
 A further improvement is an implicit approach, namely the fluid implicit particle (FLIP) \cite{J.U.Brackbill1986}.
-Where the particles are not updated directly with grid data.
-The main strength of FLIP is that the advection term calculation is always stable.
+The fundamental difference it that particles are not updated directly with the grid data.
+An advection term calculation that is always stable is the main strength of the FLIP method.
 However, the particles can sometimes clamp or have voids.
-FLIP was extended by \cite{Raveendran2011} to be able to solve the equations in a coarse grid. 
+FLIP was extended by \cite{Raveendran2011} to be able to solve the equations in a coarse grid.
+What is more, the authors' work also allowed for larger time steps, however a GPU implementation is not provided.
 % Instead, the variation of a quantity is computed from the grid, and this in turn is used to update particle information.
 
 \section{Flow visualization}
@@ -233,7 +237,6 @@ Extensive work has been done in this area as visualizing fluid movement has a br
 However, this is a challenging task as it has to effectively display complex and copious amounts of data.
 Seeing that fluid simulation is generally solved by means of highly divided grids or with large number of particles, as explained in Section~\ref{prevWorkFluidSim}.
 
-%TODO Changed the here option and let latex do its work, but it puts the picture before the flow visualization section
 \begin{figure}[htbp]
 	\centering
 	\begin{minipage}[t]{.45\textwidth}
