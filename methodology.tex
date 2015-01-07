@@ -13,11 +13,11 @@ The topic can be subdivided into:
 \item \textbf{Explanatory illustration:} Transform the flow visualization data in one or several still images.
 \end{enumerate}
 
-To start with, input data is needed in the form on CAD 3D models.
-A 3D visualization program such as SketchUp~\cite{Trimble2014} can be used to create, visualize and edit the models.
+To start with, input data is needed in the form of CAD 3D models.
+3D visualization program such as SketchUp~\cite{Trimble2014} can be used to create, visualize and edit the models.
 Once we have this input, we can begin the process to generate \textit{How things work} illustrations from them.
 
-Part analysis involves two steps: part segmentation and part analysis.
+Part analysis involves two steps: part segmentation and part characterization.
 Usually 3D models consist of meshes or point clouds were there is not a clear distinction between each piece.
 Consequently, any additional analysis and simulation would be overly complicated without further simplifications.  
 Therefore, a segmentation stage is needed in order to divide the model into its constituent components.
@@ -31,10 +31,10 @@ In the special case where a component is a container of a fluid or is in direct 
 The output of the simulation will then carry the information along to the next piece.
 
 In order to visualize the fluid simulation data we will need to generate a visual cue that will intuitively indicate the fluid movement.
-Either generating arrows indicating the overall fluid movement, with an animation or showing illustrative key frames.
+Either generating arrows indicating the overall fluid movement, displaying an animation or showing illustrative key frames.
 
 Lastly, \textit{How things work} illustrations have to be generated from the flow visualization data, that is by itself a time variant data.
-Therefore, techniques to embed motion in a single picture are used.
+Therefore, techniques to embed motion in a single picture will be used.
 
 %How are we actually going to solve the problem.
 %What is the proposed approach?
@@ -55,8 +55,8 @@ Slippage analysis \cite{Yi2014} is the only method that can be applied directly 
 Moreover, this method outputs the degrees of freedom for each part.
 However, symmetry analysis \cite{Mitra2007} can give more detailed information about part rotation and translation axis, and to extract extra features such as edges or gear radius.
 1D features curves are useful for characterizing these and other attributes of man-made parts \cite{Gal2009}.
-Therefore, a geometric analysis can be performed and we can work with models that do not have extra time information embedded.
-Which is the case for most of the models available in the model libraries in Section \ref{sec:partAnalysis}.
+Therefore, a geometric analysis can be performed and the needed information can be extracted from models that do not have extra time information embedded.
+Which is the case for most of the models available in the model libraries mentioned in Section \ref{sec:partAnalysis}.
 However, none of the methods will automatically detect which parts will interact with the hydraulic fluid.
 A first approach will be to manually mark them.
 Nevertheless, other paths can be explored, such as heuristics that analyse the segment shape.
@@ -69,11 +69,11 @@ For example, the biggest cylindrical part will probably be the reservoir for the
 
 \subsection{Fluid simulation}
 
-Once we have segmented the model and we know how each part can move and where can the hydraulic fluid flow, we need to calculate how the liquid interacts with the solid parts.
+Once we have segmented the model and we know how each part can move and where the hydraulic fluid can flow, we need to calculate how the liquid interacts with the solid parts.
 The previous part analysis is specially useful in order to simplify the simulation stage.
 If we already know how the solid parts can move, the simulation will be simpler since each segments will have constrained degrees of freedom.
-Besides, extra information about the parts,such as maximum translation range, that otherwise would have to be input manually would be automatically available to the fluid simulation.
-Given the characteristics of our input, a physically accurate simulation with two way solid-fluid coupling is needed.
+Besides, extra information about the parts, such as maximum translation range, that otherwise would have to be input manually would be automatically available to the fluid simulation.
+Given the characteristics of our goals, a physically accurate simulation with two way solid-fluid coupling is required.
 Fourier methods are discarded because we we will not be modelling vast amounts of fluid.
 Then, we are left with either SPH, grid or hybrid simulations.
 In terms of implementation complexity, grid methods are generally simpler, followed by SPH and lastly by hybrid systems.
@@ -82,7 +82,7 @@ However, the great disadvantage of grid simulations is the need to compute the s
 What is more, SPH have become quite popular in the last years as a general purpose fluid simulation tool.
 Nevertheless, for hydraulic machinery the fluid will be constrained to a small area.
 Moreover, extra realistic effects, such as foams or droplets, are irrelevant for this proposal.
-Therefore, the previous grid disadvantage is no longer applicable, making methods such as \cite{Carlson2004}, the more appropriate type of simulation for our purposes.
+Therefore, the previous grid disadvantages are no longer applicable; accordingly, methods such as \cite{Carlson2004} become the most convenient type of simulation for our purposes.
 
 %Using SPH, Grid or Hybrid simulation.
 %Looks like grid since we are constrained to a small area and we do care about foams or other extra realism stuff.
@@ -91,13 +91,13 @@ Therefore, the previous grid disadvantage is no longer applicable, making method
 
 The next step is to generate the flow visualization from the simulation data.
 Following the techniques discussed in Section~\ref{sec:flowVisualization}, we will use streamlines to visualize the flow.
-\textit{How things work} illustrations do not have complex flow visualizations, as the objective is to understand roughly how the system works, not to give a perfect scientific representation of fluid dynamics.
-Since our CAD models are 3D, 2D methods are ruled out.
-There is not clear advantage in applying surface based integral objects as in hydraulic equipment there are not complex fluid flow situations.
+\textit{How things work} illustrations do not have complex flow visualizations, the objective is to understand roughly how the system works, not to give a perfect scientific representation of fluid dynamics.
+Given that our CAD models are 3D, two-dimensional methods are ruled out immediately.
+Since in hydraulic equipment there are not complex fluid flow situations, there is not clear advantage in applying surface based integral objects.
 Streamcomets offer a more natural way to visualize the flow, and having a translucent body means that occlusion is less likely to happen.
 However, we consider streamcomets too complex for our purposes, therefore a simpler technique such as \cite{Wicke2009} would be used, with the optimizations presented by \cite{McLoughlin2013} should the generation be too slow.
 This flow visualization should also include an optimization step, where the arrow placement would be improved.
-Following the criteria in \cite{Mitra2010}, steps such as increasing arrow size in zones with more flow, replacing arrows in occluded areas or adding extra arrows in bigger areas, will be necessary to improve illustration quality.
+Following the criteria in \cite{Mitra2010}, steps such as increasing arrow size in zones with more flow, replacing arrows in occluded areas or adding extra arrows in bigger areas, will be required to improve illustration quality.
 %We are going to use stream lines on surfaces and then replace them by arrows.
 
 \subsection{Solid parts visualization}
@@ -105,8 +105,8 @@ Following the criteria in \cite{Mitra2010}, steps such as increasing arrow size 
 Solid parts visualization will be based on \cite{Mitra2010} methods for mechanical assemblies.
 This stage involves placing arrows to convey part movement on the edge of each junction.
 Different arrow types will be used, such as the ones shown in Figure \ref{fig:arrowTypes}.
-Moreover, extra arrows will be added if the parts are too long and, if occlusion were to happen the arrow placement can be optimized.
-However, if this is not enough, the type of the arrow could be switched if it produced an increased in visibility, from cap to side or viceversa.
+Moreover, extra arrows will be added if the parts are too long and, if occlusion were to happen, the arrow placement can be optimized.
+However, should the previous method not be enough, the type of the arrow could be switched if it entailed an improvement in visibility, from cap to side or viceversa.
 
 \subsection{Key frames visualization}
 
@@ -115,15 +115,15 @@ In order to select those key points there are two cases: objects with cyclical m
 The first ones would be spinning components, for example cylinders in engines whose movement is a periodic loop.
 In this case, a displacement curve can be drawn and the sample points would be the extrema and middle frames in between.
 In machinery that does not present cyclical movement, such as the simple cylinder shown in Figure~\ref{fig:h_pump}, it is evident that the extrema have to be included.
-However, we are faced with a problem of either under or oversampling in the middle points, as the minimal number of key frames to illustrate the motion are unknown. 
+However, since the minimal number of key frames to illustrate the motion are unknown, we are faced with a problem of either under or oversampling for the middle frames.
 %sample the animation
 %For uniform translation only one in between, sample the animation at critical points
 
 \section{Timeline}
 
 In Figure \ref{fig:timeLine} we present an estimated timeline for the implementation of the proposal.
-This estimation is highly dependant on the features to be implemented and the complexity of the CAD input models.
-The input of one task is the output of the one preceding, so overlapping naturally occurs when we are finishing one task as moving towards the  next.
+This estimation is highly dependant on the features to be implemented, the complexity of the CAD input models, the generality to be achieved and the desired quality of the results.
+The output of one task is the input of the subsequent one, so overlapping naturally occurs when we are finishing one task and moving towards the next.
 We inevitably have to fix unexpected errors or introduce new features in the former task.
 Moreover, the changes may backtrack several steps backs as shown in the isolated bars of Part Characterization or Fluid Simulation.
 
@@ -178,9 +178,9 @@ The system will be tested by generating illustrations for a wide variety of mode
 Since we do not know of any previous work which has generated \textit{How things work} illustrations for hydraulic machinery, comparison with other methods is limited to contrasting our work against manually generated illustrations.
 Being able to replicate a series of chosen hydraulic illustrations could be a goal of the project. 
 Another path to evaluate the effectiveness of the generated data is to perform user studies.
-One example could be an evaluation on how well the test subjects understood the machinery internal workings with a series of questions, to estimate their knowledge on the equipment before and after seeing the illustrations.
-Another could measure which illustration the user finds as more instructing, the automatically generated ones or manually generated, as well as asking them why they think in such a manner.
+One example could be an evaluation on how well the test subjects understood the machinery internal workings with a series of questions, estimating their knowledge on the equipment before examining the illustrations and after.
+Another survey could measure which illustrations users finds more instructing, automatically or manually generated ones, as well as asking them why they were driven to such choice.
 Moreover, user studies can be helpful in fine tuning parameters in the algorithm, therefore improving the overall quality of the results.
-Comparing frame sequences, animations and single illustrations is another potential evaluation study.
+Comparing frame sequences, animations and single illustrations is another potential evaluation survey.
 
 %we plan to test it on a variety of models, other way is comparison with previous work, user study -> like doing and study of how well they understood how the machinery works, … try think about more ideas to test the approach, comparison of frame sequence, animation and arrows, which one does the user think is more useful symmetry information
