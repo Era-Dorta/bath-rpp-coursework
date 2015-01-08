@@ -6,10 +6,10 @@ Given a 3D CAD model of some hydraulic machinery we want to generate \textit{how
 
 The topic can be subdivided into:
 \begin{enumerate}
-\item \textbf{Part analysis:} Part segmenting and inferring part properties.
-\item \textbf{Fluid simulation:} Simulate how the fluid behaves in the previously detected parts.
-\item \textbf{Flow visualization:} Display the fluid simulation data in a intuitive format.
-\item \textbf{Explanatory illustration:} Transform the flow visualization data into one or several still images.
+\item \textbf{Part analysis:} segment and infer part properties.
+\item \textbf{Fluid simulation:} simulate how the fluid behaves in the previously detected parts.
+\item \textbf{Flow visualization:} display the fluid simulation data in a intuitive format.
+\item \textbf{Explanatory illustration:} transform the flow visualization data into one or several still images.
 \end{enumerate}
 
 To start with, input data is needed in the form of CAD 3D models.
@@ -21,7 +21,8 @@ Usually 3D models consist of meshes or point clouds were there is no clear disti
 Consequently, any additional analysis and simulation would be overly complicated without further simplifications.  
 Therefore, a segmentation stage is needed in order to divide the model into its constituent components.
 Part analysis consists of detecting the piece type, how it moves and interacts with others.
-So the information saved for type would be axle, gear, reservoir, fluid conduct, etc, in this classification parts are also organized according to fluid interaction criteria, e.g. if a piece interplays or not with hydraulic fluid.
+The information saved for type would be axle, gear, reservoir, fluid conduct, etc.
+In this classification, parts are also organized according to fluid interaction criteria, e.g. if a piece interplays with hydraulic fluid.
 The types of movement that can be assigned to a part could be direction of movement, axis of rotation, axis of translation, etc.
 
 Once the parts have been categorized and given an input force, we will have to simulate how the force is transmitted along the different elements.
@@ -75,7 +76,7 @@ In terms of implementation complexity, grid methods are generally simpler, follo
 If we look at quality of the simulation, hybrid and SPH tend to be better while grid methods lag behind.
 In addition, the great disadvantage of grid simulations is the need to compute the simulation in highly divided grids in order to be able to display foams and other effects.
 What is more, SPH have become quite popular in the last years as a general purpose fluid simulation tool.
-Nevertheless, for hydraulic machinery the fluid will be constrained to a small area, moreover extra realistic effects, such as foams or droplets, are irrelevant for this proposal.
+For hydraulic machinery the fluid will be constrained to a small area, moreover extra realistic effects, such as foams or droplets, are irrelevant for this proposal.
 Therefore, the previous grid disadvantages are no longer applicable; accordingly, methods such as \cite{Carlson2004} become the most convenient type of simulation for our purposes.
 
 %Using SPH, Grid or Hybrid simulation.
@@ -99,8 +100,8 @@ Following the criteria in \cite{Mitra2010}, steps such as increasing arrow size 
 Solid parts visualization will be based on \cite{Mitra2010} methods for mechanical assemblies.
 This stage involves placing arrows to convey part movement on the edge of each junction.
 Different arrow types will be used, such as the ones shown in Figure \ref{fig:arrowTypes}.
-Moreover, extra arrows will be added if the parts are too long, and if occlusion were to happen, the arrow placement can be optimized.
-However, should the previous method not be enough, the type of the arrow could be switched if it entailed an improvement in visibility, from cap to side or viceversa.
+Moreover, extra arrows will be added if the parts are too long, and, if occlusion were to happen, the arrow placement can be optimized.
+However, should the previous method not be enough, the type of the arrow could be switched if it entailed an improvement in visibility, from cap to side or vice versa.
 
 \subsection{Key frames visualization}
 
