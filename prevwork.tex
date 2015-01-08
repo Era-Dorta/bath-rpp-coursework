@@ -156,7 +156,7 @@ However, it is common for the algorithms to have a upper bound in the time step,
 Therefore, to avoid having to calculate extra in between updates that would not be rendered, techniques that allow for larger time steps are preferred.  
 
 Another important concept in fluid simulation is whether the simulation implements interplay within the fluid and rigid bodies that come in contact with it (solid-fluid coupling).
-And how flexible is this interaction, one way \emph{solid-fluid} coupling (e.g. a rock drops on a small pool of water, so the water moves but the rock is not affected by the water reaction), one way \emph{fluid-solid} coupling (e.g. a small buoy floating in the ocean has little effect on the surrounding water), and \emph{two way solid-fluid} interaction (e.g. a flexible object drops in a pool of fluid and both affect the behaviour of each other).
+And how flexible is this interaction, one way \emph{solid-fluid} coupling (e.g. a rock drops on a small pool of water, so the water moves, yet the rock is not affected by the water reaction), one way \emph{fluid-solid} coupling (e.g. a small buoy floating in the ocean has little effect on the surrounding water), and \emph{two way solid-fluid} interaction (e.g. a flexible object drops in a pool of fluid and both affect the behaviour of each other).
 
 For more information on real time fluid simulations we refer the readers to \cite{Vines2012} and \cite{Ihmsen2014} surveys.
 
@@ -165,7 +165,7 @@ For more information on real time fluid simulations we refer the readers to \cit
 When simulating fluid with periodic boundary conditions, procedural simulation can be applied with low computational cost.
 Usually this method is used with large masses of water (e.g. ocean simulation), as they are an approximation to periodic boundary conditions fluids.
 The waves can be modelled as a superimposition of sinusoidal waves, which can be efficiently decomposed using Fast Fourier Transform methods \cite{Mastin1987}.
-Waves produced in this fashion are visually plausible but physical accuracy is not enforced inherently by the model.
+Waves produced in this fashion are visually plausible, however physical accuracy is not enforced inherently by the model.
 
 Each wave is characterized with a wave number $k$ and a wave vector $\mathbf{k}$.
 \cite{Tessendorf2001} presented the basic technique in this area.
