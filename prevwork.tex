@@ -4,14 +4,13 @@
 \section{Part analysis}
 \label{sec:partAnalysis}
 
-Libraries of 3D mesh models are quite common \cite{Trimble2014}, \cite{GrabCAD2014}, \cite{Autodesk2014}, in addition they contain vast quantities of materials.   
+Libraries of 3D mesh models are quite common \cite{Trimble2014}, \cite{GrabCAD2014}, \cite{Autodesk2014}, in addition the material available to download is abundant and diverse.   
 Usually the objects are also represented using points clouds, which can be obtained easily from the meshes.
-However, clouds and mesh models lack middle and high level information such as: symmetry or parallelism information.
-Therefore we must extract this data from either representation.
+However, clouds and mesh models lack middle and high level information, for instance symmetry or parallelism information.
+Therefore, we must extract this data from either representation.
 Since solving for general shapes is quite challenging, a number of constrained approaches have been proposed.
 Moreover, part analysis goes beyond part segmentation, including part semantics and part relations analysis. 
-For an overview on segmentation techniques, we refer the readers to the following surveys \cite{Varady1997}, \cite{Agathos2007} and \cite{Shamir2008}.
-Whereas, for symmetry detection we recommend \cite{Mitra2013} survey.
+For an overview of segmentation techniques, we refer the readers to the following surveys \cite{Varady1997}, \cite{Agathos2007} and \cite{Shamir2008}, whereas for symmetry detection we recommend \cite{Mitra2013} survey.
 
 \subsection{Region growing}
 
@@ -21,7 +20,7 @@ The author's method performs well on mechanical objects and it is also robust to
 However, oversegmentation occurs in models with soft edges.
 This model was extended by \cite{Lavoue2008} with the use of Markov Random Fields.
 This probabilistic approach provides a optimal global solution using local interactions.
-Anyhow, the algorithm is not particularly efficient, taking several seconds to give a result.
+Anyhow, the algorithm is not particularly efficient, it takes several seconds to give a result.
 %Maybe add more papers, too lazy to do it now
 
 %TODO Add papers on all this sections if short on words
@@ -33,20 +32,19 @@ Anyhow, the algorithm is not particularly efficient, taking several seconds to g
 \subsection{Iterative clustering}
 
 Iterative clustering is based on the k-means clustering algorithm.
-Representatives for each cluster are chosen and then using some metric  the elements are assigned to the best cluster and the representatives are recalculated.
+Representatives for each cluster are chosen, then using some metric the elements are assigned to the best cluster and the representatives of each group are recalculated.
 \cite{Lai2006} presented a cluster based segmentation algorithm.
 The method performs better with hierarchical models composed of regions at multiple scales.
 Therefore, it gives the same results regardless of model scale or the coarseness of the mesh.
-A quadratic surface fitting algorithm was presented by \cite{Yan2012}.
-Which combines several distance metrics to perform the quadratic minimization.
+A quadratic surface fitting algorithm was presented by \cite{Yan2012}, which combines several distance metrics to perform the quadratic minimization.
 Quadratic surfaces provide more flexibility than simpler representations, however the algorithm does not perform as well when the segments 
-can not be represented by a quadratic surface.
+cannot be represented by a quadratic surface.
 
 %\subsection{Mesh shift}
 
 %\subsection{Shape diameter function}
 
-\subsection{Random walk}
+\subsection{Random walks}
 
 With the random walks approach, $n$ faces are chosen as seeds, with $n$ being the number of desired segments.
 Then for each unlabelled face, the probabilities that a random walker will reach each labelled face are calculated.
@@ -55,20 +53,21 @@ Finally, each face is assigned to the highest probability label.
 Thereafter, \cite{Lai2009} extended it to for 3D mesh models, the authors' technique also included an automatic seeding mode, where seed quantity and placement is based on a spring-like energy function.
 Seed placement can greatly affect the final segmentation.
 Nevertheless, the authors tackle the issue with a post processing stage were the clusters are merged if oversegmentation occurred and the edges are smoothed.
-Given its nature, random techniques give different results on each execution, the authors addressed the issue with their spring-like energy function, however their method is not completely invariant to seed placement.
+Given its nature, random techniques give different results on each execution. 
+The authors addressed the randomness issue with their spring-like energy function, however their method is not completely invariant to seed placement.
  
 
 \subsection{Data driven}
 
 %Acoording to 2013 Mitra paper, this is co-analysis
 \cite{Golovinskiy2009} presented an extension to the previous iterative clustering techniques with special emphasis on edge and face consistency.
-This started the data driven approach to segmentation.
+This paper started the data driven approach to segmentation.
 The algorithm is based on a graph construction which encodes triangle neighbour information, the method then performs a clustering on the graph space.
 The main advantage is consistent segmentation of similar models.
 For example, on different chair models, segments always represent legs, backs and armrests. 
 However, there are several parameters that need to be input by the user.
 Moreover, as the technique is based on consistency across a set of models, if the alignment between the different models fails, the resulting segmentation quality will decrease.
-Researchers have presented extensions to the original \cite{Golovinskiy2009} approach, such as: setting a objective function as a Conditional Random Field model \cite{Kalogerakis2010}.
+Researchers have presented extensions to the original \cite{Golovinskiy2009} approach, such as setting a objective function as a Conditional Random Field model \cite{Kalogerakis2010}.
 
 \subsection{Global energy function}
 
@@ -76,30 +75,29 @@ Researchers have presented extensions to the original \cite{Golovinskiy2009} app
 Nevertheless, the algorithm needs a large database of manually segmented meshes, and it also has problems generalizing the function for complex test data.
 \cite{DeCastro2014} presented a novel segmentation technique based on calculating a global discrepancy function, based on the Lambert illumination model.
 For each triangle in the mesh a illumination value from several lights is calculated.
-Then they directly use that quantity to segment the model in several parts.
-However, their segmentation results are still not comparable with other state of the art methods.
+Then they directly use that quantity to segment the model in several parts, however their segmentation results are still not comparable with other state of the art methods.
 
 \subsection{Hybrid}
 
 \cite{Wang2011} approach for mesh segmentation is based on a combination of curvature estimation, Gauss mapping and B-spline surface fitting.
 The authors' methods performs relatively well, however there are six numerical parameters to adjust and the presented results show oversegmentation with certain models.
-\cite{Yang2014} proposed a model to improve the normals calculation by adding joint information, and hence enhancing curvature detection in \cite{Wang2011} method.
+\cite{Yang2014} proposed a model to improve triangle normals calculation by adding joint information, and hence enhancing curvature detection in \cite{Wang2011} method.
 
 \subsection{Slippage analysis}
 \label{SlippageAnalysis}
 
-However all the previous methods cannot be directly applied to segment mechanical parts.
+The aforementioned methods cannot be directly applied to segment mechanical parts.
 \cite{Gelfand2004} proposed a method for segmenting mechanical objects based on local slippage.
-This is quite useful as it gives for each part its degrees of freedom, e.g. sphere (3 rotations), cylinder (1 rotation and 1 translation), plane (1 rotation and 2 translations), etc.
+This is quite useful as it gives the degrees of freedom of each part, e.g. sphere (3 rotations), cylinder (1 rotation and 1 translation), plane (1 rotation and 2 translations), etc.
 \cite{Xu2009} applied slippage analysis to perform joint-aware deformations in man-made objects.
-\cite{Yi2014} improved \cite{Gelfand2004} method, obtaining an algorithm more robust to noise and that would output extra primitive information (e.g. normal of a plane, center of a sphere, etc).
+\cite{Yi2014} improved \cite{Gelfand2004} method, obtaining an algorithm more robust to noise and that also outputs extra primitive information (e.g. normal of a plane, center of a sphere, etc).
 
 \subsection{Symmetry detection}
 \label{sec:symmetryDetection}
 
 In man-made objects, and specially with assembly models, object symmetry can be used to detect important features in a part.
-With symmetric segments possible axis of rotation or translation can be computed.
-Additionally, non symmetric components normally imply movement constrains to the other parts.
+If the transformations under which a part remains symmetric are found, the possible axis of translation or rotation of the component in the model can be extracted.
+Additionally, non symmetric components normally imply movement constrains on the other parts.
 
 \cite{Mitra2006} presented an approximate symmetry detection method based on a voting scheme.
 The technique detects reflections, rotational symmetries and scaling.
@@ -119,9 +117,8 @@ Volume based segmentation was explored by \cite{Attene2006}, with a primitive fi
 Nevertheless, the authors' method is not able to identify negative volumes, and it is not able to distinguish between the inner and the outer parts of the model.
 Building on previous work, \cite{Attene2008} proposed an extension for region selection using polyhedra.
 \cite{Gal2009} demonstrated that man-made objects can be deformed intuitively with a set of 1D curves extracted from the models.
-An abstraction method, to extract characteristic curve networks was proposed by \cite{Mehra2009}.
-Which iteratively fits envelopes to the surface and performs a deforming simplification to smooth out details.
-Other techniques has been explored as well, such as planar based ones \cite{McCrae2011}.
+An abstraction method, to extract characteristic curve networks was proposed by \cite{Mehra2009}, which iteratively fits envelopes to the surface and performs a deforming simplification to smooth out details on the model.
+Other techniques, such as the planar based ones \cite{McCrae2011}, have also been explored.
 However, their approach is limited to a learning phase with a manually marked training dataset.
 \cite{Yumer2012} proposed a controllable abstraction approach combining RANSAC and volume-centric primitive fitting to produce a range of simplified models.
 The algorithm is based on deforming the fitted primitives with a polynomial surface.
@@ -130,40 +127,39 @@ An alternative to \cite{Attene2006} segmentation approach is also presented, add
 \section{Fluid simulation}
 \label{prevWorkFluidSim}
 
-The current paradigm in fluid simulation consist of solving the Navier-Stokes equations of fluid dynamics, shown below.
+The current paradigm in fluid simulation is based on finding approximate solutions the Navier-Stokes equations of fluid dynamics, shown below.
 
 \begin{gather}
 \label{eq:navierStokes1}
-\nabla \cdot \mathbf{u} = 0\\
+\nabla \cdot \mathbf{u} = 0,\\
 \label{eq:navierStokes2}
-\mathbf{u}_t = -(\mathbf{u} \cdot \nabla)\mathbf{u} + \nabla \cdot ( v \nabla \mathbf{u} - \frac{1}{\rho} \nabla p + \mathbf{f} )
+\mathbf{u}_t = -(\mathbf{u} \cdot \nabla)\mathbf{u} + \nabla \cdot ( v \nabla \mathbf{u} - \frac{1}{\rho} \nabla p + \mathbf{f} ).
 \end{gather}
 
-Equation~\ref{eq:navierStokes1} enforces mass conservation and ensures incompressibility. Equation~\ref{eq:navierStokes2} is derived from Newton's Second Law and encodes momentum conservation.
-Where $\mathbf{u}_t$ is the time derivative vector field of the fluid velocity, $p$  is the scalar pressure field, $\rho$ is the density of the fluid, $v$ is the kinematic viscosity and $\mathbf{f}$ represents the body force per unit mass, usually gravity.
+Equation~\ref{eq:navierStokes1} enforces mass conservation and ensures incompressibility. Equation~\ref{eq:navierStokes2} is derived from Newton's Second Law and encodes momentum conservation, where $\mathbf{u}_t$ is the time derivative vector field of the fluid velocity, $p$  is the scalar pressure field, $\rho$ is the density of the fluid, $v$ is the kinematic viscosity and $\mathbf{f}$ represents the body force per unit mass, usually gravity.
 
-Along the years several methods have been proposed, although all of them are based on the aforementioned Navier-Stokes equations.
+Several methods have been proposed, all of which are based on finding approximate solutions to the aforementioned Navier-Stokes equations, except the Fourier based methods.
 
 \begin{itemize}
-\item \textbf{Fourier Transform} techniques uses several superimposed sinusoidal waves to model the fluid behaviour.
+\item \textbf{Fourier Transform} techniques use several superimposed sinusoidal waves to model fluid behaviour.
 \item \textbf{Grid} based methods track the fluid features at fixed points in space.
 \item \textbf{Smooth Particle Hydrodynamics} track a large number of particles in the fluid.
 \item \textbf{Hybrid} algorithms are combinations of the preceding methods.
 \end{itemize}
 
 Regardless of the chosen method, the fluid state has to be updated for each new frame.
-However, it is common for the algorithms to have a upper bound in the time step, so if the update is computed after the limit, a reasonable output is not guaranteed.
-Therefore, to avoid having to calculate extra in between updates that would not be rendered, techniques that allow for larger time steps are preferred.  
+However, it is common for the algorithms to have a upper bound in the time step size, so if the update is computed after the limit, a reasonable output is not guaranteed.
+Therefore, to avoid having to calculate extra steps in between updates, that would not be rendered, techniques that allow for larger time steps are preferred.  
 
-Another important concept in fluid simulation is whether the simulation implements interplay within the fluid and rigid bodies that come in contact with it (solid-fluid coupling).
-And how flexible is this interaction, one way \emph{solid-fluid} coupling (e.g. a rock drops on a small pool of water, so the water moves, yet the rock is not affected by the water reaction), one way \emph{fluid-solid} coupling (e.g. a small buoy floating in the ocean has little effect on the surrounding water), and \emph{two way solid-fluid} interaction (e.g. a flexible object drops in a pool of fluid and both affect the behaviour of each other).
+Another important concept in fluid simulation is whether the simulation implements interplay between the fluid and the rigid bodies that come in contact with it (solid-fluid coupling).
+Furthermore, the simulations have different levels of flexibility, one way \emph{solid-fluid} coupling (e.g. a rock drops on a small pool of water, so the water moves, yet the rock is not affected by the water reaction), one way \emph{fluid-solid} coupling (e.g. a small buoy floating in the ocean has little effect on the surrounding water), and \emph{two way solid-fluid} interaction (e.g. a flexible object drops in a pool of fluid and both affect the behaviour of each other).
 
 For more information on real time fluid simulations we refer the readers to \cite{Vines2012} and \cite{Ihmsen2014} surveys.
 
 \subsection{Fourier Transform}
 
 When simulating fluid with periodic boundary conditions, procedural simulation can be applied with low computational cost.
-Usually this method is used with large masses of water (e.g. ocean simulation), as they are an approximation to periodic boundary conditions fluids.
+Usually this method is used with large masses of water (e.g. ocean simulation), as they are an approximation to a fluid with periodic boundary conditions.
 The waves can be modelled as a superimposition of sinusoidal waves, which can be efficiently decomposed using Fast Fourier Transform methods \cite{Mastin1987}.
 Waves produced in this fashion are visually plausible, however physical accuracy is not enforced inherently by the model.
 
@@ -181,34 +177,34 @@ However, Fourier transform methods can still only be applied to simulate oceans 
 \subsection{Grid}
 \label{gridFluidSolvers}
 
-Grid methods were among the first techniques to solve fluid simulation and so the firsts ones implement intuitive solutions.
-Grid based techniques solve Navier-Stokes Equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2}, in a fixed position in space (i.e. grid).
-As fluid flows, the equations are solved in each position, giving a value for speed and pressure at each time step.
+%Grid methods were among the first techniques used in fluid simulation, and so the firsts ones implement intuitive solutions.
+Grid based techniques use the Navier-Stokes Equations~\ref{eq:navierStokes1} and~\ref{eq:navierStokes2}, in a fixed position in space (i.e. grid).
+As fluid flows, a value for speed and pressure at each time step is calculated in each grid position.
 This approach is advantageous as many numerical methods can be applied easily on grids and they are more easily adaptable to GPUs implementations than other techniques.
 
-One of the firsts papers in this area applied forward Euler integration to solve the Navier-Stokes equations in a grid \cite{Foster1996}.
-However, their implementation of solid-fluid interaction was restricted to one way solid-fluid coupling, the solids did not affect the fluid behaviour.
+One of the firsts papers in this area applied forward Euler integration to compute the fluid dynamics in a grid \cite{Foster1996}.
+However, their implementation of solid-fluid interaction was restricted to one way solid-fluid coupling, hence the solids in the simulations did not affect the fluid behaviour.
 \cite{Stam1999} extended this method in order to overcome stability issues.
-The author's implemented a stable solver which allowed for larger time steps through an operator splitting scheme and more importantly a semi-Lagrangian method to calculate the advection term.
+The author implemented a stable solver, which allowed for larger time steps through an operator splitting scheme, and more importantly a semi-Lagrangian method to calculate the advection term.
 
 \cite{Carlson2004} proposed a solid-fluid coupling algorithm for grids models using distributed Lagrange multipliers.
-Nevertheless, the author's method uses  a non adaptive grid and multiphase fluids and bubbles are not covered by their implementation.
+Nevertheless, the author's method uses a non-adaptive grid, multiphase fluids and bubbles are not covered by their implementation.
 
 \subsection{Smooth Particle Hydrodynamics}
 
-Smooth Particle Hydrodynamics(SPH) has been established as one the major breakthroughs for fluid simulations in computer graphics, positioning itself as the most popular method nowadays.
+Smooth Particle Hydrodynamics (SPH) has been established as one of the major breakthroughs for fluid simulations in computer graphics, positioning itself as the most popular method nowadays.
 Compared to grid based methods that need high resolution grids to produce foam and splashes, SPH can achieve the same with less computational load.
 Two extra advantages are that mass conservation is automatically satisfied, if the amount and mass of the particles is kept constant;
 and since the particles move with the fluid, the advection term does not need to be calculated explicitly.
 
 SPH were first introduced by \cite{DesbrunMathieuandGascuel1996}, where each particle encodes its position, velocity, mass and the forces that act on it.
 A globally adaptive time step is proposed as well, so the time step automatically adapts to the flow dynamics.
-What is more, to achieve more efficiency a local adaptive time integration is used, individual particles will use larger time steps if stability restrictions allow for it.
+What is more, to achieve more efficiency a local adaptive time integration is used; individual particles will use larger time steps if stability restrictions allow for it.
 
 \cite{Muller2004} presented a method for computing solid fluid coupling where boundary particles are created on the surface of the solid and then particle coupling is calculated.
 \cite{Akinci2012} further improved the previous method with the inclusion of irregular particle distributions as well as friction and dragging. 
-\cite{Shao2014} solved stability issues in the previous SPH solid-fluid coupling techniques using a correction scheme.
-Furthermore the authors' algorithm was implemented on GPUs, thus achieving better performance than previous methods.  
+\cite{Shao2014} fixed stability issues in the previous SPH solid-fluid coupling techniques using a correction scheme.
+Furthermore, the authors' algorithm was implemented on GPUs, thus achieving better performance than previous methods.  
 However, the method is still not completely physically accurate and erroneous penetrations can arise in certain situations. 
 
 \subsection{Hybrid}
@@ -216,8 +212,8 @@ However, the method is still not completely physically accurate and erroneous pe
 Hybrid methods are combinations of the aforementioned approaches.
 As with other hybrid techniques, the objective is to capitalize on the advantages of each, while trying to discard the weaknesses.
 
-A common hybrid approach is the particle-in-cell (PIC) method, \cite{Harlow1962}.
-The author solves the advection using SPH and the incompressibility with an Euler grid.
+A common hybrid approach is the particle-in-cell (PIC) method \cite{Harlow1962}.
+The author calculates the advection using SPH and the incompressibility with an Euler grid.
 In more detail, the particles are averaged onto a grid where all the terms in the Navier-Stokes Equations \ref{eq:navierStokes1} and \ref{eq:navierStokes2} are calculated, except advection.
 Then, the particles are translated using the calculated grid velocity.
 This method has been used in a variety of situations, for example \cite{Zhu2005} used it for sand simulation and \cite{Horvath2009} applied it for fire generation.
@@ -225,8 +221,9 @@ A further improvement is an implicit approach, namely the fluid implicit particl
 The fundamental difference it that particles are not updated directly with the grid data.
 An advection term calculation that is always stable is the main strength of the FLIP method.
 However, the particles can sometimes clamp or have voids.
-FLIP was extended by \cite{Raveendran2011} to be able to solve the equations in a coarse grid.
-What is more, the authors' work also allowed for larger time steps, however a GPU implementation is not provided.
+FLIP was extended by \cite{Raveendran2011} to be able to calculate solutions in coarse grids.
+What is more, the authors' work also allowed for larger time steps. 
+However, implementing their algorithm on GPUs was not explored.
 % Instead, the variation of a quantity is computed from the grid, and this in turn is used to update particle information.
 
 \section{Flow visualization}
@@ -236,7 +233,7 @@ What is more, the authors' work also allowed for larger time steps, however a GP
 
 Extensive work has been done in this area as visualizing fluid movement has a broad range of applications, such as turbomachinery design, simulation of weather systems, air-conditioning design, blood flow simulations for surgical purposes, etc.
 However, this is a challenging task as it has to effectively display complex and copious amounts of data.
-Seeing that fluid simulation is generally solved by means of highly divided grids or with large number of particles, as explained in Section~\ref{prevWorkFluidSim}.
+Seeing that, fluid simulation is generally approached by means of highly divided grids or with large number of particles, as explained in Section~\ref{prevWorkFluidSim}.
 
 \begin{figure}[htbp]
 	\centering
@@ -255,28 +252,27 @@ Seeing that fluid simulation is generally solved by means of highly divided grid
 \end{figure}
 
 Streamlines are convenient tools to describe and visualize flow, as shown in figure~\ref{fig:streamLines}.
-A streamline is defined as a curve that is everywhere tangent to flow field, i.e. it is parallel to the local velocity vector.
+A streamline is defined as a curve that is everywhere tangent to the flow field, i.e. it is parallel to the local velocity vector.
 Therefore, they provide an intuitive mechanism to show the fluid travel direction.
 Furthermore, they have interesting properties such as: streamlines will not cross each other (i.e. flow will not go across them) and a particle in the fluid starting on one streamline will not leave it.
-Once the streamlines has been calculated, instead of displaying them as such, they can be replaced by arrows arranged using some criteria.
-For instance, on the path of each streamline or after clustering some streamlines together, as shown in Figure~\ref{fig:streamArrows}.
+Once the streamlines has been calculated, instead of displaying them as such, they can be replaced by arrows arranged using some criteria, for instance on the path of each streamline or after clustering some streamlines together, as shown in Figure~\ref{fig:streamArrows}.
 
-In the following sections we will only focus on steady flow visualization with 2D and 3D curves, as well as surface based.
-For complete review on the topic, including unsteady flow and volume integral objects, we refer the readers to~\cite{McLoughlin2010} survey.
+In the following sections we will only focus on steady flow visualization with 2D and 3D curves, as well as surface-based.
+We refer the readers to~\cite{McLoughlin2010} survey, which also includes unsteady flow and volume integral objects.
 
 \subsection{2D flow}
 
 On the 2D domain, an image-guided algorithm for visualizing two-dimensional flow in images was proposed by \cite{Turk1996}.
 The approach used inefficient seeding and streamline calculations.
 The first problem was addressed by \cite{Jobard1997}, with a controllable seeding algorithm using two distance parameters.
-While the second was solved by \cite{Mebarki2005}, the authors used a farthest seeding point strategy with a 2D Delauney triangulation.
+The second issue was fixed by \cite{Mebarki2005}; the authors used a farthest seeding point strategy with a 2D Delauney triangulation.
 \cite{Li2008} presented a novel method by only generating the fewest possible number of streamlines, while also preserving the most important flow features.
 The authors' exploit local coherence,  measuring similarity between streamlines, to disregard repetitive patterns.
 
 \subsection{Streamlines on surfaces}
 
 Seeding techniques for curves on 3D surfaces were explored by \cite{VanWijk1992}, who developed a particle based visualization method.
-Particles are seeded from geometric objects and continuous points sources will create streamlines.
+Particles are seeded from geometric objects and continuous points sources create streamlines.
 \cite{Mao1998} proposed a technique to generate evenly spaced streamlines, extending \cite{Turk1996} work.
 The algorithm maps 3D surface vectors in an extended 2D image domain, calculates the streamlines in the simplified space, and maps them back to 3D. 
 \cite{Spencer2009} presented a method to generate streamlines only for visible parts of the surface, thus providing a significant gain in efficiency.
@@ -284,7 +280,7 @@ Moreover, the technique is able to handle general surfaces, adaptive resolution 
 
 \subsection{Streamline rendering and placement}
 
-Rendering too many streamlines can result in clutter and too few can lead to omit important characteristics in the flow dynamics.
+Rendering too many streamlines can result in clutter and too few can lead to omitting important characteristics in the flow dynamics.
 There has been copious research into optimizing streamline generation and placement.
 However, for our hydraulic machinery the issue is less critical than in other research areas.
 
@@ -305,7 +301,7 @@ Considering the occlusion issues that normally arise in this area, \cite{Marches
 The authors precompute a random pool of streamlines, then occluded areas are pruned, and empty areas are reseeded for the current view via occupancy buffers.
 What is more, a GPU implementation of their method is provided.
 Clustering is a common technique for reducing the amount of rendered streamlines.
-To address slow euclidean distance tests in clustering \cite{McLoughlin2013} presented a signature based metric.
+To address slow euclidean distance tests in clustering, \cite{McLoughlin2013} presented a signature based metric.
 The streamline attributes for the signature are curvature, torsion and tortuosity.
 The authors presented two variations, a fast simpler method and a hierarchical one that sacrifices speed for superior results.
 However, both provide a performance increase over euclidean distance calculations.
@@ -335,7 +331,7 @@ Nevertheless, surfaces can provide better visualization results, e.g. the use of
 Streamsurfaces were introduced by \cite{Hultquist1992}.
 The author's method seeds streamlines from a curve and those streamlines are advanced through the vector field.
 New streamlines are seeded or existing ones are terminated if the points reach a predetermined maximum or minimum distance threshold respectively.
-The streamlines points are used to create a streamsurface mesh.
+The streamline points are used to create a streamsurface mesh.
 To aid in the interpretation of flow, \cite{Loffelmann1997} extended the streamsurface model with the addition of streamarrows, as shown in Figure~\ref{fig:streamArrows}.
 The authors' technique involves adding arrows to show flow direction, and removing the arrow space on the surface to reduce occlusion issues.
 A hybrid method with streamlines and streamtubes was proposed by \cite{Zhang2003}.
@@ -351,7 +347,7 @@ Contour lines, halftoning, silhouetts, contour arrows, cuts and slabs are applie
 
 Explanatory illustration is usually found in comics books and instructions sets, were movement has to be inferred from static pictures.
 This method has to adequately transmit motion on a still image, consequently transforming from the temporal space into the image domain.
-Since this is a dimensionality reduction approach, the common issues with this techniques arise, such as how to preserve the important features of the action.
+Since this is a dimensionality reduction approach, the common issues with these techniques arise, such as how to preserve the important features of the action.
 
 \subsection{Image and key frames output}
 
@@ -359,16 +355,15 @@ Even though comics books are regularly considered inferior forms for presenting 
 \cite{McCloud1993} reviewed visualization and abstraction techniques used in comics books.
 The author explored how to depict the motion of single objects, to illustrate noises and speeches bound to time.
 \cite{Cutting2002} surveyed traditional techniques for depicting motion; including sequences of key frames, blur, squeeze and stretch, unbalanced postures and stroboscopic effects.
-Criteria to judge the effectiveness of a particular representation was introduced.
-For example, evocativeness, clarity of object, direction of motion and precision of motion.
+Criteria to judge the effectiveness of a particular representation was introduced, for example evocativeness, clarity of object, direction of motion and precision of motion.
 
 \cite{Nienhaus2005} proposed a technique to depict motion in 3D animations.
 Scene and behaviour descriptions from specialized scene graphs were analysed in order to create the motion cues.
-The user has to select a depiction target and assign labels to it, using the graph information motion lines and simplified sketch images are generated.
+The user has to select a depiction target and assign labels to it; using the graph information motion lines and simplified sketch images are generated.
 \cite{Joshi2005} presented a similar approach for volumetric data.
 Speedlines and flow ribbons are combined to generate illustrations encoding 3D rigid movement and flow dynamics.
 The flow ribbons use a comic inspired line abstraction technique to handle occlusion.
-Researchers have have look into automatic illustration generation for mechanical assemblies \cite{Mitra2010}.
+Researchers have look into automatic illustration generation for mechanical assemblies \cite{Mitra2010}.
 The author's work is based only on geometry information extracted from 3D CAD models.
 Part analysis is performed using symmetry analysis, see Section \ref{sec:symmetryDetection}, while the motions are extracted from an interaction graph that is defined by edge contact between the components.
 The system is able to generate, motion arrows depicting mechanical assembly interaction, as well as generating key frames from periodic motions.
@@ -390,8 +385,8 @@ Their algorithm has two stages: a motion tracking step, where a feature manually
 The system can add motion lines as well as squashing and stretching objects.
 However, the second and third case are restricted to videos where the background can be reconstructed from previous frames.
 \cite{Zhu2011} presented a dynamic sketching technique to illustrate fluids systems.
-The paper uses hybrid multi layered grid solver, extended from those discussed in Section~\ref{gridFluidSolvers}, to solve 2.5D fluid flow.
+The paper uses hybrid multi layered grid solver, extended from those discussed in Section~\ref{gridFluidSolvers}, to simulate 2.5D (a stack of 2D grids) fluid flow.
 Flow paths and other objects can be added or changed in real time through a sketching interface.
 A hydraulic graph is created and it is modified behind the scenes every time the visual model is edited.
 The flow is shown using streamlines, as discussed in Section~\ref{sec:flowVisualization}.
-\cite{Lowe2014} showed that even though animations have become a generalized tool for visualizing dynamic systems, special care have to be taken since the users can fail to extract the necessary information, due to the nature of the animation.
+\cite{Lowe2014} showed that even though animations have become a generalized tool for visualizing dynamic systems, special care has to be taken since the users can fail to extract the necessary information, due to the nature of the animation.
